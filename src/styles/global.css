@@ -1,0 +1,11 @@
+:root {
+  width: 100%;
+  display: flex;
+  background-color: black;
+
+  /* padding */
+  --default-padding: 0px calc((100% - 1200px) / 2);
+
+  /* color */
+  --color-trans-white: rgba(255, 255, 255, 0.5);
+}

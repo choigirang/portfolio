@@ -1,13 +1,20 @@
 import React from 'react';
-import Header from './components/Main/Header';
+import Header from './components/Header';
 import { styled } from 'styled-components';
 import Main from './components/Main/Main';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import About from './components/About/About';
 
 function App() {
   return (
     <Container>
-      <Header />
-      <Main></Main>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Main></Main>} />
+          <Route path="/About" element={<About />}></Route>
+        </Routes>
+      </BrowserRouter>
     </Container>
   );
 }

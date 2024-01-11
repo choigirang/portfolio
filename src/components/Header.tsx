@@ -6,7 +6,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
 // 주소 목록
-const lists = ['/Home', '/About', '/Skills', '/Experience'];
+const lists = {
+  Home: 0,
+  About: 1000,
+  Skills: 2000,
+  Experience: 3000,
+};
 
 /**
  *
@@ -17,6 +22,12 @@ export default function Header() {
 
   const routeMatch = useRouteMatch(['/Home', '/About', '/Skills', '/Experience']);
   const currentTab = routeMatch;
+
+  const scrollHandler = (e: string) => {
+    document.getElementById(e)?.scrollIntoView({
+      behavior: 'smooth',
+    });
+  };
 
   // scroll에 따른 Header bg 변경
   useEffect(() => {
@@ -46,8 +57,14 @@ export default function Header() {
     <Head $scroll={scroll}>
       <Logo></Logo>
       <Tabs value={currentTab}>
-        {lists.map(list => (
-          <Tab key={list} label={list.replace('/', '')} value={list} to={list} component={Link}></Tab>
+        {Object.keys(lists).map(list => (
+          <Tab
+            key={list}
+            label={list.replace('/', '')}
+            value={'/' + list}
+            to={list}
+            component={Link}
+            onClick={() => scrollHandler(list)}></Tab>
         ))}
       </Tabs>
     </Head>
@@ -83,7 +100,7 @@ const Head = styled.div<HeaderScrollState>`
   width: 100%;
   height: 100px;
   padding: 0 calc((100vw - 1280px) / 2);
-  background-color: ${props => (props.$scroll ? 'transparent' : 'black')};
+  /* background-color: ${props => (props.$scroll ? 'transparent' : 'black')}; */
   box-sizing: border-box;
   transition: all 1s;
   z-index: 1;

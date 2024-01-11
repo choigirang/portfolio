@@ -1,19 +1,21 @@
 import React from 'react';
 import Header from './components/Header';
 import { styled } from 'styled-components';
-import Main from './components/Main/Main';
+import Main from './components/Main/Index';
+import Skills from './components/Skills/Index';
+import Experience from './components/Experience/Index';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import About from './components/About/About';
+import About from './components/About/Index';
 
 function App() {
   return (
     <Container>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Main></Main>} />
-          <Route path="/About" element={<About />}></Route>
-        </Routes>
+        <Main />
+        <About />
+        <Skills />
+        <Experience />
       </BrowserRouter>
     </Container>
   );

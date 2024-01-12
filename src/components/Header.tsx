@@ -4,6 +4,7 @@ import { HeaderScrollState } from '../type/mainType';
 import { matchPath, Link, PathMatch, useLocation } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { useTheme } from '@mui/material';
 
 // 주소 목록
 const lists = {
@@ -17,11 +18,12 @@ const lists = {
  *
  * @returns router에 따른 헤더
  */
-export default function Header() {
+export default function Index() {
   const [scroll, setScroll] = useState<boolean>(false);
 
   const routeMatch = useRouteMatch(['/Home', '/About', '/Skills', '/Experience']);
-  const currentTab = routeMatch;
+
+  const theme = useTheme();
 
   const scrollHandler = (e: string) => {
     document.getElementById(e)?.scrollIntoView({
@@ -44,7 +46,7 @@ export default function Header() {
         }
       });
     };
-
+    scrollHandler();
     window.addEventListener('scroll', scrollHandler);
 
     return () => {
@@ -54,9 +56,11 @@ export default function Header() {
   }, [scroll]);
 
   return (
-    <Head $scroll={scroll}>
+    <Header $scroll={scroll} theme={theme}>
       <Logo></Logo>
-      <Tabs value={currentTab}>
+      <Tabs
+        value={routeMatch}
+        sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' }, '& .Mui-selected': { color: 'purple' } }}>
         {Object.keys(lists).map(list => (
           <Tab
             key={list}
@@ -64,10 +68,11 @@ export default function Header() {
             value={'/' + list}
             to={list}
             component={Link}
-            onClick={() => scrollHandler(list)}></Tab>
+            onClick={() => scrollHandler(list)}
+          />
         ))}
       </Tabs>
-    </Head>
+    </Header>
   );
 }
 
@@ -91,21 +96,33 @@ function useRouteMatch(patterns: readonly string[]) {
   return null;
 }
 
-const Head = styled.div<HeaderScrollState>`
-  display: flex;
-  position: fixed;
-  top: 0;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100px;
-  padding: 0 calc((100vw - 1280px) / 2);
-  /* background-color: ${props => (props.$scroll ? 'transparent' : 'black')}; */
-  box-sizing: border-box;
-  transition: all 1s;
-  z-index: 1;
-  border: dotted 1px black;
-`;
+const Header = styled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
+  display: 'flex',
+  position: 'fixed',
+  top: 0,
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  width: '100%',
+  height: '100px',
+  padding: '0 calc((100vw - 1280px) / 2)',
+  backgroundColor: $scroll ? 'transparent' : theme.palette.primary.main,
+  boxSizing: 'border-box',
+  transition: 'all 1s',
+  zIndex: 1,
+}));
+// display: flex;
+// position: fixed;
+// top: 0;
+// justify-content: space-between;
+// align-items: center;
+// width: 100%;
+// height: 100px;
+// padding: 0 calc((100vw - 1280px) / 2);
+// background-color: ${props => (props.$scroll ? 'transparent' : 'black')};
+// box-sizing: border-box;
+// transition: all 1s;
+// z-index: 1;
+// border: dotted 1px black;
 
 const Logo = styled.a`
   width: 150px;

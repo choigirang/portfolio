@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './components/Header';
-import { styled } from 'styled-components';
 import Main from './components/Main/Index';
 import Skills from './components/Skills/Index';
 import Experience from './components/Experience/Index';
 import { BrowserRouter } from 'react-router-dom';
 import About from './components/About/Index';
-import { IconButton, PaletteMode, ThemeProvider, createTheme } from '@mui/material';
+import { PaletteMode, ThemeProvider, createTheme, styled } from '@mui/material';
 import { StyledEngineProvider } from '@mui/styled-engine-sc';
+import DarkModeSwitch from './components/DarkModeSwitch';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -46,10 +46,7 @@ function App() {
             </BrowserRouter>
           </Container>
         </StyledEngineProvider>
-        <IconButton
-          sx={{ position: 'absolute', top: '50%', left: '50%', ml: 2, zIndex: 0 }}
-          onClick={colorMode.toggleColorMode}
-        />
+        <DarkModeSwitch colorMode={colorMode} />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
@@ -57,7 +54,7 @@ function App() {
 
 export default App;
 
-const Container = styled.div`
-  width: 100%;
-  height: 200vh;
-`;
+const Container = styled('div')({
+  width: '100%',
+  height: '200vh',
+});

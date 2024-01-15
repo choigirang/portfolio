@@ -1,18 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { styled } from 'styled-components';
+import React, { useEffect, useState } from 'react';
 import { HeaderScrollState } from '../type/mainType';
-import { matchPath, Link, PathMatch, useLocation } from 'react-router-dom';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { useTheme } from '@mui/material';
+import { matchPath, Link, useLocation } from 'react-router-dom';
+import { Tabs, Tab, useTheme, styled } from '@mui/material';
 
 // 주소 목록
-const lists = {
-  Home: 0,
-  About: 1000,
-  Skills: 2000,
-  Experience: 3000,
-};
+const lists = ['Home', 'About', 'Skills', 'Experience'];
 
 /**
  *
@@ -61,7 +53,7 @@ export default function Index() {
       <Tabs
         value={routeMatch}
         sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' }, '& .Mui-selected': { color: 'purple' } }}>
-        {Object.keys(lists).map(list => (
+        {lists.map(list => (
           <Tab
             key={list}
             label={list.replace('/', '')}
@@ -105,36 +97,23 @@ const Header = styled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
   width: '100%',
   height: '100px',
   padding: '0 calc((100vw - 1280px) / 2)',
-  backgroundColor: $scroll ? 'transparent' : theme.palette.primary.main,
+  backgroundColor: $scroll ? 'transparent' : theme.palette.mode === 'dark' ? '#000f1f' : '#ffe196',
+  color: theme.palette.mode === 'dark' ? 'white' : 'white',
   boxSizing: 'border-box',
   transition: 'all 1s',
   zIndex: 1,
+
+  '.Mui-selected': {
+    color: theme.palette.mode === 'dark' ? '#ffb700' : '#000f1f',
+  },
+
+  '.visited': {
+    color: theme.palette.mode === 'dark' ? '#ffb700' : '#000f1f',
+  },
 }));
-// display: flex;
-// position: fixed;
-// top: 0;
-// justify-content: space-between;
-// align-items: center;
-// width: 100%;
-// height: 100px;
-// padding: 0 calc((100vw - 1280px) / 2);
-// background-color: ${props => (props.$scroll ? 'transparent' : 'black')};
-// box-sizing: border-box;
-// transition: all 1s;
-// z-index: 1;
-// border: dotted 1px black;
 
-const Logo = styled.a`
-  width: 150px;
-  height: 100%;
-  background-color: black;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 500px;
-  height: 100%;
-  background-color: white;
-`;
+const Logo = styled('a')({
+  width: '150px',
+  height: '100%',
+  backgroundColor: 'black',
+});

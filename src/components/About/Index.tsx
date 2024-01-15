@@ -5,8 +5,8 @@ export default function Index() {
   return <Container id="About">About</Container>;
 }
 
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  background-color: lightyellow;
-`;
+const Container = styled('div')({
+  width: '100%',
+  height: '100vh',
+  backgroundColor: 'lightyellow',
+});

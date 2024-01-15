@@ -85,6 +85,7 @@ video {
   white-space: normal;
   word-wrap: break-word;
   word-break: keep-all;
+  box-sizing: border-box;
 }
 html {
   overflow-y: auto;

@@ -1,4 +1,4 @@
-import { PaletteMode, Switch, styled } from '@mui/material';
+import { PaletteMode, Switch, styled as MuiStyled } from '@mui/material';
 import React from 'react';
 
 export default function DarkModeSwitch({ colorMode }: { colorMode: { toggleColorMode: () => void } }) {
@@ -18,7 +18,7 @@ export default function DarkModeSwitch({ colorMode }: { colorMode: { toggleColor
   );
 }
 
-const Container = styled('div')({
+const Container = MuiStyled('div')({
   display: 'flex',
   justifyContent: 'center',
   width: '100vw',
@@ -28,7 +28,7 @@ const Container = styled('div')({
   bottom: 0,
 });
 
-const ModeSwitch = styled(Switch)(({ theme }) => ({
+const ModeSwitch = MuiStyled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
   padding: 7,

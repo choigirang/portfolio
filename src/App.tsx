@@ -5,7 +5,7 @@ import Skills from './components/Skills/Index';
 import Experience from './components/Experience/Index';
 import { BrowserRouter } from 'react-router-dom';
 import About from './components/About/Index';
-import { PaletteMode, ThemeProvider, createTheme, styled } from '@mui/material';
+import { PaletteMode, ThemeProvider, createTheme, styled as MuiStyled } from '@mui/material';
 import { StyledEngineProvider } from '@mui/styled-engine-sc';
 import DarkModeSwitch from './components/DarkModeSwitch';
 
@@ -54,7 +54,7 @@ function App() {
 
 export default App;
 
-const Container = styled('div')({
+const Container = MuiStyled('div')({
   width: '100%',
   height: '200vh',
 });

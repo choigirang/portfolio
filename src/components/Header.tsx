@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { HeaderScrollState, TabPropsType } from '../type/headerType';
 import { Link } from 'react-router-dom';
 import { Tabs, Tab, useTheme, styled as MuiStyled } from '@mui/material';
-import useRouteMatch from '../hooks/useRouteMatch';
 
 // 주소 목록
 const lists = ['Home', 'About', 'Skills', 'Experience'];
@@ -15,7 +14,7 @@ export default function Index() {
   const [scroll, setScroll] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('Home');
 
-  const routeMatch = useRouteMatch();
+  const currentPath = window.location.pathname;
 
   const theme = useTheme();
 
@@ -75,14 +74,12 @@ export default function Index() {
     };
   }, [activeSection]);
 
-  console.log(activeSection);
-
   return (
-    <Header $scroll={scroll} theme={theme}>
-      <Logo></Logo>
+    <Header $scroll={scroll}>
+      <Logo>Girang's</Logo>
       <Tabs
-        value={'/' + activeSection}
-        sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' }, '& .Mui-selected': { color: 'purple' } }}>
+        value={currentPath !== '/' ? currentPath : '/Home'}
+        sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' } }}>
         {lists.map(list => (
           <TabList
             key={list}
@@ -107,21 +104,36 @@ const Header = MuiStyled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
   width: '100%',
   height: '100px',
   padding: '0 calc((100vw - 1280px) / 2)',
-  backgroundColor: $scroll ? 'transparent' : theme.palette.mode === 'dark' ? '#000f1f' : '#ffe196',
-  color: theme.palette.mode === 'dark' ? 'white' : 'white',
+  backgroundColor: $scroll ? 'transparent' : theme.palette.secondary.main,
+  color: 'white',
   boxSizing: 'border-box',
   transition: 'all 1s',
   zIndex: 1,
 
   '.visited': {
-    color: theme.palette.mode === 'dark' ? '#ffb700' : '#000f1f',
+    fontWeight: '500',
+    color: theme.palette.primary.light,
   },
+
+  ...(theme.palette.mode === 'dark' && {
+    backgroundColor: theme.palette.secondary.dark,
+
+    ':visited': {
+      color: theme.palette.primary.dark,
+    },
+  }),
 }));
 
 const TabList = MuiStyled(Tab)<TabPropsType>(({ theme }) => ({
   '.Mui-selected': {
-    color: theme.palette.mode === 'dark' ? '#ffb700' : '#000f1f',
+    color: theme.palette.text.secondary,
   },
+
+  ...(theme.palette.mode === 'dark' && {
+    '.Mui-selected': {
+      color: theme.palette.text.primary,
+    },
+  }),
 }));
 
 const Logo = MuiStyled('a')({

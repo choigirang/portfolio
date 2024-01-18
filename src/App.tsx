@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Header from './components/Header';
 import Main from './components/Main/Index';
 import Skills from './components/Skills/Index';
 import Experience from './components/Experience/Index';
 import { BrowserRouter } from 'react-router-dom';
 import About from './components/About/Index';
-import { PaletteMode, ThemeProvider, createTheme, styled as MuiStyled } from '@mui/material';
+import { PaletteMode, ThemeProvider, styled as MuiStyled } from '@mui/material';
 import { StyledEngineProvider } from '@mui/styled-engine-sc';
 import DarkModeSwitch from './components/DarkModeSwitch';
+import createCustomTheme from './theme/palette';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -22,15 +23,8 @@ function App() {
     }),
     [],
   );
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
-    [mode],
-  );
+
+  const theme = useMemo(() => createCustomTheme(mode), [mode]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>

@@ -1,19 +1,20 @@
-import { PaletteMode, Switch, styled as MuiStyled } from '@mui/material';
-import React from 'react';
+import { PaletteMode, Switch, styled as MuiStyled, IconButton } from '@mui/material';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 
 export default function DarkModeSwitch({ colorMode }: { colorMode: { toggleColorMode: () => void } }) {
+  const topScroll = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <Container>
-      <ModeSwitch
-        sx={{
-          position: 'absolute',
-          bottom: '10%',
-          right: '10%',
-          ml: 2,
-          zIndex: 0,
-        }}
-        onClick={colorMode.toggleColorMode}
-      />
+      <IconButton onClick={topScroll}>
+        <UpIcon fontSize="large" />
+      </IconButton>
+      <ModeSwitch sx={{ position: 'absolute', right: '10%', top: '50%' }} onClick={colorMode.toggleColorMode} />
     </Container>
   );
 }
@@ -21,6 +22,7 @@ export default function DarkModeSwitch({ colorMode }: { colorMode: { toggleColor
 const Container = MuiStyled('div')({
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
   width: '100vw',
   height: '10%',
   padding: '0 calc((100vw - 1280px) / 2);',
@@ -32,8 +34,6 @@ const ModeSwitch = MuiStyled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
   padding: 7,
-  position: 'absolute',
-  right: '10px',
   '& .MuiSwitch-switchBase': {
     margin: 1,
     padding: 0,
@@ -48,12 +48,12 @@ const ModeSwitch = MuiStyled(Switch)(({ theme }) => ({
       },
       '& + .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+        backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#dce2e7',
       },
     },
   },
   '& .MuiSwitch-thumb': {
-    backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
+    backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#ffb700',
     width: 32,
     height: 32,
     '&::before': {
@@ -72,7 +72,9 @@ const ModeSwitch = MuiStyled(Switch)(({ theme }) => ({
   },
   '& .MuiSwitch-track': {
     opacity: 1,
-    backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+    backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#dce2e7',
     borderRadius: 20 / 2,
   },
 }));
+
+const UpIcon = MuiStyled(ArrowCircleUpIcon)({});

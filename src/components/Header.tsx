@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { HeaderScrollState, TabPropsType } from '../type/headerType';
 import { Link } from 'react-router-dom';
-import { Tabs, Tab, useTheme, styled as MuiStyled } from '@mui/material';
+import { Tabs, Tab, useTheme, styled as MuiStyled, Typography } from '@mui/material';
 
 // 주소 목록
 const lists = ['Home', 'About', 'Skills', 'Experience'];
@@ -76,7 +76,7 @@ export default function Index() {
 
   return (
     <Header $scroll={scroll}>
-      <Logo>Girang's</Logo>
+      <Logo variant="h1">Girang's</Logo>
       <Tabs
         value={currentPath !== '/' ? currentPath : '/Home'}
         sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' } }}>
@@ -130,14 +130,17 @@ const TabList = MuiStyled(Tab)<TabPropsType>(({ theme }) => ({
   },
 
   ...(theme.palette.mode === 'dark' && {
+    color: theme.palette.common.white,
     '.Mui-selected': {
-      color: theme.palette.text.primary,
+      color: `${theme.palette.primary.main} !important`,
     },
   }),
 }));
 
-const Logo = MuiStyled('a')({
+const Logo = MuiStyled(Typography)({
   width: '150px',
   height: '100%',
-  backgroundColor: 'black',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 });

@@ -22,7 +22,7 @@ const createCustomTheme = (mode: PaletteMode) =>
       },
       secondary: {
         main: '#ffe196',
-        dark: '#000f1f',
+        dark: '#003892',
       },
       text: {
         primary: '#ffb700',

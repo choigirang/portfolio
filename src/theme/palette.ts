@@ -4,6 +4,7 @@ import Typography from './Typography';
 const createCustomTheme = (mode: PaletteMode) =>
   createTheme({
     typography: {
+      fontFamily: 'Roboto',
       h1: {
         fontSize: 30,
         fontWeight: 700,

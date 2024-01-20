@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Tabs, Tab, useTheme, styled as MuiStyled, Typography } from '@mui/material';
 
 // 주소 목록
-const lists = ['Home', 'About', 'Skills', 'Experience'];
+const lists = ['Home', 'About', 'Skills', 'Project', 'Contact'];
 
 /**
  *
@@ -104,7 +104,6 @@ const Header = MuiStyled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
   width: '100%',
   height: '100px',
   padding: '0 calc((100vw - 1280px) / 2)',
-  backgroundColor: $scroll ? 'transparent' : theme.palette.secondary.main,
   color: 'white',
   boxSizing: 'border-box',
   transition: 'all 1s',
@@ -116,7 +115,7 @@ const Header = MuiStyled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
   },
 
   ...(theme.palette.mode === 'dark' && {
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.primary.dark,
 
     ':visited': {
       color: theme.palette.primary.dark,
@@ -137,10 +136,15 @@ const TabList = MuiStyled(Tab)<TabPropsType>(({ theme }) => ({
   }),
 }));
 
-const Logo = MuiStyled(Typography)({
+const Logo = MuiStyled(Typography)(({ theme }) => ({
   width: '150px',
   height: '100%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-});
+  color: theme.palette.primary.main,
+
+  ...(theme.palette.mode === 'dark' && {
+    color: 'white',
+  }),
+}));

@@ -1,36 +1,18 @@
-import { PaletteMode, Switch, styled as MuiStyled, IconButton } from '@mui/material';
-import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import { PaletteMode, Switch, styled as MuiStyled } from '@mui/material';
+import { useColorMode } from '../../hooks/useColorMode';
+import { MenuOpenType } from '../../type/footerType';
 
-export default function DarkModeSwitch({ colorMode }: { colorMode: { toggleColorMode: () => void } }) {
-  const topScroll = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
+export default function DarkModeSwitch({ $openMenu }: MenuOpenType) {
+  const { toggleColorMode } = useColorMode();
 
-  return (
-    <Container>
-      <IconButton onClick={topScroll}>
-        <UpIcon fontSize="large" />
-      </IconButton>
-      <ModeSwitch sx={{ position: 'absolute', right: '10%', top: '50%' }} onClick={colorMode.toggleColorMode} />
-    </Container>
-  );
+  return <ModeSwitch $openMenu={$openMenu} onClick={toggleColorMode} />;
 }
 
-const Container = MuiStyled('div')({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100vw',
-  height: '10%',
-  padding: '0 calc((100vw - 1280px) / 2);',
-  position: 'fixed',
-  bottom: 0,
-});
-
-const ModeSwitch = MuiStyled(Switch)(({ theme }) => ({
+const ModeSwitch = MuiStyled(Switch)<MenuOpenType>(({ $openMenu, theme }) => ({
+  position: 'absolute',
+  left: '50%',
+  bottom: 70,
+  transform: 'translateX(-50%)',
   width: 62,
   height: 34,
   padding: 7,
@@ -75,6 +57,9 @@ const ModeSwitch = MuiStyled(Switch)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#dce2e7',
     borderRadius: 20 / 2,
   },
-}));
+  ...(!$openMenu && {
+    opacity: 0,
+  }),
 
-const UpIcon = MuiStyled(ArrowCircleUpIcon)({});
+  transition: 'all .5s',
+}));

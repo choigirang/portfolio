@@ -1,6 +1,6 @@
 import { styled as MuiStyled } from '@mui/material';
 
-export default function Index() {
+export default function Main() {
   return (
     <Containter id="Home">
       <Profile></Profile>

@@ -1,14 +1,15 @@
 import React, { useMemo } from 'react';
 import Header from './components/Header';
-import Main from './components/Main/Index';
-import Skills from './components/Skills/Index';
-import Experience from './components/Experience/Index';
-import Footer from './components/Footer/Index';
+import Main from './components/sections/Main/Index';
+import Skills from './components/sections/Skills/Index';
+import Footer from './components/sections/Footer/Index';
 import { BrowserRouter } from 'react-router-dom';
-import About from './components/About/Index';
+import About from './components/sections/About/Index';
 import { ThemeProvider, styled as MuiStyled } from '@mui/material';
 import createCustomTheme from './theme/palette';
 import { useColorMode } from './hooks/useColorMode';
+import Project from './components/sections/Project/Index';
+import Contact from './components/sections/\bContact/Index';
 
 function App() {
   const { mode } = useColorMode();
@@ -22,7 +23,8 @@ function App() {
           <Main />
           <About />
           <Skills />
-          <Experience />
+          <Project />
+          <Contact />
           <Footer />
         </BrowserRouter>
       </Container>

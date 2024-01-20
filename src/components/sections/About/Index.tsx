@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-export default function Index() {
+export default function About() {
   return <Container id="About">About</Container>;
 }
 

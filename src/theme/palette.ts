@@ -1,5 +1,4 @@
 import { PaletteMode, createTheme } from '@mui/material';
-import Typography from './Typography';
 
 const createCustomTheme = (mode: PaletteMode) =>
   createTheme({

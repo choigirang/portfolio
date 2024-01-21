@@ -1,4 +1,4 @@
-import { PaletteMode, Switch, styled as MuiStyled } from '@mui/material';
+import { Switch, styled as MuiStyled } from '@mui/material';
 import { useColorMode } from '../../../hooks/useColorMode';
 import { MenuOpenType } from '../../../type/footerType';
 

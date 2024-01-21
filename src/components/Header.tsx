@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { HeaderScrollState, TabPropsType } from '../type/headerType';
 import { Link } from 'react-router-dom';
-import { Tabs, Tab, useTheme, styled as MuiStyled, Typography } from '@mui/material';
+import { Tabs, Tab, styled as MuiStyled, Typography } from '@mui/material';
 
 // 주소 목록
 const lists = ['Home', 'About', 'Skills', 'Project', 'Contact'];
@@ -15,8 +15,6 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState<string>('Home');
 
   const currentPath = window.location.pathname;
-
-  const theme = useTheme();
 
   // 페이지 전환
   const pageScrollHandler = (e: string) => {

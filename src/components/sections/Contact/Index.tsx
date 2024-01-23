@@ -28,9 +28,11 @@ export default function Contact() {
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
       result => {
         console.log(result.text);
+        alert('전송이 완료되었습니다.');
       },
       error => {
         console.log(error.text);
+        alert('전송에 실패하였습니다.');
       },
     );
   };
@@ -48,11 +50,12 @@ export default function Contact() {
             type={contact[each]}
             multiline
             rows={each === 'Content' ? 5 : undefined}
+            required
           />
         ))}
-        <Button startIcon={<SendIcon />} variant="contained" type="submit">
+        <SubmitBtn startIcon={<SendIcon />} variant="contained" type="submit">
           SEND
-        </Button>
+        </SubmitBtn>
       </Board>
     </Container>
   );
@@ -95,10 +98,51 @@ const Board = MuiStyled('form')(({ theme }) => ({
 const TextInput = MuiStyled(TextField)(({ theme }) => ({
   outline: 'none',
   backgroundColor: 'white',
+  boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
 
-  '& textarea, & div': {
+  '& label': {
+    fontWeight: '500',
+
+    '&.Mui-focused': {
+      color: 'black',
+    },
+  },
+
+  '& textarea': {
     color: 'black',
     outline: 'none',
     border: 'none',
   },
+
+  ...(theme.palette.mode === 'dark' && {
+    backgroundColor: '#a1d6ff',
+
+    '& .MuiOutlinedInput-root': {
+      '& .Mui-focused': {
+        borderColor: '#a1d6ff',
+      },
+    },
+
+    '& label': {
+      '&.Mui-focused': {
+        color: 'black',
+      },
+    },
+  }),
+}));
+
+const SubmitBtn = MuiStyled(Button)(({ theme }) => ({
+  color: '#fff',
+  '&:hover': {
+    backgroundColor: '#b2933c',
+    color: 'white',
+  },
+
+  ...(theme.palette.mode === 'dark' && {
+    backgroundColor: '#2aa3ff',
+    '&:hover': {
+      backgroundColor: '#2278ba',
+      color: 'white',
+    },
+  }),
 }));

@@ -7,16 +7,12 @@ import { FaInstagram } from 'react-icons/fa';
 import { MenuOpenType } from '../../../type/footerType';
 import { FaGithub } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
+import useMoveScroll from '../../../hooks/useMoveScroll';
 
 export default function Footer() {
   const [openMenu, setOpenMenu] = useState(false);
 
-  const topScroll = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
+  const { scrollToTop, scrollToPage } = useMoveScroll();
 
   const openMenuHandler = () => {
     setOpenMenu(prev => !prev);
@@ -27,15 +23,9 @@ export default function Footer() {
     if (url === 'github') return window.open('https://github.com/choigirang');
   };
 
-  const moveContact = () => {
-    document.getElementById('Contact')?.scrollIntoView({
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <Container>
-      <UpIconBtn onClick={topScroll}>
+      <UpIconBtn onClick={scrollToTop}>
         <UpIconStyling fontSize="large" />
       </UpIconBtn>
       <Menu>
@@ -45,7 +35,7 @@ export default function Footer() {
         <DarkModeSwitch $openMenu={openMenu} />
         <InstaIconBtn size={30} $openMenu={openMenu} onClick={() => openMyInfo('insta')} />
         <GitIconBtn size={30} $openMenu={openMenu} onClick={() => openMyInfo('github')} />
-        <MailIconBox $openMenu={openMenu} onClick={() => moveContact()}>
+        <MailIconBox $openMenu={openMenu} onClick={() => scrollToPage('Contact')}>
           <MailIconBtn size={30} $openMenu={openMenu}></MailIconBtn>
         </MailIconBox>
       </Menu>
@@ -94,7 +84,7 @@ const ListIconBtn = MuiStyled(IconButton)<MenuOpenType>(({ $openMenu, theme }) =
   },
 
   ...(theme.palette.mode === 'dark' && {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.secondary.dark,
 
     '&:hover': {
       backgroundColor: theme.palette.secondary.dark,
@@ -142,7 +132,7 @@ const InstaIconBtn = MuiStyled(FaInstagram)<MenuOpenType>(({ $openMenu, theme })
   }),
 
   ...(theme.palette.mode === 'dark' && {
-    color: theme.palette.primary.dark,
+    color: theme.palette.secondary.dark,
   }),
 }));
 
@@ -165,7 +155,7 @@ const GitIconBtn = MuiStyled(FaGithub)<MenuOpenType>(({ $openMenu, theme }) => (
   }),
 
   ...(theme.palette.mode === 'dark' && {
-    color: theme.palette.primary.dark,
+    color: theme.palette.secondary.dark,
   }),
 }));
 
@@ -198,6 +188,6 @@ const MailIconBtn = MuiStyled(IoMail)<MenuOpenType>(({ $openMenu, theme }) => ({
   }),
 
   ...(theme.palette.mode === 'dark' && {
-    color: theme.palette.primary.dark,
+    color: theme.palette.secondary.dark,
   }),
 }));

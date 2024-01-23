@@ -1,9 +1,10 @@
 import { styled as MuiStyled } from '@mui/material';
+import Turtle from './Turtle';
 
 export default function Main() {
   return (
     <Containter id="Home">
-      <Profile></Profile>
+      <Turtle></Turtle>
     </Containter>
   );
 }

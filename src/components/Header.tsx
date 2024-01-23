@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { HeaderScrollState, TabPropsType } from '../type/headerType';
 import { Link } from 'react-router-dom';
-import { Tabs, Tab, styled as MuiStyled, Typography } from '@mui/material';
+import { Tabs, Tab, styled as MuiStyled, Typography, useTheme } from '@mui/material';
+import useMoveScroll from '../hooks/useMoveScroll';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { reverseAni, sunAni } from '../styles/keyframe';
 
 // 주소 목록
 const lists = ['Home', 'About', 'Skills', 'Project', 'Contact'];
@@ -15,13 +19,9 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState<string>('Home');
 
   const currentPath = window.location.pathname;
+  const theme = useTheme().palette.mode === 'light';
 
-  // 페이지 전환
-  const pageScrollHandler = (e: string) => {
-    document.getElementById(e)?.scrollIntoView({
-      behavior: 'smooth',
-    });
-  };
+  const { scrollToTop, scrollToPage } = useMoveScroll();
 
   // scroll에 따른 Header bg 변경
   useEffect(() => {
@@ -74,7 +74,22 @@ export default function Index() {
 
   return (
     <Header $scroll={scroll}>
-      <Logo variant="h1">Girang's</Logo>
+      <Logo variant="h1" onClick={scrollToTop}>
+        {theme ? (
+          <WbSunnyIcon
+            sx={{
+              animation: `${sunAni} 2s linear infinite`,
+            }}
+          />
+        ) : (
+          <DarkModeIcon
+            sx={{
+              animation: `${reverseAni} 3s linear infinite`,
+            }}
+          />
+        )}
+        Girang's
+      </Logo>
       <Tabs
         value={currentPath !== '/' ? currentPath : '/Home'}
         sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' } }}>
@@ -85,7 +100,7 @@ export default function Index() {
             value={'/' + list}
             to={list}
             component={Link}
-            onClick={() => pageScrollHandler(list)}
+            onClick={() => scrollToPage(list)}
           />
         ))}
       </Tabs>
@@ -138,9 +153,14 @@ const Logo = MuiStyled(Typography)(({ theme }) => ({
   width: '150px',
   height: '100%',
   display: 'flex',
+  gap: 10,
   alignItems: 'center',
   justifyContent: 'center',
   color: theme.palette.primary.main,
+
+  '&:hover': {
+    cursor: 'pointer',
+  },
 
   ...(theme.palette.mode === 'dark' && {
     color: 'white',

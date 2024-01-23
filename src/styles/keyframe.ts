@@ -40,3 +40,45 @@ export const planeAni = keyframes`
     transform: rotate(0deg);
   }
 `;
+
+export const sunAni = keyframes`
+  0% {
+    transform: rotate(360deg);
+  }
+  100%{
+    transform: rotate(0);
+  }
+`;
+
+export const reverseAni = keyframes`
+  0%{
+    transform: scaleX(1);
+  }
+  50%{
+    transform: scaleX(-1);
+  }
+`;
+
+export const turtleFrontFoot = keyframes`
+  0%, 100% {
+    transform: translate(0,0);
+  }
+  25% {
+    transform: translate(10px, -20px);
+  }
+  50%{
+    transform: translate(20px, 0);
+  }
+`;
+
+export const turtleBackFoot = keyframes`
+  0%, 50%{
+    transform: translate(0,0);
+  }75%{
+    transform: translate(10px, -20px);
+
+  }100%{
+    transform: translate(20px, 0);
+
+  }
+`;

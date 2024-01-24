@@ -75,7 +75,7 @@ const Menu = MuiStyled('div')({
 });
 
 const ListIconBtn = MuiStyled(IconButton)<MenuOpenType>(({ $openMenu, theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.common.white,
   borderRadius: '50%',
   zIndex: 999,
 
@@ -100,7 +100,7 @@ const ListIconStyle = MuiStyled(ListIcon)<MenuOpenType>(({ $openMenu, theme }) =
   color: 'white',
 
   ...($openMenu && {
-    color: theme.palette.primary.main,
+    color: theme.palette.common.white,
   }),
 
   ...(theme.palette.mode === 'dark' &&
@@ -120,7 +120,7 @@ const InstaIconBtn = MuiStyled(FaInstagram)<MenuOpenType>(({ $openMenu, theme })
   transform: 'translateX(-50%)',
   transition: 'all .5s ease',
   zIndex: 100,
-  color: theme.palette.primary.main,
+  color: theme.palette.common.white,
 
   '&:hover': {
     cursor: 'pointer',
@@ -143,7 +143,7 @@ const GitIconBtn = MuiStyled(FaGithub)<MenuOpenType>(({ $openMenu, theme }) => (
   transform: 'translateX(-50%)',
   transition: 'all .5s ease',
   zIndex: 100,
-  color: theme.palette.primary.main,
+  color: theme.palette.common.white,
 
   '&:hover': {
     cursor: 'pointer',
@@ -179,7 +179,7 @@ const MailIconBox = MuiStyled('div')<MenuOpenType>(({ $openMenu, theme }) => ({
 }));
 
 const MailIconBtn = MuiStyled(IoMail)<MenuOpenType>(({ $openMenu, theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.common.white,
   transition: 'all .5s ease',
 
   ...(!$openMenu && {

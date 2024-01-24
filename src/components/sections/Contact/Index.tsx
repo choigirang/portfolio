@@ -1,9 +1,10 @@
-import { Button, styled as MuiStyled, TextField } from '@mui/material';
+import { Alert, Button, styled as MuiStyled, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Plane from './Plane';
 import { ContactType } from '../../../type/contactType';
 import emailjs from '@emailjs/browser';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const contact: ContactType = {
   Name: 'text',
@@ -12,6 +13,12 @@ const contact: ContactType = {
 };
 
 export default function Contact() {
+  const [alertMsg, setAlertMsg] = useState({
+    value: false,
+    success: false,
+    msg: '',
+  });
+
   const PUBLIC_KEY = process.env.REACT_APP_EMAIL_JS_KEY;
   const SERVICE_ID = process.env.REACT_APP_EMAIL_JS_SERVICE_ID;
   const TEMPLATE_ID = process.env.REACT_APP_EMAIL_JS_TEMPLATE_ID;
@@ -27,12 +34,10 @@ export default function Contact() {
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
       result => {
-        console.log(result.text);
-        alert('전송이 완료되었습니다.');
+        setAlertMsg({ value: true, success: true, msg: 'Email sent successfully!' });
       },
       error => {
-        console.log(error.text);
-        alert('전송에 실패하였습니다.');
+        setAlertMsg({ value: true, success: false, msg: 'Try again!' });
       },
     );
   };
@@ -53,6 +58,22 @@ export default function Contact() {
             required
           />
         ))}
+        {alertMsg.value ? (
+          <Alert
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              transition: 'all 2s ease-in-out',
+            }}
+            severity={alertMsg.success ? 'success' : 'error'}
+            variant="outlined"
+            onClose={() => setAlertMsg(prev => ({ ...prev, value: false }))}
+          />
+        ) : (
+          <Alert />
+        )}
         <SubmitBtn startIcon={<SendIcon />} variant="contained" type="submit">
           SEND
         </SubmitBtn>

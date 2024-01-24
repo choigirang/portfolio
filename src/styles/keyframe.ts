@@ -72,13 +72,12 @@ export const turtleFrontFoot = keyframes`
 `;
 
 export const turtleBackFoot = keyframes`
-  0%, 50%{
+  0%, 50%, 100%{
     transform: translate(0,0);
-  }75%{
+  }60%{
     transform: translate(10px, -20px);
 
-  }100%{
+  }80%{
     transform: translate(20px, 0);
-
   }
 `;

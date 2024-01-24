@@ -16,12 +16,3 @@ const Containter = MuiStyled('main')({
   justifyContent: 'center',
   alignItems: 'center',
 });
-
-const Profile = MuiStyled('div')({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: 400,
-  height: 500,
-  backgroundColor: 'black',
-});

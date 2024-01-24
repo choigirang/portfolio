@@ -1,15 +1,16 @@
 import { styled as MuiStyled, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { turtleFrontFoot, turtleBackFoot } from '../../../styles/keyframe';
+import { turtleFrontFoot, turtleBackFoot, sleep } from '../../../styles/keyframe';
 import { TurtleAnimationProps } from '../../../type/common';
 
 export default function Turtle() {
   const [turtleX, setTurtleX] = useState(0);
   const currentPath = window.location.pathname;
-  const theme = useTheme();
+  const theme = useTheme().palette.mode;
 
   const moveTurtle = () => {
-    if (turtleX <= window.innerWidth + 300) {
+    if (theme === 'dark') return;
+    if (turtleX <= window.innerWidth) {
       setTurtleX(prev => prev + 10);
     } else {
       setTurtleX(0);
@@ -17,12 +18,14 @@ export default function Turtle() {
   };
 
   useEffect(() => {
-    const intervalX = setTimeout(() => {
-      moveTurtle();
-    }, 5000);
+    if (theme !== 'dark') {
+      const intervalX = setTimeout(() => {
+        moveTurtle();
+      }, 5000);
 
-    return () => clearInterval(intervalX);
-  }, [turtleX]);
+      return () => clearInterval(intervalX);
+    }
+  }, [turtleX, theme]);
 
   useEffect(() => {
     if (currentPath !== '/Home') {
@@ -35,6 +38,7 @@ export default function Turtle() {
       <TurtleHead>
         <div className="eye" />
         <div className="mouse" />
+        {theme === 'dark' && <div className="sleep" />}
       </TurtleHead>
       <TurtleBody>
         <div className="plate" />
@@ -52,9 +56,9 @@ export default function Turtle() {
 
 const Container = MuiStyled('div')<TurtleAnimationProps>(({ $turtleX }) => ({
   position: 'absolute',
-  bottom: '10%',
+  bottom: 30,
   left: `calc(20% + ${$turtleX}px)`,
-  opacity: 0.3,
+  opacity: 0.5,
   transition: 'all 1s ease-in-out',
 }));
 
@@ -70,7 +74,6 @@ const TurtleHead = MuiStyled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'end',
   flexDirection: 'column',
-  overflow: 'hidden',
   zIndex: -1,
 
   '.eye': {
@@ -82,6 +85,32 @@ const TurtleHead = MuiStyled('div')(({ theme }) => ({
     top: 40,
     right: 20,
   },
+
+  ...(theme.palette.mode === 'dark' && {
+    '.eye': {
+      width: 25,
+      height: 8,
+      borderRadius: 20,
+      backgroundColor: 'black',
+      position: 'absolute',
+      top: 40,
+      right: 20,
+    },
+
+    '.sleep': {
+      width: '64px',
+      height: '64px',
+      position: 'absolute',
+      bottom: '-5px',
+      left: '150px',
+      backgroundColor: '#cbffff',
+      border: 'solid 5px #93ffff',
+      borderRadius: '100% 100% 0% 100%',
+      transform: 'rotate(135deg)',
+      animation: `${sleep} 4s infinite`,
+      opacity: '1 !important',
+    },
+  }),
 
   '.mouse': {
     width: 40,
@@ -118,7 +147,7 @@ const TurtleBody = MuiStyled('div')(({ theme }) => ({
   },
 }));
 
-const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath }) => ({
+const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath, theme }) => ({
   '.foot': {
     position: 'absolute',
     bottom: -30,
@@ -133,7 +162,10 @@ const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath }) => ({
   '.front-front': {
     position: 'absolute',
     right: -10,
-    animation: `${$resetPath === '/Home' ? `${turtleFrontFoot} 5s 1s infinite` : 'none'}`,
+
+    ...(theme.palette.mode !== 'dark' && {
+      animation: `${$resetPath === '/Home' && `${turtleFrontFoot} 5s 1s infinite`}`,
+    }),
   },
 
   '.back-front': {
@@ -141,21 +173,30 @@ const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath }) => ({
     right: 10,
     bottom: -25,
     zIndex: -1,
-    animation: `${$resetPath === '/Home' ? `${turtleFrontFoot} 5s 1s infinite` : 'none'}`,
+
+    ...(theme.palette.mode !== 'dark' && {
+      animation: `${$resetPath === '/Home' && `${turtleFrontFoot} 5s 1s infinite`}`,
+    }),
   },
 
   // 뒷발
   '.front-back': {
     position: 'absolute',
     left: 30,
-    animation: `${$resetPath === '/Home' ? `${turtleBackFoot} 5s 1s infinite` : 'none'}`,
+
+    ...(theme.palette.mode !== 'dark' && {
+      animation: `${$resetPath === '/Home' && `${turtleBackFoot} 5s 1s infinite`}`,
+    }),
   },
   '.back-back': {
     position: 'absolute',
     left: 10,
     bottom: -25,
     zIndex: -1,
-    animation: `${$resetPath === '/Home' ? `${turtleBackFoot} 5s 1s infinite` : 'none'}`,
+
+    ...(theme.palette.mode !== 'dark' && {
+      animation: `${$resetPath === '/Home' && `${turtleBackFoot} 5s 1s infinite`}`,
+    }),
   },
 
   // 꼬리

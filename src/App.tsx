@@ -1,15 +1,16 @@
 import React, { useMemo } from 'react';
 import Header from './components/Header';
-import Main from './components/sections/Main/Index';
-import Skills from './components/sections/Skills/Index';
 import Footer from './components/sections/Footer/Index';
 import { BrowserRouter } from 'react-router-dom';
-import About from './components/sections/About/Index';
 import { ThemeProvider, styled as MuiStyled } from '@mui/material';
 import createCustomTheme from './theme/palette';
 import { useColorMode } from './hooks/useColorMode';
-import Project from './components/sections/Project/Index';
-import Contact from './components/sections/\bContact/Index';
+
+const Main = React.lazy(() => import('./components/sections/Main/Index'));
+const Skills = React.lazy(() => import('./components/sections/Skills/Index'));
+const About = React.lazy(() => import('./components/sections/About/Index'));
+const Project = React.lazy(() => import('./components/sections/Project/Index'));
+const Contact = React.lazy(() => import('./components/sections/\bContact/Index'));
 
 function App() {
   const { mode } = useColorMode();

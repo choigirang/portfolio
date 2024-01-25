@@ -28,7 +28,7 @@ export default function Turtle() {
   }, [turtleX, theme]);
 
   useEffect(() => {
-    if (currentPath !== '/Home') {
+    if (currentPath !== ('/Home' || '/')) {
       return setTurtleX(0);
     }
   }, [currentPath]);
@@ -164,7 +164,7 @@ const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath, theme }
     right: -10,
 
     ...(theme.palette.mode !== 'dark' && {
-      animation: `${$resetPath === '/Home' && `${turtleFrontFoot} 5s 1s infinite`}`,
+      animation: `${$resetPath === ('/Home' || '/') && `${turtleFrontFoot} 5s 1s infinite`}`,
     }),
   },
 
@@ -175,7 +175,7 @@ const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath, theme }
     zIndex: -1,
 
     ...(theme.palette.mode !== 'dark' && {
-      animation: `${$resetPath === '/Home' && `${turtleFrontFoot} 5s 1s infinite`}`,
+      animation: `${$resetPath === ('/Home' || '/') && `${turtleFrontFoot} 5s 1s infinite`}`,
     }),
   },
 
@@ -185,7 +185,7 @@ const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath, theme }
     left: 30,
 
     ...(theme.palette.mode !== 'dark' && {
-      animation: `${$resetPath === '/Home' && `${turtleBackFoot} 5s 1s infinite`}`,
+      animation: `${$resetPath === ('/Home' || '/') && `${turtleBackFoot} 5s 1s infinite`}`,
     }),
   },
   '.back-back': {
@@ -195,7 +195,7 @@ const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath, theme }
     zIndex: -1,
 
     ...(theme.palette.mode !== 'dark' && {
-      animation: `${$resetPath === '/Home' && `${turtleBackFoot} 5s 1s infinite`}`,
+      animation: `${$resetPath === ('/Home' || '/') && `${turtleBackFoot} 5s 1s infinite`}`,
     }),
   },
 

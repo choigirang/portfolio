@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { HeaderScrollState } from '../type/mainType';
-import { matchPath, Link, useLocation } from 'react-router-dom';
-import { Tabs, Tab, useTheme, styled } from '@mui/material';
+import { HeaderScrollState, TabPropsType } from '../type/headerType';
+import { Link } from 'react-router-dom';
+import { Tabs, Tab, styled as MuiStyled, Typography, useTheme } from '@mui/material';
+import useMoveScroll from '../hooks/useMoveScroll';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { reverseAni, sunAni } from '../styles/keyframe';
 
 // 주소 목록
-const lists = ['Home', 'About', 'Skills', 'Experience'];
+const lists = ['Home', 'About', 'Skills', 'Project', 'Contact'];
 
 /**
  *
@@ -12,16 +16,12 @@ const lists = ['Home', 'About', 'Skills', 'Experience'];
  */
 export default function Index() {
   const [scroll, setScroll] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>('Home');
 
-  const routeMatch = useRouteMatch(['/Home', '/About', '/Skills', '/Experience']);
+  const currentPath = window.location.pathname;
+  const theme = useTheme().palette.mode === 'light';
 
-  const theme = useTheme();
-
-  const scrollHandler = (e: string) => {
-    document.getElementById(e)?.scrollIntoView({
-      behavior: 'smooth',
-    });
-  };
+  const { scrollToTop, scrollToPage } = useMoveScroll();
 
   // scroll에 따른 Header bg 변경
   useEffect(() => {
@@ -47,20 +47,60 @@ export default function Index() {
     };
   }, [scroll]);
 
+  // 화면에 들어오는 컴포넌트에 따른 주솟값 변경
+  useEffect(() => {
+    const scrollChangeRouter = () => {
+      const section = lists.find(list => {
+        const element = document.getElementById(list);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+        }
+        return false;
+      });
+
+      if (section && section !== activeSection) {
+        setActiveSection(section);
+        window.history.replaceState(null, '', `/${section}`);
+      }
+    };
+
+    window.addEventListener('scroll', scrollChangeRouter);
+
+    return () => {
+      window.removeEventListener('scroll', scrollChangeRouter);
+    };
+  }, [activeSection]);
+
   return (
-    <Header $scroll={scroll} theme={theme}>
-      <Logo></Logo>
+    <Header $scroll={scroll}>
+      <Logo variant="h1" onClick={scrollToTop}>
+        {theme ? (
+          <WbSunnyIcon
+            sx={{
+              animation: `${sunAni} 2s linear infinite`,
+            }}
+          />
+        ) : (
+          <DarkModeIcon
+            sx={{
+              animation: `${reverseAni} 3s linear infinite`,
+            }}
+          />
+        )}
+        Girang's
+      </Logo>
       <Tabs
-        value={routeMatch}
-        sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' }, '& .Mui-selected': { color: 'purple' } }}>
+        value={currentPath !== '/' ? currentPath : '/Home'}
+        sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' } }}>
         {lists.map(list => (
-          <Tab
+          <TabList
             key={list}
             label={list.replace('/', '')}
             value={'/' + list}
             to={list}
             component={Link}
-            onClick={() => scrollHandler(list)}
+            onClick={() => scrollToPage(list)}
           />
         ))}
       </Tabs>
@@ -68,27 +108,7 @@ export default function Index() {
   );
 }
 
-/**
- *
- * @param patterns router의 주솟값
- * @returns useLoaction으로 현재 주솟값을 확인하여 mui Tab과 매칭
- */
-function useRouteMatch(patterns: readonly string[]) {
-  const { pathname } = useLocation();
-
-  // 주솟값 매칭
-  for (let i = 0; i < patterns.length; i += 1) {
-    const pattern = patterns[i];
-    const possibleMatch = matchPath(pattern, pathname);
-    if (possibleMatch !== null) {
-      return possibleMatch.pattern.path;
-    }
-  }
-
-  return null;
-}
-
-const Header = styled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
+const Header = MuiStyled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
   display: 'flex',
   position: 'fixed',
   top: 0,
@@ -97,23 +117,52 @@ const Header = styled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
   width: '100%',
   height: '100px',
   padding: '0 calc((100vw - 1280px) / 2)',
-  backgroundColor: $scroll ? 'transparent' : theme.palette.mode === 'dark' ? '#000f1f' : '#ffe196',
-  color: theme.palette.mode === 'dark' ? 'white' : 'white',
+  color: 'white',
   boxSizing: 'border-box',
   transition: 'all 1s',
   zIndex: 1,
 
-  '.Mui-selected': {
-    color: theme.palette.mode === 'dark' ? '#ffb700' : '#000f1f',
+  '.visited': {
+    fontWeight: '500',
+    color: theme.palette.primary.light,
   },
 
-  '.visited': {
-    color: theme.palette.mode === 'dark' ? '#ffb700' : '#000f1f',
-  },
+  ...(theme.palette.mode === 'dark' && {
+    backgroundColor: theme.palette.primary.dark,
+
+    ':visited': {
+      color: theme.palette.primary.dark,
+    },
+  }),
 }));
 
-const Logo = styled('a')({
+const TabList = MuiStyled(Tab)<TabPropsType>(({ theme }) => ({
+  '.Mui-selected': {
+    color: theme.palette.text.secondary,
+  },
+
+  ...(theme.palette.mode === 'dark' && {
+    color: theme.palette.common.white,
+    '.Mui-selected': {
+      color: `${theme.palette.primary.main} !important`,
+    },
+  }),
+}));
+
+const Logo = MuiStyled(Typography)(({ theme }) => ({
   width: '150px',
   height: '100%',
-  backgroundColor: 'black',
-});
+  display: 'flex',
+  gap: 10,
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: theme.palette.primary.main,
+
+  '&:hover': {
+    cursor: 'pointer',
+  },
+
+  ...(theme.palette.mode === 'dark' && {
+    color: 'white',
+  }),
+}));

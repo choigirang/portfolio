@@ -1,10 +1,45 @@
-import { PaletteOptions } from '@mui/material';
+import { PaletteMode, createTheme } from '@mui/material';
 
-const Palette = (): PaletteOptions => {
-  return {
-    primary: {
-      main: '',
-      dark: '',
+const createCustomTheme = (mode: PaletteMode) =>
+  createTheme({
+    typography: {
+      fontFamily: 'Roboto',
+      h1: {
+        fontSize: 30,
+        fontWeight: 700,
+      },
     },
-  };
-};
+    palette: {
+      mode,
+      common: {
+        white: 'white',
+        black: 'black',
+      },
+      primary: {
+        main: '#ffb700',
+        dark: '#000f1f',
+      },
+      secondary: {
+        main: '#ffe196',
+        dark: '#003892',
+      },
+      text: {
+        primary: '#ffb700',
+        secondary: '#000f1f',
+      },
+      background: {
+        default: '#ffe196',
+        // dark: '#000f1f',
+      },
+      error: {
+        main: '#FF4545',
+        dark: '',
+      },
+      info: {
+        main: '#1A1A1A',
+        dark: '',
+      },
+    },
+  });
+
+export default createCustomTheme;

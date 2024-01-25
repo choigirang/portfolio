@@ -1,8 +1,8 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-export default function Index() {
-  return <Container id="Experience">Index</Container>;
+export default function Project() {
+  return <Container id="Project">Index</Container>;
 }
 
 const Container = styled('div')({

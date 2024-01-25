@@ -1,60 +1,38 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Header from './components/Header';
-import Main from './components/Main/Index';
-import Skills from './components/Skills/Index';
-import Experience from './components/Experience/Index';
-import { BrowserRouter } from 'react-router-dom';
-import About from './components/About/Index';
-import { PaletteMode, ThemeProvider, createTheme, styled } from '@mui/material';
-import { StyledEngineProvider } from '@mui/styled-engine-sc';
-import DarkModeSwitch from './components/DarkModeSwitch';
+import Footer from './components/sections/Footer/Index';
+import { ThemeProvider, styled as MuiStyled } from '@mui/material';
+import createCustomTheme from './theme/palette';
+import { useColorMode } from './hooks/useColorMode';
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+const Main = React.lazy(() => import('./components/sections/Main/Index'));
+const Skills = React.lazy(() => import('./components/sections/Skills/Index'));
+const About = React.lazy(() => import('./components/sections/About/Index'));
+const Project = React.lazy(() => import('./components/sections/Project/Index'));
+const Contact = React.lazy(() => import('./components/sections/\bContact/Index'));
 
 function App() {
-  const [mode, setMode] = React.useState<PaletteMode>('light');
-  const colorMode = React.useMemo(
-    () => ({
-      // The dark mode switch would invoke this method
-      toggleColorMode: () => {
-        setMode((prevMode: PaletteMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
-    }),
-    [],
-  );
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
-    [mode],
-  );
+  const { mode } = useColorMode();
+  const theme = useMemo(() => createCustomTheme(mode), [mode]);
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <StyledEngineProvider>
-          <Container>
-            <BrowserRouter>
-              <Header />
-              <Main />
-              <About />
-              <Skills />
-              <Experience />
-            </BrowserRouter>
-          </Container>
-        </StyledEngineProvider>
-        <DarkModeSwitch colorMode={colorMode} />
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Header />
+        <Main />
+        <About />
+        <Skills />
+        <Project />
+        <Contact />
+        <Footer />
+      </Container>
+    </ThemeProvider>
   );
 }
 
 export default App;
 
-const Container = styled('div')({
+const Container = MuiStyled('div')({
   width: '100%',
   height: '200vh',
 });

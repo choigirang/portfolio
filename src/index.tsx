@@ -4,12 +4,18 @@ import './styles/reset.css';
 import './styles/global.css';
 import App from './App';
 import { StyledEngineProvider } from '@mui/styled-engine';
+import { ColorModeProvider } from './hooks/useColorMode';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <StyledEngineProvider injectFirst>
-    <App />
-  </StyledEngineProvider>,
+  <ColorModeProvider>
+    <StyledEngineProvider injectFirst>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StyledEngineProvider>
+  </ColorModeProvider>,
 );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

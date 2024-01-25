@@ -22,12 +22,6 @@ const Container = styled('div')(({ theme }) => ({
   top: 0,
   left: 0,
   zIndex: -999,
-
-  ...(theme.palette.mode === 'dark' && {
-    backgroundColor: theme.palette.primary.dark,
-    // waveTxt -1
-    zIndex: -2,
-  }),
 }));
 
 const WeatherIcon = styled('div')(({ theme }) => ({
@@ -66,13 +60,15 @@ const GradientBg = styled('div')(({ theme }) => ({
   left: 0,
   bottom: 0,
   width: '100%',
-  height: '70%',
+  height: '100%',
   zIndex: -1,
   opacity: 0.7,
-  transition: 'background-image 2s',
-  backgroundImage: 'linear-gradient(to bottom,#ffffff 0%,#ffecd2 20%, #fcb69f 100%)',
+  transition: 'all 2s',
+  backgroundImage: 'linear-gradient(to bottom,#ffffff 0%,#ffecd2 40%, #fcb69f 100%)',
 
   ...(theme.palette.mode === 'dark' && {
-    backgroundImage: '',
+    backgroundImage: 'none',
+    opacity: 1,
+    backgroundColor: theme.palette.primary.dark,
   }),
 }));

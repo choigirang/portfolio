@@ -55,7 +55,7 @@ export const reverseAni = keyframes`
     transform: scaleX(1);
   }
   50%{
-    transform: scaleX(-1);
+    transform: scaleX(-1);  
   }
 `;
 

@@ -5,12 +5,15 @@ import './styles/global.css';
 import App from './App';
 import { StyledEngineProvider } from '@mui/styled-engine';
 import { ColorModeProvider } from './hooks/useColorMode';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <ColorModeProvider>
     <StyledEngineProvider injectFirst>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </StyledEngineProvider>
   </ColorModeProvider>,
 );

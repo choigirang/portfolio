@@ -4,7 +4,7 @@ import WaveTxt from './WaveTxt';
 
 export default function Main() {
   return (
-    <Containter id="Home">
+    <Containter id="home">
       <WaveTxt />
       <Turtle />
     </Containter>

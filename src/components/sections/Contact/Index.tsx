@@ -43,7 +43,7 @@ export default function Contact() {
   };
 
   return (
-    <Container id="Contact">
+    <Container id="contact">
       <Plane />
       <Board ref={form} onSubmit={sendEmail}>
         {(Object.keys(contact) as (keyof ContactType)[]).map(each => (

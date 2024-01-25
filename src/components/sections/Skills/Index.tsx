@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 export default function Skills() {
-  return <Container id="Skills">Index</Container>;
+  return <Container id="skills">Index</Container>;
 }
 
 const Container = styled('div')({

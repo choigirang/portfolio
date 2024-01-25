@@ -128,7 +128,7 @@ const Header = MuiStyled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
   },
 
   ...(theme.palette.mode === 'dark' && {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: 'transparent',
 
     ':visited': {
       color: theme.palette.primary.dark,

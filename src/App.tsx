@@ -5,8 +5,8 @@ import { ThemeProvider, styled as MuiStyled } from '@mui/material';
 import createCustomTheme from './theme/palette';
 import { useColorMode } from './hooks/useColorMode';
 import Bg from './components/Bg';
+import Main from './components/sections/Main/Index';
 
-const Main = React.lazy(() => import('./components/sections/Main/Index'));
 const Skills = React.lazy(() => import('./components/sections/Skills/Index'));
 const About = React.lazy(() => import('./components/sections/About/Index'));
 const Project = React.lazy(() => import('./components/sections/Project/Index'));

@@ -31,7 +31,7 @@ const Container = MuiStyled('div')(({ theme }) => ({
     height: 200,
   },
   '.first': {
-    color: 'white',
+    color: '#a9deff',
     WebkitTextStroke: '5px #38b3ff',
     zIndex: -1,
     position: 'absolute',

@@ -2,12 +2,16 @@ import { styled as MuiStyled, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { turtleFrontFoot, turtleBackFoot, sleep } from '../../../styles/keyframe';
 import { TurtleAnimationProps } from '../../../type/common';
+import { useLocation } from 'react-router-dom';
 
 export default function Turtle() {
   const [turtleX, setTurtleX] = useState(0);
   const [checkUrl, setCheckUrl] = useState(false);
-  // const location = useLocation();
-  const currentPath = window.location.pathname;
+  const currentPath = useLocation().pathname;
+  console.log(currentPath);
+  // 리액트 변경 감지 애매
+
+  // const currentPath = window.location.pathname;
   const theme = useTheme().palette.mode;
 
   const moveTurtle = () => {
@@ -20,18 +24,14 @@ export default function Turtle() {
   };
 
   useEffect(() => {
-    console.log(currentPath, checkUrl, 'in checkUrl');
-    if (currentPath === '/Home' || currentPath === '/') setCheckUrl(true);
+    if (currentPath === '/home' || currentPath === '/') setCheckUrl(true);
     else setCheckUrl(false);
   }, [currentPath, checkUrl]);
 
   useEffect(() => {
-    console.log(currentPath, checkUrl, 'in useEffect');
-
-    if ((theme !== 'dark' && currentPath === '/Home') || currentPath === '/') {
+    if ((theme !== 'dark' && currentPath === '/home') || currentPath === '/') {
       const intervalX = setTimeout(() => {
         moveTurtle();
-        console.log(currentPath, checkUrl, 'in setTime');
       }, 5000);
 
       return () => clearInterval(intervalX);

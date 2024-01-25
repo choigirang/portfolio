@@ -79,6 +79,10 @@ const ListIconBtn = MuiStyled(IconButton)<MenuOpenType>(({ $openMenu, theme }) =
   borderRadius: '50%',
   zIndex: 999,
 
+  svg: {
+    color: theme.palette.primary.main,
+  },
+
   '&:hover': {
     backgroundColor: theme.palette.secondary.main,
   },

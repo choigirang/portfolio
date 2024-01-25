@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { HeaderScrollState, TabPropsType } from '../type/headerType';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Tabs, Tab, styled as MuiStyled, Typography, useTheme } from '@mui/material';
 import useMoveScroll from '../hooks/useMoveScroll';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
@@ -8,7 +8,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { reverseAni, sunAni } from '../styles/keyframe';
 
 // 주소 목록
-const lists = ['Home', 'About', 'Skills', 'Project', 'Contact'];
+const lists = ['home', 'about', 'skills', 'project', 'contact'];
 
 /**
  *
@@ -18,7 +18,8 @@ export default function Index() {
   const [scroll, setScroll] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('Home');
 
-  const currentPath = window.location.pathname;
+  const currentPath = useLocation();
+  const navigate = useNavigate();
   const theme = useTheme().palette.mode === 'light';
 
   const { scrollToTop, scrollToPage } = useMoveScroll();
@@ -61,7 +62,7 @@ export default function Index() {
 
       if (section && section !== activeSection) {
         setActiveSection(section);
-        window.history.replaceState(null, '', `/${section}`);
+        navigate(section);
       }
     };
 
@@ -91,7 +92,7 @@ export default function Index() {
         Girang's
       </Logo>
       <Tabs
-        value={currentPath !== '/' ? currentPath : '/Home'}
+        value={currentPath.pathname !== '/' ? currentPath.pathname : '/home'}
         sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' } }}>
         {lists.map(list => (
           <TabList

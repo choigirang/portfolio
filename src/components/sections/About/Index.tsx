@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 export default function About() {
-  return <Container id="About">About</Container>;
+  return <Container id="about">About</Container>;
 }
 
 const Container = styled('div')({

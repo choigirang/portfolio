@@ -4,6 +4,6 @@ export type ColorModeContextType = {
 };
 
 export type TurtleAnimationProps = {
-  $resetPath?: string;
+  $resetPath?: boolean;
   $turtleX?: number;
 };

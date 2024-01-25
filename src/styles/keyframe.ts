@@ -146,7 +146,9 @@ export const textWaveSecond = keyframes`
 }
 `;
 
-export const oceanWave = keyframes`
-  from { transform: rotate(0deg);}
-  from { transform: rotate(360deg);}
+export const weather = keyframes`
+  50%{
+    scale: 1.2;
+  }
+
 `;

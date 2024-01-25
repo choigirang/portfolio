@@ -75,6 +75,7 @@ const TurtleHead = MuiStyled('div')(({ theme }) => ({
   alignItems: 'end',
   flexDirection: 'column',
   zIndex: -1,
+  transition: 'all 2s',
 
   '.eye': {
     width: 15,
@@ -85,6 +86,10 @@ const TurtleHead = MuiStyled('div')(({ theme }) => ({
     top: 40,
     right: 20,
   },
+
+  ...(theme.palette.mode === 'dark' && {
+    transform: 'translateY(20px)',
+  }),
 
   ...(theme.palette.mode === 'dark' && {
     '.eye': {
@@ -164,7 +169,7 @@ const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath, theme }
     right: -10,
 
     ...(theme.palette.mode !== 'dark' && {
-      animation: `${$resetPath === ('/Home' || '/') && `${turtleFrontFoot} 5s 1s infinite`}`,
+      animation: `${$resetPath === '/Home' || ($resetPath === '/' && `${turtleFrontFoot} 5s 1s infinite`)}`,
     }),
   },
 
@@ -173,9 +178,8 @@ const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath, theme }
     right: 10,
     bottom: -25,
     zIndex: -1,
-
     ...(theme.palette.mode !== 'dark' && {
-      animation: `${$resetPath === ('/Home' || '/') && `${turtleFrontFoot} 5s 1s infinite`}`,
+      animation: `${$resetPath === '/Home' || ($resetPath === '/' && `${turtleFrontFoot} 5s 1s infinite`)}`,
     }),
   },
 
@@ -183,19 +187,18 @@ const TurtleFoot = MuiStyled('div')<TurtleAnimationProps>(({ $resetPath, theme }
   '.front-back': {
     position: 'absolute',
     left: 30,
-
     ...(theme.palette.mode !== 'dark' && {
-      animation: `${$resetPath === ('/Home' || '/') && `${turtleBackFoot} 5s 1s infinite`}`,
+      animation: `${$resetPath === '/Home' || ($resetPath === '/' && `${turtleBackFoot} 5s 1s infinite`)}`,
     }),
   },
+
   '.back-back': {
     position: 'absolute',
     left: 10,
     bottom: -25,
     zIndex: -1,
-
     ...(theme.palette.mode !== 'dark' && {
-      animation: `${$resetPath === ('/Home' || '/') && `${turtleBackFoot} 5s 1s infinite`}`,
+      animation: `${$resetPath === '/Home' || ($resetPath === '/' && `${turtleBackFoot} 5s 1s infinite`)}`,
     }),
   },
 

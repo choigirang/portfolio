@@ -2,7 +2,7 @@ import { styled, useTheme } from '@mui/material';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import CircleIcon from '@mui/icons-material/Circle';
 import React from 'react';
-import { sunAni, weather } from '../../../styles/keyframe';
+import { sunAni, weather } from '../styles/keyframe';
 
 export default function Bg() {
   const theme = useTheme().palette.mode;
@@ -18,9 +18,10 @@ export default function Bg() {
 const Container = styled('div')(({ theme }) => ({
   width: '100%',
   height: '100%',
-  position: 'absolute',
+  position: 'fixed',
   top: 0,
   left: 0,
+  zIndex: -999,
 
   ...(theme.palette.mode === 'dark' && {
     backgroundColor: theme.palette.primary.dark,

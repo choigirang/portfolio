@@ -1,7 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import Footer from './components/sections/Footer/Index';
-import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, styled as MuiStyled } from '@mui/material';
 import createCustomTheme from './theme/palette';
 import { useColorMode } from './hooks/useColorMode';
@@ -19,15 +18,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <BrowserRouter>
-          <Header />
-          <Main />
-          <About />
-          <Skills />
-          <Project />
-          <Contact />
-          <Footer />
-        </BrowserRouter>
+        <Header />
+        <Main />
+        <About />
+        <Skills />
+        <Project />
+        <Contact />
+        <Footer />
       </Container>
     </ThemeProvider>
   );

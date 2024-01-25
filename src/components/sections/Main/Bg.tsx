@@ -24,6 +24,8 @@ const Container = styled('div')(({ theme }) => ({
 
   ...(theme.palette.mode === 'dark' && {
     backgroundColor: theme.palette.primary.dark,
+    // waveTxt -1
+    zIndex: -2,
   }),
 }));
 
@@ -70,6 +72,6 @@ const GradientBg = styled('div')(({ theme }) => ({
   backgroundImage: 'linear-gradient(to bottom,#ffffff 0%,#ffecd2 20%, #fcb69f 100%)',
 
   ...(theme.palette.mode === 'dark' && {
-    backgroundImage: 'linear-gradient(to bottom,#ffffff 0%, #0c6060 20%, #330867 100%)',
+    backgroundImage: '',
   }),
 }));

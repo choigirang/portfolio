@@ -7,6 +7,7 @@ import { useColorMode } from './hooks/useColorMode';
 import Bg from './components/Bg';
 import Main from './components/sections/Main/Index';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const About = React.lazy(() => import('./components/sections/About/Index'));
 const Skills = React.lazy(() => import('./components/sections/Skills/Index'));
@@ -16,6 +17,16 @@ const Contact = React.lazy(() => import('./components/sections/\bContact/Index')
 function App() {
   const { mode } = useColorMode();
   const theme = useMemo(() => createCustomTheme(mode), [mode]);
+  // url 찾아가기 새로고침 시 or
+  // 새로고침 시 페이지 유지
+  // const location = useLocation();
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   document.getElementById(location.pathname)?.scrollIntoView({
+  //     behavior: 'smooth',
+  //   });
+  // }, [location]);
 
   return (
     <ThemeProvider theme={theme}>

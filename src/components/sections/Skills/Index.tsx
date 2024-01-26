@@ -4,35 +4,32 @@ import styled from 'styled-components';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import StackList from './StackList';
+import { AllStackType } from '../../../type/skillsType';
+import { selectStack } from '../../../../../code-container/front/src/redux/actions/stack';
 
-const list: { [key: number]: string } = {
-  1: 'Frontend',
-  2: 'Backend',
-  3: 'Tools',
+const list: { [key: string]: string } = {
+  first: 'frontend',
+  second: 'backend',
+  third: 'tools',
 };
 
 export default function Skills() {
   const [slideX, setSlideX] = useState(0);
-  const [selectStack, setSelectStack] = useState({
-    num: 1,
-    stack: list[1],
-  });
+  const [selectStack, setSelectStack] = useState('frontend');
 
   const slideHandler = (dir: 'left' | 'right') => {
     if (dir === 'left') {
-      if (slideX === 0) return setSlideX(-300), setSelectStack({ num: 3, stack: list[3] });
+      if (slideX === 0) return setSlideX(-300), setSelectStack('tools');
+      const findValueIdx = Object.values(list).indexOf(selectStack);
+      const findKeyNewIdx = Object.keys(list)[findValueIdx - 1];
       setSlideX(prev => prev + 150);
-      setSelectStack(prev => {
-        const newNum = prev.num - 1;
-        return { num: newNum, stack: list[newNum] };
-      });
+      setSelectStack(list[findKeyNewIdx]);
     } else {
-      if (slideX === -300) return setSlideX(0), setSelectStack({ num: 1, stack: list[1] });
+      if (slideX === -300) return setSlideX(0), setSelectStack('frontend');
+      const findValueIdx = Object.values(list).indexOf(selectStack);
+      const findKeyNewIdx = Object.keys(list)[findValueIdx + 1];
       setSlideX(prev => prev - 150);
-      setSelectStack(prev => {
-        const newNum = prev.num + 1;
-        return { num: newNum, stack: list[newNum] };
-      });
+      setSelectStack(list[findKeyNewIdx]);
     }
   };
 
@@ -45,8 +42,8 @@ export default function Skills() {
         <ShowBox>
           <TxtBox slideX={slideX}>
             {Object.values(list).map(each => (
-              <Button>
-                <TextSelect key={each}>{each}</TextSelect>
+              <Button key={each}>
+                <TextSelect>{each}</TextSelect>
               </Button>
             ))}
           </TxtBox>
@@ -55,7 +52,7 @@ export default function Skills() {
           onClick={() => slideHandler('right')}
           startIcon={<ArrowRightIcon style={{ fontSize: 50 }} />}></SlideBtn>
       </ContainSlideBtn>
-      <StackList stack={selectStack.stack} />
+      <StackList stack={selectStack} />
     </Container>
   );
 }
@@ -74,9 +71,14 @@ const ContainSlideBtn = styled('div')(({ theme }) => ({
   width: 300,
   display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'center',
 }));
 
-const SlideBtn = styled(Button)(({ theme }) => ({}));
+const SlideBtn = styled(Button)(({ theme }) => ({
+  borderRadius: '50%',
+  width: 50,
+  height: 50,
+}));
 
 const ShowBox = MuiStyled('div')(({ theme }) => ({
   width: 150,
@@ -97,5 +99,10 @@ const TxtBox = MuiStyled('div')<{ slideX: number }>(({ slideX, theme }) => ({
 
 const TextSelect = MuiStyled(List)(({ theme }) => ({
   width: 150,
-  fontSize: 20,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: 30,
+  color: 'black',
+  textShadow: '#FC0 1px 0 10px',
 }));

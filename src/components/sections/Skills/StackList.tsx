@@ -14,7 +14,7 @@ export default function StackList({ stack }: StackListProps) {
     <Container>
       <IconBox>
         {Object.entries(selectedStack).map(([key, value]) => (
-          <IconBtn>
+          <IconBtn key={key}>
             <img src={`https://cdn.simpleicons.org/${key}`} alt="icon" width="50" height="50" />
           </IconBtn>
         ))}

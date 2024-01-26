@@ -1,14 +1,7 @@
 import { styled as MuiStyled } from '@mui/material';
-import Turtle from './Turtle';
-import WaveTxt from './WaveTxt';
 
 export default function Main() {
-  return (
-    <Containter id="home">
-      <WaveTxt />
-      <Turtle />
-    </Containter>
-  );
+  return <Containter id="home"></Containter>;
 }
 
 const Containter = MuiStyled('main')({

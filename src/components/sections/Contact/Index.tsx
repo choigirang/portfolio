@@ -84,7 +84,6 @@ export default function Contact() {
 
 const Container = MuiStyled('div')(({ theme }) => ({
   width: '100vw',
-  height: '100vh',
   position: 'relative',
   display: 'flex',
   justifyContent: 'center',

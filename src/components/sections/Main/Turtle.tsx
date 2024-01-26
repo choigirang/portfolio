@@ -8,9 +8,6 @@ export default function Turtle() {
   const [turtleX, setTurtleX] = useState(0);
   const [checkUrl, setCheckUrl] = useState(false);
   const currentPath = useLocation().pathname;
-  console.log(currentPath);
-  // 리액트 변경 감지 애매
-
   // const currentPath = window.location.pathname;
   const theme = useTheme().palette.mode;
 

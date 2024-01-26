@@ -4,7 +4,6 @@ import Footer from './components/sections/Footer/Index';
 import { ThemeProvider, styled as MuiStyled } from '@mui/material';
 import createCustomTheme from './theme/palette';
 import { useColorMode } from './hooks/useColorMode';
-import Bg from './components/Bg';
 import Main from './components/sections/Main/Index';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -44,7 +43,6 @@ function App() {
           <Project />
           <Contact />
           <Footer />
-          <Bg />
         </Container>
       </Suspense>
     </ThemeProvider>
@@ -57,4 +55,5 @@ const Container = MuiStyled('div')({
   width: '100%',
   height: '100vh',
   position: 'relative',
+  backgroundColor: '#0F1015',
 });

@@ -52,4 +52,7 @@ const Container = MuiStyled('div')({
 
 const DividContainer = MuiStyled('div')(({ theme }) => ({
   width: 'calc(100% - 240px)',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 50,
 }));

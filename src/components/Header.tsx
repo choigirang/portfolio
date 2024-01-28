@@ -17,7 +17,7 @@ const listsLabel: { [key: string]: string } = {
   about: '소개',
   skills: '기술',
   project: '프로젝트',
-  contact: '연락망',
+  contact: '연락처',
 };
 
 const listsIcon: { [key: string]: ReactNode } = {
@@ -25,7 +25,7 @@ const listsIcon: { [key: string]: ReactNode } = {
   소개: <PersonIcon />,
   기술: <ArticleIcon />,
   프로젝트: <AutoAwesomeMosaicIcon />,
-  연락망: <ConnectWithoutContactIcon />,
+  연락처: <ConnectWithoutContactIcon />,
 };
 
 // 주소 목록
@@ -191,8 +191,8 @@ const TabListWithIcons = MuiStyled('div')<ListChangeSpanColorProps>(({ activeUrl
 
 const TabList = MuiStyled(Tab)<TabPropsType>(({ theme }) => ({
   display: 'flex',
-  fontFamily: 'S-CoreDream-3Light',
-  fontWeight: 900,
+  fontFamily: 'SCoreDream',
+  fontWeight: 500,
   fontSize: 18,
 
   a: {

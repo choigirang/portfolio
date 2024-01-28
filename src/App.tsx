@@ -11,21 +11,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const About = React.lazy(() => import('./components/sections/About/Index'));
 const Skills = React.lazy(() => import('./components/sections/Skills/Index'));
 const Project = React.lazy(() => import('./components/sections/Project/Index'));
-const Contact = React.lazy(() => import('./components/sections/\bContact/Index'));
+const Contact = React.lazy(() => import('./components/sections/Contact/Index'));
 
 function App() {
   const { mode } = useColorMode();
   const theme = useMemo(() => createCustomTheme(mode), [mode]);
-  // url 찾아가기 새로고침 시 or
-  // 새로고침 시 페이지 유지
-  // const location = useLocation();
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   document.getElementById(location.pathname)?.scrollIntoView({
-  //     behavior: 'smooth',
-  //   });
-  // }, [location]);
 
   return (
     <ThemeProvider theme={theme}>

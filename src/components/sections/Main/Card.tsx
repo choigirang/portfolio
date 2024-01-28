@@ -1,20 +1,18 @@
 import { styled as MuiStyled } from '@mui/material';
 import React from 'react';
+import { SkillCardProps } from '../../../type/skillsType';
 import useMoveScroll from '../../../hooks/useMoveScroll';
 
-export default function ProjectCard() {
+export default function Card(props: SkillCardProps) {
+  const { src, txt, bedge, color } = props;
   const { scrollToPage } = useMoveScroll();
 
   return (
-    <Container onClick={() => scrollToPage('project')}>
-      <Img
-        src="project-large.webp"
-        srcSet="project-small.webp 400w, project-medium.webp 600w, project-large.webp 900w"
-        alt="project-img"
-      />
-      <Text>
-        <span className="bedge">project</span>
-        <span className="main-txt">프로젝트 둘러보기</span>
+    <Container onClick={() => scrollToPage(bedge)}>
+      <Img src={`${src}.webp`} alt={`${src}-img`} />
+      <Text sx={{ '.bedge': { backgroundColor: color } }}>
+        <span className="bedge">{bedge}</span>
+        <span className="main-txt">{txt}</span>
       </Text>
     </Container>
   );
@@ -69,7 +67,7 @@ const Text = MuiStyled('div')(({ theme }) => ({
 
   '.main-txt': {
     fontFamily: 'SCoreDream',
-    fontSize: 50,
+    fontSize: 30,
     color: 'white',
     transition: 'all .5s',
   },

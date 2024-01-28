@@ -1,6 +1,6 @@
 import { styled as MuiStyled } from '@mui/material';
 import ProjectCard from './ProjectCard';
-import SkillsCard from './SkillsCard';
+import Card from './Card';
 import { SkillCardProps } from '../../../type/skillsType';
 
 const skillCardInfo: { [key: string]: SkillCardProps } = {
@@ -23,7 +23,7 @@ export default function Main() {
     <Containter id="home">
       <ProjectCard />
       {Object.keys(skillCardInfo).map(key => (
-        <SkillsCard key={key} {...skillCardInfo[key]}></SkillsCard>
+        <Card key={key} {...skillCardInfo[key]}></Card>
       ))}
     </Containter>
   );

@@ -3,3 +3,7 @@ export type AllStackType = {
     [tech: string]: string;
   };
 };
+
+export type SkillCardProps = {
+  [key: string]: string;
+};

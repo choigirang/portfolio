@@ -37,11 +37,13 @@ function App() {
         }>
         <Container>
           <Header />
-          <Main />
-          <About />
-          <Skills />
-          <Project />
-          <Contact />
+          <DividContainer>
+            <Main />
+            <About />
+            <Skills />
+            <Project />
+            <Contact />
+          </DividContainer>
           <Footer />
         </Container>
       </Suspense>
@@ -53,7 +55,11 @@ export default App;
 
 const Container = MuiStyled('div')({
   width: '100%',
-  height: '100vh',
-  position: 'relative',
   backgroundColor: '#0F1015',
+  display: 'flex',
+  justifyContent: 'end',
 });
+
+const DividContainer = MuiStyled('div')(({ theme }) => ({
+  width: 'calc(100% - 240px)',
+}));

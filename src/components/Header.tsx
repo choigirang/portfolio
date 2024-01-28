@@ -124,18 +124,19 @@ export default function Index() {
 
 const Header = MuiStyled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
   display: 'flex',
-  position: 'fixed',
   flexDirection: 'column',
   gap: 100,
-  top: 0,
   alignItems: 'center',
   width: '240px',
   height: '100vh',
-  padding: '38px 32px 32px 32px',
+  padding: '100px 32px 32px 32px',
   color: 'white',
   boxSizing: 'border-box',
   transition: 'all 1s',
-  zIndex: 1,
+  zIndex: 999,
+  position: 'fixed',
+  left: 0,
+  top: 0,
 
   '& .MuiTab-wrapper': {
     alignItems: 'self-start',

@@ -44,7 +44,7 @@ const Containter = MuiStyled('main')({
     gridTemplateRows: 'repeat(2, 300px)',
     gridTemplateColumns: 'repeat(2, 1fr)',
 
-    '& > div:nth-child(1)': {
+    '& > div:nth-of-type(1)': {
       gridColumn: 'span 2',
     },
   },

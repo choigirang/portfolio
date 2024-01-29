@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { allStack } from '../../../constant/stack';
 import { Button, styled as MuiStyled } from '@mui/material';
+import { allStack } from '../../../constant/info';
 
 interface StackListProps {
   stack: string; // stack의 타입을 keyof AllStackType으로 지정

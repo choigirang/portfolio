@@ -1,35 +1,9 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { HeaderScrollState, ListChangeSpanColorProps, ListType, TabPropsType } from '../type/headerType';
+import { HeaderScrollState, ListChangeSpanColorProps, TabPropsType } from '../type/sections';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Tabs, Tab, styled as MuiStyled, Typography, useTheme } from '@mui/material';
 import useMoveScroll from '../hooks/useMoveScroll';
-import HomeIcon from '@mui/icons-material/Home';
-import PersonIcon from '@mui/icons-material/Person';
-import ArticleIcon from '@mui/icons-material/Article';
-import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
-import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
-import { SvgIconComponent } from '@mui/icons-material';
-
-// 주소 목록
-// const lists = ['home', 'about', 'skills', 'project', 'contact'];
-const listsLabel: { [key: string]: string } = {
-  home: '홈',
-  about: '소개',
-  skills: '기술',
-  project: '프로젝트',
-  contact: '연락처',
-};
-
-const listsIcon: { [key: string]: ReactNode } = {
-  홈: <HomeIcon />,
-  소개: <PersonIcon />,
-  기술: <ArticleIcon />,
-  프로젝트: <AutoAwesomeMosaicIcon />,
-  연락처: <ConnectWithoutContactIcon />,
-};
-
-// 주소 목록
-const lists = ['home', 'about', 'skills', 'project', 'contact'];
+import { headerLists, headerListsIcon, headerLabel } from '../constant/info';
 
 /**
  *
@@ -72,7 +46,7 @@ export default function Index() {
   // 화면에 들어오는 컴포넌트에 따른 주솟값 변경
   useEffect(() => {
     const scrollChangeRouter = () => {
-      const section = lists.find(list => {
+      const section = headerLists.find(list => {
         const element = document.getElementById(list);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -102,13 +76,13 @@ export default function Index() {
       <Tabs
         value={currentPath.pathname !== '/' ? currentPath.pathname : '/home'}
         sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' } }}>
-        {lists.map(list => (
+        {headerLists.map(list => (
           <TabList
             key={list}
             label={
               <TabListWithIcons activeUrl={list === currentPath.pathname.replace('/', '')}>
-                {listsIcon[listsLabel[list]]}
-                <div className="labelKor">{listsLabel[list]}</div>
+                {headerListsIcon[headerLabel[list]]}
+                <div className="labelKor">{headerLabel[list]}</div>
               </TabListWithIcons>
             }
             value={'/' + list}

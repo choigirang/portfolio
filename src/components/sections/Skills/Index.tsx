@@ -4,14 +4,7 @@ import styled from 'styled-components';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import StackList from './StackList';
-import { AllStackType } from '../../../type/skillsType';
-import { selectStack } from '../../../../../code-container/front/src/redux/actions/stack';
-
-const list: { [key: string]: string } = {
-  first: 'frontend',
-  second: 'backend',
-  third: 'tools',
-};
+import { skillsList } from '../../../constant/info';
 
 export default function Skills() {
   const [slideX, setSlideX] = useState(0);
@@ -20,16 +13,16 @@ export default function Skills() {
   const slideHandler = (dir: 'left' | 'right') => {
     if (dir === 'left') {
       if (slideX === 0) return setSlideX(-300), setSelectStack('tools');
-      const findValueIdx = Object.values(list).indexOf(selectStack);
-      const findKeyNewIdx = Object.keys(list)[findValueIdx - 1];
+      const findValueIdx = Object.values(skillsList).indexOf(selectStack);
+      const findKeyNewIdx = Object.keys(skillsList)[findValueIdx - 1];
       setSlideX(prev => prev + 150);
-      setSelectStack(list[findKeyNewIdx]);
+      setSelectStack(skillsList[findKeyNewIdx]);
     } else {
       if (slideX === -300) return setSlideX(0), setSelectStack('frontend');
-      const findValueIdx = Object.values(list).indexOf(selectStack);
-      const findKeyNewIdx = Object.keys(list)[findValueIdx + 1];
+      const findValueIdx = Object.values(skillsList).indexOf(selectStack);
+      const findKeyNewIdx = Object.keys(skillsList)[findValueIdx + 1];
       setSlideX(prev => prev - 150);
-      setSelectStack(list[findKeyNewIdx]);
+      setSelectStack(skillsList[findKeyNewIdx]);
     }
   };
 
@@ -41,7 +34,7 @@ export default function Skills() {
           startIcon={<ArrowLeftIcon style={{ fontSize: 50 }} />}></SlideBtn>
         <ShowBox>
           <TxtBox slideX={slideX}>
-            {Object.values(list).map(each => (
+            {Object.values(skillsList).map(each => (
               <Button key={each}>
                 <TextSelect>{each}</TextSelect>
               </Button>

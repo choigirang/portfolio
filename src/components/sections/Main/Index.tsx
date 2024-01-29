@@ -1,22 +1,7 @@
 import { styled as MuiStyled } from '@mui/material';
 import ProjectCard from './ProjectCard';
 import Card from './Card';
-import { SkillCardProps } from '../../../type/skillsType';
-
-const skillCardInfo: { [key: string]: SkillCardProps } = {
-  first: {
-    src: 'skills',
-    txt: '기술 스택',
-    bedge: 'skills',
-    color: 'purple',
-  },
-  second: {
-    src: 'contact',
-    txt: '연락처',
-    bedge: 'contact',
-    color: 'green',
-  },
-};
+import { skillCardInfo } from '../../../constant/info';
 
 export default function Main() {
   return (
@@ -33,7 +18,7 @@ const Containter = MuiStyled('main')({
   width: '100%',
   display: 'grid',
   gap: 20,
-  padding: '100px 5% 0 5%',
+  paddingTop: 100,
   boxSizing: 'border-box',
 
   '@media (min-width: 1200px)': {

@@ -2,7 +2,7 @@ import { Alert, Button, styled as MuiStyled, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import React, { useRef, useState } from 'react';
 import Plane from './Plane';
-import { ContactType } from '../../../type/contactType';
+import { ContactType } from '../../../type/sections';
 import emailjs from '@emailjs/browser';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 

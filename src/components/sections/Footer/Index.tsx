@@ -4,7 +4,7 @@ import ListIcon from '@mui/icons-material/List';
 import React, { useState } from 'react';
 import DarkModeSwitch from './DarkModeSwitch';
 import { FaInstagram } from 'react-icons/fa';
-import { MenuOpenType } from '../../../type/footerType';
+import { MenuOpenType } from '../../../type/sections';
 import { FaGithub } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
 import useMoveScroll from '../../../hooks/useMoveScroll';

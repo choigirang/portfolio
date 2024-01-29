@@ -1,21 +1,23 @@
 import React, { Suspense, useEffect, useMemo } from 'react';
-import Header from './components/Header';
-import Footer from './components/sections/Footer/Index';
+import { motion, useScroll } from 'framer-motion';
+import Header from './components/layout/Header';
+import Footer from './components/layout/footer/Index';
 import { ThemeProvider, styled as MuiStyled } from '@mui/material';
 import createCustomTheme from './theme/palette';
 import { useColorMode } from './hooks/useColorMode';
-import Main from './components/sections/Main/Index';
+import Main from './components/sections/main/Index';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const About = React.lazy(() => import('./components/sections/About/Index'));
-const Skills = React.lazy(() => import('./components/sections/Skills/Index'));
-const Project = React.lazy(() => import('./components/sections/Project/Index'));
-const Contact = React.lazy(() => import('./components/sections/Contact/Index'));
+const About = React.lazy(() => import('./components/sections/about/Index'));
+const Skills = React.lazy(() => import('./components/sections/skills/Index'));
+const Project = React.lazy(() => import('./components/sections/project/Index'));
+const Contact = React.lazy(() => import('./components/sections/contact/Index'));
 
 function App() {
   const { mode } = useColorMode();
   const theme = useMemo(() => createCustomTheme(mode), [mode]);
+  const { scrollYProgress } = useScroll();
 
   return (
     <ThemeProvider theme={theme}>
@@ -25,6 +27,7 @@ function App() {
             sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
           />
         }>
+        <motion.div className="progress-bar" style={{ scaleX: scrollYProgress }} />
         <Container>
           <Header />
           <DividContainer>

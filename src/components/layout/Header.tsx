@@ -1,9 +1,9 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { HeaderScrollState, ListChangeSpanColorProps, TabPropsType } from '../type/sections';
+import { HeaderScrollState, ListChangeSpanColorProps, TabPropsType } from '../../type/sections';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Tabs, Tab, styled as MuiStyled, Typography, useTheme } from '@mui/material';
-import useMoveScroll from '../hooks/useMoveScroll';
-import { headerLists, headerListsIcon, headerLabel } from '../constant/info';
+import useMoveScroll from '../../hooks/useMoveScroll';
+import { headerLists, headerListsIcon, headerLabel } from '../../constant/info';
 
 /**
  *

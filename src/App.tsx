@@ -54,5 +54,6 @@ const DividContainer = MuiStyled('div')(({ theme }) => ({
   width: 'calc(100% - 240px)',
   display: 'flex',
   flexDirection: 'column',
+  padding: '0 5%',
   gap: 50,
 }));

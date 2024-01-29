@@ -37,6 +37,7 @@ const Container = MuiStyled('div')({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  marginTop: 50,
   gap: 20,
 });
 

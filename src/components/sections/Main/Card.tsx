@@ -1,6 +1,6 @@
 import { styled as MuiStyled } from '@mui/material';
 import React from 'react';
-import { SkillCardProps } from '../../../type/skillsType';
+import { SkillCardProps } from '../../../type/sections';
 import useMoveScroll from '../../../hooks/useMoveScroll';
 
 export default function Card(props: SkillCardProps) {

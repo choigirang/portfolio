@@ -1,6 +1,6 @@
 import { LinkProps } from 'react-router-dom';
 import { SvgIconComponent } from '@mui/icons-material';
-import React, { ReactNode } from 'react';
+import React, { Dispatch, ReactNode, SetStateAction } from 'react';
 
 // HEADER
 export type ListType = {
@@ -28,10 +28,26 @@ export type ProfileObjectInfo = {
 };
 
 //SKILLS
+
+export interface SelectStackType {
+  title: string;
+  name: string;
+  description: string;
+  link: string | Array<string>;
+  color: string;
+}
+
 export type AllStackType = {
   [category: string]: {
-    [tech: string]: string;
+    [tech: string]: SelectStackType;
   };
+};
+
+export type StackListProps = {
+  category: string;
+  stack: string;
+  stackInfo: SelectStackType;
+  setStack: Dispatch<React.SetStateAction<string>>;
 };
 
 export type SkillCardProps = {

@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Button, styled as MuiStyled } from '@mui/material';
 import { allStack } from '../../../constant/info';
-import { SelectStackType, StackListProps } from '../../../type/sections';
+import { AllStackType, SelectStackType, StackListProps } from '../../../type/sections';
 
 export default function StackList({ category, stackInfo, stack, setStack }: StackListProps) {
-  const mappingStack = allStack[category];
-  const detailStack: SelectStackType = mappingStack[stack];
+  const [categoryData, setCategoryData] = useState<{ [tech: string]: SelectStackType }>();
+  const [detailStack, setDetailStack] = useState<SelectStackType>();
+
+  useEffect(() => {
+    const mappingStack = allStack[category];
+    const detailStack: SelectStackType = mappingStack[stack];
+
+    setCategoryData(mappingStack);
+    setDetailStack(detailStack);
+
+    console.log(detailStack);
+  }, [stack]);
 
   return (
     <Container>
       <IconBox>
-        {mappingStack &&
-          Object.entries(mappingStack).map(([key, value]) => (
+        {categoryData &&
+          Object.entries(categoryData).map(([key, value]) => (
             <IconBtn
               onClick={() => setStack(key)}
               key={key}
@@ -21,20 +31,18 @@ export default function StackList({ category, stackInfo, stack, setStack }: Stac
             </IconBtn>
           ))}
       </IconBox>
-      <StackInfo $color={stackInfo.color}>
-        {mappingStack && (
-          <React.Fragment>
-            <StackName $color={stackInfo.color}>
-              <img src={`https://cdn.simpleicons.org/${detailStack.title}/white`} alt="icon" width="100" height="100" />
-              <h2>{detailStack.name}</h2>
-            </StackName>
-            <StackDetail>
-              <div>{detailStack.description}</div>
-              <div>{detailStack.link}</div>
-            </StackDetail>
-          </React.Fragment>
-        )}
-      </StackInfo>
+      {detailStack && (
+        <StackInfo $color={stackInfo.color}>
+          <StackName $color={stackInfo.color}>
+            <img src={`https://cdn.simpleicons.org/${detailStack.title}/white`} alt="icon" width="100" height="100" />
+            <h2>{detailStack.name}</h2>
+          </StackName>
+          <StackDetail>
+            <div>{detailStack.description}</div>
+            <div>{detailStack.link}</div>
+          </StackDetail>
+        </StackInfo>
+      )}
     </Container>
   );
 }

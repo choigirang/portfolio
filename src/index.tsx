@@ -6,16 +6,20 @@ import App from './App';
 import { StyledEngineProvider } from '@mui/styled-engine';
 import { ColorModeProvider } from './hooks/useColorMode';
 import { BrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <ColorModeProvider>
-    <StyledEngineProvider injectFirst>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </StyledEngineProvider>
-  </ColorModeProvider>,
+  <QueryClientProvider client={queryClient}>
+    <ColorModeProvider>
+      <StyledEngineProvider injectFirst>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </StyledEngineProvider>
+    </ColorModeProvider>
+  </QueryClientProvider>,
 );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

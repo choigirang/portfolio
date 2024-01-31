@@ -24,9 +24,8 @@ export default function Skills() {
 
   useEffect(() => {
     const detailStack = allStack[category][stack];
-    console.log(detailStack);
     setStackInfo(detailStack);
-  }, [stack]);
+  }, [category]);
 
   return (
     <Container id="skills">

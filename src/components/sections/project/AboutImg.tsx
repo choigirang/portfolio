@@ -37,7 +37,7 @@ export default function AboutImg({ name }: { name: string }) {
 
 const ShowImg = MuiStyled('div')(({ theme }) => ({
   width: '100%',
-  height: 250,
+  maxHeight: 300,
   display: 'grid',
   alignItems: 'center',
   gridTemplateColumns: '32px auto 32px',
@@ -60,7 +60,8 @@ const MoveImgBtn = MuiStyled(Button)(({ theme }) => ({
 
 const Img = MuiStyled('img')(({ theme }) => ({
   width: '100%',
-  height: 'auto',
+  maxHeight: 300,
+  objectFit: 'contain',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

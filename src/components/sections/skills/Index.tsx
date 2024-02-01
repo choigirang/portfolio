@@ -11,21 +11,22 @@ import { AllStackType, SelectStackType } from '../../../type/sections';
 export default function Skills() {
   const [category, setCategory] = useState('프론트엔드');
   const [stack, setStack] = useState('react');
-  const [stackInfo, setStackInfo] = useState<SelectStackType>({
-    displayName: 'react',
-    name: '리액트',
-    description: '',
-    link: '',
-    color: 'blue',
-  });
+  const [stackInfo, setStackInfo] = useState<SelectStackType>();
   const categoryList = ['프론트엔드', '백엔드', '툴'];
 
   const listProps = { category, stackInfo, stack, setStack };
 
   useEffect(() => {
+    const stack = Object.keys(allStack[category]);
+    setStack(stack[0]);
+  }, [category]);
+
+  useEffect(() => {
     const detailStack = allStack[category][stack];
     setStackInfo(detailStack);
-  }, [category, stack]);
+  }, [stack]);
+
+  if (!stackInfo) return <div></div>;
 
   return (
     <Container id="skills">

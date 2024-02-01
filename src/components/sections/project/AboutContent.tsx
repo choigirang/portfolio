@@ -18,11 +18,13 @@ export default function AboutContent(props: ProjectDetailType) {
 
   const floorItems = [
     { title: '프로젝트명', value: projectName },
+    { title: '스택', value: [...stack.frontend, ...stack.backend] },
     { title: '링크', value: link },
     { title: '깃허브', value: github },
     { title: '설명', value: description },
-    { title: '스택', value: [...stack.frontend, ...stack.backend] },
   ];
+
+  const moveLink = '링크' || '깃허브';
 
   const handleImageInteraction = (event: React.MouseEvent<HTMLElement, MouseEvent>, el: string) => {
     event.stopPropagation();
@@ -51,12 +53,18 @@ export default function AboutContent(props: ProjectDetailType) {
     };
   }, [txtBoxEl.current]);
 
+  // 컴포넌트 분리하기
+
   return (
     <Container>
       {floorItems.map((items, index) => (
         <Floor key={index}>
           <Title>{items.title} :</Title>
-          <Text id="txt Ref" ref={txtBoxEl} checkStack={items.title === '스택'} checkDes={items.title === '설명'}>
+          <Text
+            id="txt Ref"
+            ref={items.title === '스택' ? txtBoxEl : undefined}
+            checkStack={items.title === '스택'}
+            checkDes={items.title === '설명'}>
             {/* 스택 데이터 시 */}
             {items.title === '스택' &&
               Array.isArray(items.value) &&
@@ -85,7 +93,11 @@ export default function AboutContent(props: ProjectDetailType) {
                 </DisplayImgWithTooltip>
               ))}
             {/* 이외 데이터 */}
-            {!Array.isArray(items.value) && <span>{items.value}</span>}
+            {!Array.isArray(items.value) && (
+              <a href={items.value} target="_blank">
+                {items.value}
+              </a>
+            )}
           </Text>
         </Floor>
       ))}
@@ -111,7 +123,7 @@ const Floor = MuiStyled('div')(({ theme }) => ({
 const Title = MuiStyled('p')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'end',
-  color: theme.palette.secondary.main,
+  color: theme.palette.primary.main,
   fontWeight: 500,
   fontSize: 18,
 }));
@@ -130,7 +142,6 @@ const Text = MuiStyled('div')<{ checkStack: boolean; checkDes: boolean }>(({ che
   ...(checkStack && {
     fontWeight: 800,
     display: 'flex',
-    flexWrap: 'wrap',
     gap: 10,
   }),
 

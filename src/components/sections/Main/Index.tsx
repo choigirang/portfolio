@@ -1,12 +1,12 @@
 import { styled as MuiStyled } from '@mui/material';
-import ProjectCard from './ProjectCard';
 import Card from './Card';
 import { skillCardInfo } from '../../../constant/info';
+import LinkProjectCard from './LinkProject';
 
 export default function Main() {
   return (
     <Containter id="home">
-      <ProjectCard />
+      <LinkProjectCard />
       {Object.keys(skillCardInfo).map(key => (
         <Card key={key} {...skillCardInfo[key]}></Card>
       ))}

@@ -2,7 +2,7 @@ import { styled as MuiStyled } from '@mui/material';
 import React from 'react';
 import useMoveScroll from '../../../hooks/useMoveScroll';
 
-export default function ProjectCard() {
+export default function LinkProjectCard() {
   const { scrollToPage } = useMoveScroll();
 
   return (

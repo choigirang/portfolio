@@ -1,7 +1,6 @@
 import { Alert, Button, styled as MuiStyled, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import React, { useRef, useState } from 'react';
-import Plane from './Plane';
 import { ContactType } from '../../../type/sections';
 import emailjs from '@emailjs/browser';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -44,7 +43,6 @@ export default function Contact() {
 
   return (
     <Container id="contact">
-      <Plane />
       <Board ref={form} onSubmit={sendEmail}>
         {(Object.keys(contact) as (keyof ContactType)[]).map(each => (
           <TextInput

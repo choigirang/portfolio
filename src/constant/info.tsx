@@ -3,7 +3,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import ArticleIcon from '@mui/icons-material/Article';
 import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
-import { AllStackType, ProfileObjectInfo, SkillCardProps } from '../type/sections';
+import { AllStackType, ProfileObjectInfo, ProjectInfoType, SkillCardProps } from '../type/sections';
 import { ReactNode } from 'react';
 
 // HEADER
@@ -122,6 +122,54 @@ export const allStack: AllStackType = {
       description: '설명',
       link: [''],
       color: '#F35328',
+    },
+  },
+};
+
+// PROJECT
+export const projects: ProjectInfoType = {
+  pokemon: {
+    title: 'pokemon',
+    name: 'Pokemon',
+    description: '',
+    github: '',
+    link: '',
+    stack: {
+      frontend: [''],
+      backend: [],
+    },
+  },
+  codeContainer: {
+    title: 'codeContainer',
+    name: 'Code-Container',
+    description: '',
+    github: '',
+    link: '',
+    stack: {
+      frontend: [],
+      backend: [],
+    },
+  },
+  whyCommunity: {
+    title: 'whyCommunity',
+    name: 'Why-Community',
+    description: '',
+    github: '',
+    link: '',
+    stack: {
+      frontend: [],
+      backend: [],
+    },
+  },
+  sideQuest: {
+    title: 'sideQuest',
+    name: 'Side-Quest',
+    description: '',
+    github: '',
+    link: '',
+    stack: {
+      frontend: [],
+      backend: [],
     },
   },
 };

@@ -54,6 +54,23 @@ export type SkillCardProps = {
   [key: string]: string;
 };
 
+// PROJECT
+export interface ProjectDetailType {
+  title: string;
+  name: string;
+  description: string;
+  github: string;
+  link: string;
+  stack: {
+    frontend: Array<string>;
+    backend: Array<string>;
+  };
+}
+
+export type ProjectInfoType = {
+  [title: string]: ProjectDetailType;
+};
+
 // CONTACT
 export type ContactType = {
   Name: string;

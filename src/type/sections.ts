@@ -30,8 +30,8 @@ export type ProfileObjectInfo = {
 //SKILLS
 
 export interface SelectStackType {
-  title: string;
   name: string;
+  displayName: string;
   description: string;
   link: string | Array<string>;
   color: string;
@@ -55,15 +55,21 @@ export type SkillCardProps = {
 };
 
 // PROJECT
+export interface StackInfoType {
+  name: string;
+  displayName: string;
+  color: string;
+}
+
 export interface ProjectDetailType {
-  title: string;
+  projectName: string;
   name: string;
   description: string;
   github: string;
   link: string;
   stack: {
-    frontend: Array<string>;
-    backend: Array<string>;
+    frontend: Array<StackInfoType>;
+    backend: Array<StackInfoType>;
   };
 }
 

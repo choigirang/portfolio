@@ -6,6 +6,7 @@ import { AllStackType, SelectStackType, StackListProps } from '../../../type/sec
 export default function StackList({ category, stackInfo, stack, setStack }: StackListProps) {
   const [categoryData, setCategoryData] = useState<{ [tech: string]: SelectStackType }>();
   const [detailStack, setDetailStack] = useState<SelectStackType>();
+  // query 사용하기
 
   useEffect(() => {
     const mappingStack = allStack[category];
@@ -25,15 +26,20 @@ export default function StackList({ category, stackInfo, stack, setStack }: Stac
               key={key}
               $matchStack={stack === value.displayName}
               $stackColor={value.color}>
-              <img src={`https://cdn.simpleicons.org/${key}`} alt="icon" width="50" height="50" />
+              <img
+                src={`https://cdn.simpleicons.org/${value.color !== 'black' ? key : key + '/' + value.color}`}
+                alt="icon"
+                width="50"
+                height="50"
+              />
             </IconBtn>
           ))}
       </IconBox>
-      {detailStack && (
+      {detailStack && stackInfo && (
         <StackInfo $color={stackInfo.color}>
           <StackName $color={stackInfo.color}>
             <img src={`https://cdn.simpleicons.org/${detailStack.name}/white`} alt="icon" width="100" height="100" />
-            <h2>{detailStack.name}</h2>
+            <h3>{detailStack.name}</h3>
           </StackName>
           <StackDetail>
             <div>{detailStack.description}</div>
@@ -76,7 +82,7 @@ const StackInfo = MuiStyled('div')<{ $color: string }>(({ $color, theme }) => ({
   width: '100%',
   display: 'grid',
   padding: '5%',
-  backgroundColor: $color,
+  backgroundColor: `${$color !== 'black' ? $color : '#1A1B24'}`,
   color: 'white',
   borderRadius: 10,
   gridTemplateRows: '1fr',
@@ -90,7 +96,7 @@ const StackName = MuiStyled('div')<{ $color: string }>(({ $color, theme }) => ({
   alignItems: 'center',
   gap: 20,
 
-  h2: {
+  h3: {
     color: $color,
     fontWeight: 600,
     backgroundColor: 'white',

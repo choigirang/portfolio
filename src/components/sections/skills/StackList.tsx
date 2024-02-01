@@ -13,8 +13,6 @@ export default function StackList({ category, stackInfo, stack, setStack }: Stac
 
     setCategoryData(mappingStack);
     setDetailStack(detailStack);
-
-    console.log(detailStack);
   }, [stack]);
 
   return (
@@ -25,7 +23,7 @@ export default function StackList({ category, stackInfo, stack, setStack }: Stac
             <IconBtn
               onClick={() => setStack(key)}
               key={key}
-              $matchStack={stack === value.title}
+              $matchStack={stack === value.displayName}
               $stackColor={value.color}>
               <img src={`https://cdn.simpleicons.org/${key}`} alt="icon" width="50" height="50" />
             </IconBtn>
@@ -34,7 +32,7 @@ export default function StackList({ category, stackInfo, stack, setStack }: Stac
       {detailStack && (
         <StackInfo $color={stackInfo.color}>
           <StackName $color={stackInfo.color}>
-            <img src={`https://cdn.simpleicons.org/${detailStack.title}/white`} alt="icon" width="100" height="100" />
+            <img src={`https://cdn.simpleicons.org/${detailStack.name}/white`} alt="icon" width="100" height="100" />
             <h2>{detailStack.name}</h2>
           </StackName>
           <StackDetail>

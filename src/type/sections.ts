@@ -46,7 +46,7 @@ export type AllStackType = {
 export type StackListProps = {
   category: string;
   stack: string;
-  stackInfo: SelectStackType;
+  stackInfo: SelectStackType | undefined;
   setStack: Dispatch<React.SetStateAction<string>>;
 };
 

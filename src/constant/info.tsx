@@ -86,45 +86,59 @@ export const allStack: AllStackType = {
   프론트엔드: {
     react: {
       name: 'react',
-      displayName: '리액트',
+      displayName: 'React',
       description: '설명',
       link: [''],
       color: '#1CCEFF',
     },
     nextdotJs: {
       name: 'next.js',
-      displayName: '넥스트.js',
+      displayName: 'Next.js',
       description: '설명',
       link: [''],
-      color: 'white',
+      color: '#1A1B24',
     },
     reactQuery: {
       name: 'reactQuery',
-      displayName: '리액트 쿼리',
+      displayName: 'React-Query',
       description: '설명',
       link: [''],
       color: '#FF475A',
     },
     recoil: {
       name: 'recoil',
-      displayName: '리코일',
+      displayName: 'Recoil',
       description: '설명',
       link: [''],
       color: '#137EF5',
     },
     redux: {
       name: 'redux',
-      displayName: '리덕스',
+      displayName: 'Redux',
       description: '설명',
       link: [''],
       color: '#8348C4',
     },
     axios: {
       name: 'axios',
-      displayName: '엑시오스',
+      displayName: 'Axios',
       description: '설명',
       link: [''],
       color: '#804C95',
+    },
+    mui: {
+      name: 'mui',
+      displayName: 'Material-UI',
+      description: '설명',
+      link: [''],
+      color: '#027FFE',
+    },
+    framer: {
+      name: 'framer',
+      displayName: 'Framer-motion',
+      description: '설명',
+      link: [''],
+      color: '#027FFE',
     },
     styledcomponents: {
       name: 'styledcomponents',
@@ -140,7 +154,7 @@ export const allStack: AllStackType = {
       displayName: 'express',
       description: '설명',
       link: [''],
-      color: 'white',
+      color: 'black',
     },
     mongodb: {
       name: 'mongodb',
@@ -177,14 +191,14 @@ export const allStack: AllStackType = {
       displayName: '깃',
       description: '설명',
       link: [''],
-      color: 'white',
+      color: '#F05032',
     },
     github: {
       name: 'github',
       displayName: '깃허브',
       description: '설명',
       link: [''],
-      color: 'white',
+      color: 'black',
     },
     visualstudiocode: {
       name: 'visualstudiocode',
@@ -212,19 +226,36 @@ export const allStack: AllStackType = {
       displayName: '맥',
       description: '설명',
       link: [''],
-      color: 'white',
+      color: 'black',
     },
   },
 };
 
 // PROJECT
 export const projects: ProjectInfoType = {
+  portfolio: {
+    name: 'portfolio',
+    projectName: 'Portfolio 포트폴리오',
+    description: '',
+    github: 'https://github.com/choigirang/portfolio',
+    link: '',
+    stack: {
+      frontend: [
+        { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
+        { name: 'react', displayName: 'React', color: '#1CCEFF' },
+        { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
+        { name: 'mui', displayName: 'MaterialUi', color: '#027FFE' },
+        { name: 'framer', displayName: 'Framer-motion', color: '#027FFE' },
+      ],
+      backend: [],
+    },
+  },
   pokemon: {
     name: 'pokemon',
     projectName: 'Pokemon Choi 포켓몬최',
     description: '',
-    github: '',
-    link: '',
+    github: 'https://github.com/choigirang/pokemon-choi',
+    link: 'https://pocketmon-choi-yeda.vercel.app/',
     stack: {
       frontend: [
         { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
@@ -239,7 +270,7 @@ export const projects: ProjectInfoType = {
     name: 'codeContainer',
     projectName: 'Code Container 코드컨테이너',
     description: '',
-    github: '',
+    github: 'https://github.com/choigirang/code-container',
     link: '',
     stack: {
       frontend: [
@@ -259,8 +290,8 @@ export const projects: ProjectInfoType = {
     name: 'whyCommunity',
     projectName: 'Why Community 이왜진 커뮤니티',
     description: '',
-    github: '',
-    link: '',
+    github: 'https://github.com/choigirang/why-chat',
+    link: 'https://www.why-chat-fe.shop/',
     stack: {
       frontend: [
         { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
@@ -282,8 +313,8 @@ export const projects: ProjectInfoType = {
     name: 'sideQuest',
     projectName: 'Side Quest 사이드 퀘스트',
     description: '',
-    github: '',
-    link: '',
+    github: 'https://github.com/codestates-seb/seb43_main_032',
+    link: 'https://www.sidequest.co.kr/',
     stack: {
       frontend: [
         { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },

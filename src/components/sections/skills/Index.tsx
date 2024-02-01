@@ -12,7 +12,7 @@ export default function Skills() {
   const [category, setCategory] = useState('프론트엔드');
   const [stack, setStack] = useState('react');
   const [stackInfo, setStackInfo] = useState<SelectStackType>({
-    title: 'react',
+    displayName: 'react',
     name: '리액트',
     description: '',
     link: '',
@@ -25,7 +25,7 @@ export default function Skills() {
   useEffect(() => {
     const detailStack = allStack[category][stack];
     setStackInfo(detailStack);
-  }, [category]);
+  }, [category, stack]);
 
   return (
     <Container id="skills">
@@ -57,6 +57,7 @@ const Container = MuiStyled('section')({
 
 const Title = MuiStyled('div')(({ theme }) => ({
   width: '100%',
+  marginBottom: 50,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',

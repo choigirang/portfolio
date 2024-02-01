@@ -38,7 +38,7 @@ export default function ProfileCard({ name, value }: { name: string; value: Prof
 
   return (
     <Container>
-      <Link href={linkInfo(title)} onClick={handleClick}>
+      <Link href={linkInfo(title)} target={title === '깃허브' || '블로그' ? '_blank' : ''} onClick={handleClick}>
         <InfoWithIcon>
           <span className="title">{title}</span>
           <span className="icon">{icon}</span>

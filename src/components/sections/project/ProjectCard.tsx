@@ -19,7 +19,7 @@ export default function ProjectCard({ name }: { name: string }) {
       <Card>
         {projectData && (
           <React.Fragment>
-            <AboutImg name={projectData.title} />
+            <AboutImg name={projectData.name} />
             <AboutContent {...projectData}></AboutContent>
           </React.Fragment>
         )}
@@ -39,5 +39,5 @@ const Card = MuiStyled('div')(({ theme }) => ({
   padding: '5%',
   display: 'flex',
   flexDirection: 'column',
-  gap: 20,
+  gap: 70,
 }));

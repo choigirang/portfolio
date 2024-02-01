@@ -8,7 +8,8 @@ export default function Project() {
     <Container id="project">
       <Title>
         <p>🖥️</p>
-        <p>프로젝트</p>
+        <h3>프로젝트</h3>
+        <h4>카드를 클릭하여 추가 설명을 볼 수 있습니다.</h4>
       </Title>
       <ProjectContainer>
         {Object.keys(projects).map(project => (
@@ -21,10 +22,12 @@ export default function Project() {
 
 const Container = MuiStyled('div')({
   width: '100%',
+  marginTop: 50,
 });
 
 const Title = MuiStyled('div')(({ theme }) => ({
   width: '100%',
+  marginBottom: 50,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -37,11 +40,16 @@ const Title = MuiStyled('div')(({ theme }) => ({
     justifyContent: 'center',
     fontWeight: 700,
   },
+
+  h4: {
+    fontSize: 20,
+    color: '#6a6a6a',
+  },
 }));
 
 const ProjectContainer = MuiStyled('div')(({ theme }) => ({
   width: '100%',
   display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: 10,
+  gridTemplateColumns: '1fr 1fr',
+  gap: 30,
 }));

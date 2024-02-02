@@ -9,7 +9,7 @@ export default function Project() {
       <Title>
         <p>🖥️</p>
         <h3>프로젝트</h3>
-        <h4>카드를 클릭하여 추가 설명을 볼 수 있습니다.</h4>
+        <h4>카드를 클릭하여 상세 설명을 볼 수 있습니다.</h4>
       </Title>
       <ProjectContainer>
         {Object.keys(projects).map(project => (

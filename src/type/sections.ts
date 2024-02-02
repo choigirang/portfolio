@@ -79,9 +79,7 @@ export type ProjectInfoType = {
 
 // CONTACT
 export type ContactType = {
-  Name: string;
-  Mail: string;
-  Content: string;
+  [key: string]: string;
 };
 
 // FOOTER

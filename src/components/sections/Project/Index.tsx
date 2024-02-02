@@ -20,7 +20,7 @@ export default function Project() {
   );
 }
 
-const Container = MuiStyled('div')({
+const Container = MuiStyled('section')({
   width: '100%',
   marginTop: 50,
 });

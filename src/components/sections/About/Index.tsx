@@ -31,7 +31,7 @@ export default function About() {
   );
 }
 
-const Container = MuiStyled('div')({
+const Container = MuiStyled('section')({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',

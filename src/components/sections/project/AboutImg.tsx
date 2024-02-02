@@ -8,29 +8,52 @@ export default function AboutImg({ name }: { name: string }) {
   const [showImg, setShowImg] = useState(0);
   const [saveImgUrl, setSaveImgUrl] = useState<string[]>([]);
   const { data: imgUrl, isLoading, error } = useGetImg(name);
+  const [intervalId, setIntervalId] = useState<boolean>(false);
+  const [hoverBtn, setHoverBtn] = useState(false);
 
   useEffect(() => {
     if (!imgUrl) return;
     setSaveImgUrl(imgUrl);
   }, [imgUrl]);
 
+  // const count = setInterval(() => {
+  //   setShowImg(prevShowImg => prevShowImg + 1);
+  // }, 3000);
+
+  // useEffect(() => {
+  //   return () => {
+  //     if (intervalId) {
+  //       clearInterval(count);
+  //     }
+  //   };
+  // }, [saveImgUrl, intervalId]);
+
+  // const handleInterval = () => {
+  //   if (intervalId !== null) {
+  //     clearInterval(count);
+  //     setIntervalId(prev => !prev);
+  //   }
+  // };
+
   const imgNumController = (dir: string) => {
     if (dir === 'next') {
       setShowImg(prev => (prev === saveImgUrl.length - 1 ? 0 : prev + 1));
     }
-
     if (dir === 'prev') {
       setShowImg(prev => (prev === 0 ? saveImgUrl.length - 1 : prev - 1));
     }
   };
+
   return (
     <ShowImg>
-      <MoveImgBtn startIcon={<ArrowLeftIcon />} onClick={() => imgNumController('prev')} />
-      <Img src={saveImgUrl[showImg]} alt={`${name + showImg} img`}></Img>
-      <MoveImgBtn startIcon={<ArrowRightIcon />} onClick={() => imgNumController('next')} />
-      <CheckImgLength>
-        {showImg + 1}/{saveImgUrl.length}
-      </CheckImgLength>
+      <ImgBox onMouseEnter={() => setHoverBtn(true)} onMouseLeave={() => setHoverBtn(false)}>
+        <MoveImgLeftBtn hoverBtn={hoverBtn} startIcon={<ArrowLeftIcon />} onClick={() => imgNumController('prev')} />
+        <Img src={saveImgUrl[showImg]} alt={`${name + showImg} img`}></Img>
+        <MoveImgRightBtn hoverBtn={hoverBtn} startIcon={<ArrowRightIcon />} onClick={() => imgNumController('next')} />
+        <CheckImgLength>
+          {showImg + 1}/{saveImgUrl.length}
+        </CheckImgLength>
+      </ImgBox>
     </ShowImg>
   );
 }
@@ -38,24 +61,37 @@ export default function AboutImg({ name }: { name: string }) {
 const ShowImg = MuiStyled('div')(({ theme }) => ({
   width: '100%',
   maxHeight: 300,
-  display: 'grid',
-  alignItems: 'center',
-  gridTemplateColumns: '32px auto 32px',
   position: 'relative',
 }));
 
-const MoveImgBtn = MuiStyled(Button)(({ theme }) => ({
-  width: 32,
-  height: 32,
-  minWidth: 32,
-  color: 'white',
-  padding: 0,
-  borderRadius: '50%',
+const ImgBox = MuiStyled('div')(({ theme }) => ({
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+}));
 
-  '& :hover': {
-    backgroundColor: 'white',
-    transition: 'all .3s',
+const MoveImgLeftBtn = MuiStyled(Button)<{ hoverBtn: boolean }>(({ hoverBtn, theme }) => ({
+  width: 50,
+  height: 50,
+  minWidth: 50,
+  position: 'absolute',
+  left: 0,
+  top: '50%',
+  transform: 'translateY(-50%)',
+  color: 'white',
+  borderRadius: '50%',
+  opacity: hoverBtn ? 1 : 0,
+  transition: 'all .3s',
+
+  svg: {
+    width: '100%',
+    height: '100%',
   },
+}));
+
+const MoveImgRightBtn = MuiStyled(MoveImgLeftBtn)<{ hoverBtn: boolean }>(({ theme }) => ({
+  position: 'absolute',
+  right: '0 !important',
 }));
 
 const Img = MuiStyled('img')(({ theme }) => ({

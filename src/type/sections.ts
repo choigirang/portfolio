@@ -46,7 +46,13 @@ export type AllStackType = {
 export type StackListProps = {
   category: string;
   stack: string;
-  stackInfo: SelectStackType | undefined;
+  stackInfo?: SelectStackType | undefined;
+  setStack: Dispatch<React.SetStateAction<string>>;
+};
+
+export type IconBoxProps = {
+  categoryData: { [tech: string]: SelectStackType } | undefined;
+  stack: string;
   setStack: Dispatch<React.SetStateAction<string>>;
 };
 

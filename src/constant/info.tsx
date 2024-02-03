@@ -83,6 +83,22 @@ export const skillsList: { [key: string]: string } = {
 };
 
 export const allStack: AllStackType = {
+  언어: {
+    typescript: {
+      name: 'typescript',
+      displayName: 'Type-script',
+      description: [''],
+      link: [''],
+      color: '#387BC8',
+    },
+    javascript: {
+      name: 'javascript',
+      displayName: 'Java-script',
+      description: [''],
+      link: [''],
+      color: '#F4DD57',
+    },
+  },
   프론트엔드: {
     react: {
       name: 'react',
@@ -233,29 +249,44 @@ export const allStack: AllStackType = {
 
 // PROJECT
 export const projects: ProjectInfoType = {
-  portfolio: {
-    name: 'portfolio',
-    projectName: 'Portfolio 포트폴리오',
-    description: [''],
-    github: 'https://github.com/choigirang/portfolio',
-    link: '',
-    stack: {
-      frontend: [
-        { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
-        { name: 'react', displayName: 'React', color: '#1CCEFF' },
-        { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
-        { name: 'mui', displayName: 'MaterialUi', color: '#027FFE' },
-        { name: 'framer', displayName: 'Framer-motion', color: '#027FFE' },
-      ],
-      backend: [],
-    },
-  },
+  // portfolio: {
+  //   name: 'portfolio',
+  //   projectName: 'Portfolio 포트폴리오',
+  //   description: [
+  //     '소개를 위한 포트폴리오를 제작한 프로젝트입니다.',
+  //     'Typescript로 *데이터 형태의 다양한 타입들을 커스텀*하여 사용하였습니다.',
+  //     '웹과 모바일 등 접근성을 높이기 위해 *반응형웹*으로 제작하였습니다.',
+  //     'MUI를 사용하여 *테마 적용, TextFild, Tabs, Switch 등의 컴포넌트를 커스텀*하여 적용하였습니다.',
+  //     'FramerMotion을 사용하여 *Tooltip 등에 대한 애니메이션을 적용*하였습니다.',
+  //     'lazyloading, WebP, source, picture 등을 이용하여 *최적화를 진행*하였습니다.',
+  //     'ReactQuery를 사용하여 *이미지 요청을 최소화* 하였습니다.',
+  //     '*EC2를 이용하여 배포*하였습니다.',
+  //   ],
+  //   github: 'https://github.com/choigirang/portfolio',
+  //   link: '',
+  //   stack: {
+  //     frontend: [
+  //       { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
+  //       { name: 'react', displayName: 'React', color: '#1CCEFF' },
+  //       { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
+  //       { name: 'mui', displayName: 'MaterialUi', color: '#027FFE' },
+  //       { name: 'framer', displayName: 'Framer-motion', color: '#027FFE' },
+  //     ],
+  //     backend: [
+  //       { name: 'amazonec2', displayName: 'EC2', color: '#F0921E' },
+  //       { name: 'amazons3', displayName: 'S3', color: '#53B145' },
+  //     ],
+  //   },
+  // },
   pokemon: {
     name: 'pokemon',
     projectName: 'Pokemon Choi 포켓몬최',
     description: [
       '고전게임 포켓몬스터를 웹페이지에서 사용해보기 위해 제작한 프로젝트입니다.',
-      '애니메이션 및 페이지 전환에 대한 빠른 ',
+      '*애니메이션 및 페이지 전환에 대한 빠른 대응을 위해 Next.js*로 제작하였습니다.',
+      '드래그 및 캐릭터 좌표 이동에 대한 *렌더링 과다를 해결하기 위해 useMemo, useCallback*에 대해 학습하였습니다.',
+      'Typescript로 *키보드, 마우스 등의 이벤트에 대한 타입을 학습하며 커스텀*하여 사용하였습니다.',
+      '*동일한 이벤트*가 반복적으로 사용되어 다양한 *커스텀 훅*을 만들어 사용하였습니다.',
     ],
     github: 'https://github.com/choigirang/pokemon-choi',
     link: 'https://pocketmon-choi-yeda.vercel.app/',
@@ -272,13 +303,22 @@ export const projects: ProjectInfoType = {
   codeContainer: {
     name: 'codeContainer',
     projectName: 'Code Container 코드컨테이너',
-    description: ['코드를 재활용하기 위해 제작한 프로젝트입니다.', ''],
+    description: [
+      '코드를 재활용하기 위해 제작한 프로젝트입니다.',
+      '*게시글에 대한 CRUD, 검색, 모아보기* 기능들을 구현하였습니다.',
+      'Redux를 사용해 *클라이언트에 간단한 사용자 인증, 작성한 게시글 데이터를 저장*하였습니다.',
+      'ReactQuery를 사용해 서버 요청을 하였으며, *invalidateQueries를 사용하여 사용자가 작성한 데이터의 즉각적인 피드백*이 가능하도록 하였습니다.',
+      'Express, MongoDB를 이용해 서버를 구현하여 데이터를 구성하였습니다.',
+      'Editior와 Viewer에서 다수의 컴포넌트가 사용되어, 각 항목별로 컴포넌트를 분리하는 데에 고민하였습니다.',
+      '*EC2를 이용하여 배포*하였습니다.',
+    ],
     github: 'https://github.com/choigirang/code-container',
     link: '',
     stack: {
       frontend: [
         { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
         { name: 'react', displayName: 'React', color: '#1CCEFF' },
+        { name: 'redux', displayName: 'Redux', color: '#8348C4' },
         { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
         { name: 'styledcomponents', displayName: 'Styled-components', color: '#FF475A' },
       ],
@@ -294,12 +334,12 @@ export const projects: ProjectInfoType = {
     projectName: 'Why Community 이왜진 커뮤니티',
     description: [
       '협업 프로젝트가 끝나고 부족한 부분을 학습하기 위해 제작한 커뮤니티입니다.',
-      '유저/게시글/댓글 CRUD, 좋아요, 검색 기능들을 구현했습니다.',
-      'JWT를 이용해 직접 access/refresh token을 만들어 관리하는 로직을 구현해봄으로써 JWT와 쿠키를 이용한 인증 방식에 대해 학습하였습니다.',
-      'ReactQuery를 이용해 서버 요청을 최소화시키며, 캐시 데이터를 사용하는 것을 학습하였습니다.',
-      'Redux를 이용해 클라이언트 데이터를 저장하고 활용하였습니다. ',
-      'Express, MongoDB를 이용해 서버를 구현하여 데이터 통신에 대해 학습하였습니다.',
-      '도메인을 구입하고 AWS-Route53, ACM을 통해 SSL 인증하고 EC2로 배포하였습니다.',
+      '*유저/게시글/댓글 CRUD, 좋아요, 검색* 기능들을 구현하였습니다.',
+      'JWT를 이용해 직접 *access/refresh token을 만들어 관리하는 로직을 구현*해봄으로써 JWT와 쿠키를 이용한 *인증 방식에 대해 학습*하였습니다.',
+      'ReactQuery를 이용해 *서버 요청을 최소화*시키며, *캐시 데이터를 사용하는 것을 학습*하였습니다.',
+      'Redux를 이용해 *클라이언트 데이터를 저장하고 활용*하였습니다. ',
+      'Express, MongoDB를 이용해 *서버를 구현하여 데이터 통신에 대해 학습*하였습니다.',
+      '도메인을 구입하고 *AWS-Route53, ACM을 통해 SSL 인증하고 EC2로 배포*하였습니다.',
     ],
     github: 'https://github.com/choigirang/why-chat',
     link: 'https://www.why-chat-fe.shop/',
@@ -325,10 +365,10 @@ export const projects: ProjectInfoType = {
     projectName: 'Side Quest 사이드 퀘스트',
     description: [
       '사이드 프로젝트를 진행할 수 있는 커뮤니티입니다.',
-      '피그마를 이용한 화면 정의서 구현, 피드백을 받고 코드를 수정하는 과정을 겪으면서 FE끼리 혹은 FE와 BE간의 대한 협업에 대한 전반적인 과정에 대해 경험할 수 있었습니다.',
-      'API/인증 등에 대해 백엔드 개발자들과 협업하는 과정을 통해 많은 얘기를 나누고 각자의 입장을 이해하는데 도움이 되었습니다.',
-      '팀원으로 게시글에 대한 CRUD, 검색, 전반적인 스타일 및 애니메이션 구현을 담당하였습니다.',
-      'styled-components의 사용법, 전역 세팅 방법, TypeScript 적용 방법을 이해하고 코드에 적용했습니다',
+      '피그마를 이용한 화면 정의서 구현, 피드백을 받고 코드를 수정하는 과정을 겪으면서 *FE끼리 혹은 FE와 BE간의 대한 협업에 대한 전반적인 과정에 대해 경험*할 수 있었습니다.',
+      '*API/인증 등에 대해 백엔드 개발자들과 협업*하는 과정을 통해 많은 얘기를 나누고 각자의 입장을 이해하는데 도움이 되었습니다.',
+      '팀원으로 *게시글에 대한 CRUD, 검색, 전반적인 스타일 및 애니메이션 구현을 담당*하였습니다.',
+      '*styled-components의 사용법*, *전역 세팅 방법*, *TypeScript 적용 방법을 이해*하고 코드에 적용했습니다',
     ],
     github: 'https://github.com/codestates-seb/seb43_main_032',
     link: 'https://www.sidequest.co.kr/',

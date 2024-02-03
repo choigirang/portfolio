@@ -4,8 +4,6 @@ import { styled as MuiStyled } from '@mui/material';
 import { projects } from '../../../constant/info';
 
 export default function Project() {
-  const [flipCard, setFlipCard] = useState<number | undefined>(undefined);
-
   return (
     <Container id="project">
       <Title>
@@ -15,12 +13,7 @@ export default function Project() {
       </Title>
       <ProjectContainer>
         {Object.keys(projects).map((project, idx) => (
-          <ProjectCard
-            name={project}
-            key={project}
-            cardNum={idx}
-            flipCard={flipCard}
-            setFlipCard={setFlipCard}></ProjectCard>
+          <ProjectCard name={project} key={project} />
         ))}
       </ProjectContainer>
     </Container>

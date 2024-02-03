@@ -8,17 +8,8 @@ import AboutContent from './AboutContent';
 import { SetStatOption } from 'aws-sdk/clients/transfer';
 import DescriptionContent from './DescriptionContent';
 
-export default function ProjectCard({
-  name,
-  cardNum,
-  flipCard,
-  setFlipCard,
-}: {
-  name: string;
-  cardNum: number;
-  flipCard: number | undefined;
-  setFlipCard: Dispatch<SetStateAction<number | undefined>>;
-}) {
+export default function ProjectCard({ name }: { name: string }) {
+  const [flipCard, setFlipCard] = useState(false);
   const [projectData, setProjectData] = useState<ProjectDetailType>();
 
   useEffect(() => {
@@ -26,23 +17,20 @@ export default function ProjectCard({
     setProjectData(projects[name]);
   }, [name]);
 
-  const selectFilp = cardNum === flipCard;
-
-  const handleFlipCard = (cardNum: number) => {
-    if (cardNum === flipCard) setFlipCard(undefined);
-    else setFlipCard(cardNum);
+  const handleFlipCard = () => {
+    setFlipCard(prev => !prev);
   };
 
   return (
-    <Container flipCard={selectFilp} onClick={() => handleFlipCard(cardNum)}>
+    <Container flipCard={flipCard} onClick={handleFlipCard}>
       <Card>
         {projectData && (
           <React.Fragment>
-            <FrontContent selectFlip={selectFilp}>
+            <FrontContent flipCard={flipCard}>
               <AboutImg name={projectData.name} />
               <AboutContent {...projectData} />
             </FrontContent>
-            <DescriptionContent selectFlip={selectFilp} description={projectData?.description} />
+            <DescriptionContent flipCard={flipCard} description={projectData?.description} />
           </React.Fragment>
         )}
       </Card>
@@ -55,7 +43,6 @@ const Container = MuiStyled('section')<{ flipCard: boolean }>(({ flipCard, theme
   backgroundColor: '#1A1B24',
   borderRadius: 10,
   transition: 'all 1s',
-  transformStyle: 'preserve-3d',
 
   ...(flipCard && {
     transition: 'all 1s',
@@ -67,7 +54,7 @@ const Card = MuiStyled('div')(({ theme }) => ({
   width: '100%',
 }));
 
-const FrontContent = MuiStyled('div')<{ selectFlip: boolean }>(({ selectFlip, theme }) => ({
+const FrontContent = MuiStyled('div')<{ flipCard: boolean }>(({ flipCard, theme }) => ({
   width: '100%',
   height: '100%',
   padding: '5%',
@@ -76,10 +63,9 @@ const FrontContent = MuiStyled('div')<{ selectFlip: boolean }>(({ selectFlip, th
   gap: 70,
   backfaceVisibility: 'hidden',
   transition: 'all .3s',
-  transform: selectFlip ? 'rotateY(180deg)' : 'rotateY(0)', // 뒤집히는 효과
+  transform: flipCard ? 'rotateY(180deg)' : 'rotateY(0)',
 
-  // selectFlip이 true일 때는 앞면이 보이지 않도록 처리
-  ...(selectFlip && {
+  ...(flipCard && {
     visibility: 'hidden',
     transition: 'all .3s',
   }),

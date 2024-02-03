@@ -1,16 +1,27 @@
 import React from 'react';
 import { styled as MuiStyled } from '@mui/material';
 
-export default function DescriptionContent(props: { selectFlip: boolean; description: Array<string> }) {
-  const { selectFlip, description } = props;
+export default function DescriptionContent(props: { flipCard: boolean; description: Array<string> }) {
+  const { flipCard, description } = props;
+
+  const parseDescription = (text: string) => {
+    const parts = text.split('*');
+
+    return parts
+      .map((part, index) => {
+        if (part === '') return null;
+        return index % 2 === 0 ? <span key={index}>{part}</span> : <strong key={index}>{part}</strong>;
+      })
+      .filter(Boolean);
+  };
 
   return (
-    <BackContent selectFlip={selectFlip}>
-      <FlipTxt selectFlip={selectFlip}>
+    <BackContent flipCard={flipCard}>
+      <FlipTxt flipCard={flipCard}>
         {description.map(item => (
-          <div>
+          <div key={item}>
             <span>✅</span>
-            <span>{item}</span>
+            <span>{parseDescription(item)}</span>
           </div>
         ))}
       </FlipTxt>
@@ -18,28 +29,28 @@ export default function DescriptionContent(props: { selectFlip: boolean; descrip
   );
 }
 
-const BackContent = MuiStyled('div')<{ selectFlip: boolean }>(({ selectFlip, theme }) => ({
+const BackContent = MuiStyled('div')<{ flipCard: boolean }>(({ flipCard, theme }) => ({
   width: '100%',
   height: '100%',
   position: 'absolute',
   top: 0,
   padding: '5%',
   backfaceVisibility: 'hidden',
-  visibility: selectFlip ? 'visible' : 'hidden',
+  visibility: flipCard ? 'visible' : 'hidden',
   transition: 'all 1s',
   color: 'white',
   overflow: 'scroll',
 
-  ...(!selectFlip && {
+  ...(!flipCard && {
     visibility: 'hidden',
   }),
 }));
 
-const FlipTxt = MuiStyled('div')<{ selectFlip: boolean }>(({ selectFlip, theme }) => ({
+const FlipTxt = MuiStyled('div')<{ flipCard: boolean }>(({ flipCard, theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  visibility: selectFlip ? 'visible' : 'hidden',
-  transform: selectFlip ? 'rotateY(180deg)' : 'rotateY(0)',
+  visibility: flipCard ? 'visible' : 'hidden',
+  transform: flipCard ? 'rotateY(180deg)' : 'rotateY(0)',
   gap: 30,
 
   div: {
@@ -49,5 +60,10 @@ const FlipTxt = MuiStyled('div')<{ selectFlip: boolean }>(({ selectFlip, theme }
 
   span: {
     lineHeight: '20px',
+  },
+
+  strong: {
+    color: theme.palette.primary.main,
+    fontWeight: 500,
   },
 }));

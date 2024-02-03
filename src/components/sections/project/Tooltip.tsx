@@ -23,6 +23,7 @@ export default function Tooltip(props: Props) {
             left: '50%',
             padding: 8,
             borderRadius: 10,
+            zIndex: 999,
           }}
           initial={{
             x: horizon === 'center' ? '-50%' : 0,

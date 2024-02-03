@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProjectCard from './ProjectCard';
 import { styled as MuiStyled } from '@mui/material';
 import { projects } from '../../../constant/info';
@@ -9,11 +9,11 @@ export default function Project() {
       <Title>
         <p>🖥️</p>
         <h3>프로젝트</h3>
-        <h4>카드를 클릭하여 추가 설명을 볼 수 있습니다.</h4>
+        <h4>카드를 클릭하여 상세 설명을 볼 수 있습니다.</h4>
       </Title>
       <ProjectContainer>
-        {Object.keys(projects).map(project => (
-          <ProjectCard name={project} key={project}></ProjectCard>
+        {Object.keys(projects).map((project, idx) => (
+          <ProjectCard name={project} key={project} />
         ))}
       </ProjectContainer>
     </Container>

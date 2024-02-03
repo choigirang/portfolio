@@ -32,7 +32,7 @@ export type ProfileObjectInfo = {
 export interface SelectStackType {
   name: string;
   displayName: string;
-  description: string;
+  description: Array<string>;
   link: string | Array<string>;
   color: string;
 }
@@ -64,7 +64,7 @@ export interface StackInfoType {
 export interface ProjectDetailType {
   projectName: string;
   name: string;
-  description: string;
+  description: Array<string>;
   github: string;
   link: string;
   stack: {
@@ -76,6 +76,8 @@ export interface ProjectDetailType {
 export type ProjectInfoType = {
   [title: string]: ProjectDetailType;
 };
+
+export type FloorItemsType = {};
 
 // CONTACT
 export type ContactType = {

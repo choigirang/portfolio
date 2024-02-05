@@ -9,10 +9,10 @@ import { motion } from 'framer-motion';
 import { AllStackType, SelectStackType } from '../../../type/sections';
 
 export default function Skills() {
-  const [category, setCategory] = useState('프론트엔드');
-  const [stack, setStack] = useState('react');
+  const [category, setCategory] = useState('언어');
+  const [stack, setStack] = useState('');
   const [stackInfo, setStackInfo] = useState<SelectStackType>();
-  const categoryList = ['프론트엔드', '백엔드', '툴'];
+  const categoryList = ['언어', '프론트엔드', '백엔드', '툴'];
 
   const listProps = { category, stackInfo, stack, setStack };
 
@@ -33,6 +33,7 @@ export default function Skills() {
       <Title>
         <p>🗂️</p>
         <h3>기술 목록</h3>
+        <h4>클릭 시 해당 게시글을 자세히 볼 수 있습니다.</h4>
       </Title>
       <SubTitleContatiner>
         {categoryList.map(key => (
@@ -71,20 +72,26 @@ const Title = MuiStyled('div')(({ theme }) => ({
     justifyContent: 'center',
     fontWeight: 700,
   },
+
+  h4: {
+    fontSize: 20,
+    color: '#6a6a6a',
+  },
 }));
 
 const SubTitleContatiner = MuiStyled(motion.div)(({ theme }) => ({
   width: '100%',
+  marginBottom: 50,
   display: 'grid',
   gap: 20,
   fontSize: 32,
-  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridTemplateColumns: 'repeat(4, 1fr)',
 }));
 
 const SubTitle = MuiStyled('p')<{ $select: boolean }>(({ $select, theme }) => ({
   display: 'flex',
   justifyContent: 'center',
-  color: `${$select ? theme.palette.secondary.main : 'white'}`,
+  color: `${$select ? theme.palette.primary.main : 'white'}`,
   cursor: 'pointer',
   position: 'relative',
 }));

@@ -1,9 +1,11 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { HeaderProps, ListChangeSpanColorProps, TabPropsType } from '../../type/sections';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Tabs, Tab, styled as MuiStyled, Typography, useTheme, Button } from '@mui/material';
 import useMoveScroll from '../../hooks/useMoveScroll';
+import { HeaderProps, ListChangeSpanColorProps, TabPropsType } from '../../type/sections';
+
 import { headerLists, headerListsIcon, headerLabel } from '../../constant/info';
+
+import { Tabs, Tab, styled as MuiStyled, Typography, useTheme, Button } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 /**
@@ -72,9 +74,11 @@ export default function Index() {
 
   return (
     <Header $scroll={scroll} $mobileNav={mobileNav}>
+      {/* 로고 */}
       <Logo variant="h1" onClick={scrollToTop}>
         Girang's
       </Logo>
+      {/* 리스트 */}
       <TabsContainer
         value={currentPath.pathname !== '/' ? currentPath.pathname : '/home'}
         sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' } }}>
@@ -94,6 +98,7 @@ export default function Index() {
           />
         ))}
       </TabsContainer>
+      {/* 모바일 시 메뉴 버튼 */}
       <MenuIconBtn
         $mobileNav={mobileNav}
         startIcon={mobileNav ? <ArrowForwardIosIcon /> : <ArrowBackIosNewIcon />}

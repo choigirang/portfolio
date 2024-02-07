@@ -1,6 +1,11 @@
 import { useQuery } from 'react-query';
 import AWS from 'aws-sdk';
 
+/**
+ *
+ * @param folder 프로젝트에서 사용될, 각 프로젝트의 aws s3의 폴더
+ * @returns
+ */
 const fetchS3Objects = async (folder: string) => {
   const ACCESS_ID = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
   const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY;

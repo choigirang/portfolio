@@ -1,13 +1,14 @@
 import React, { Suspense, useEffect, useMemo, useState } from 'react';
-import { motion, useScroll } from 'framer-motion';
 import Header from './components/layout/Header';
-import Footer from './components/layout/footer/Index';
-import { ThemeProvider, styled as MuiStyled } from '@mui/material';
-import createCustomTheme from './theme/palette';
-import { useColorMode } from './hooks/useColorMode';
 import Main from './components/sections/main/Index';
+import Footer from './components/layout/footer/Index';
+
+import { useColorMode } from './hooks/useColorMode';
+
+import { ThemeProvider, styled as MuiStyled } from '@mui/material';
+import { motion, useScroll } from 'framer-motion';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useLocation, useNavigate } from 'react-router-dom';
+import createCustomTheme from './theme/palette';
 
 const About = React.lazy(() => import('./components/sections/about/Index'));
 const Skills = React.lazy(() => import('./components/sections/skills/Index'));

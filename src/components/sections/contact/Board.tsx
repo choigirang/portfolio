@@ -1,7 +1,9 @@
-import { Alert, Button, styled as MuiStyled, TextField } from '@mui/material';
 import React, { useRef, useState } from 'react';
-import { ContactType } from '../../../type/sections';
 import emailjs from '@emailjs/browser';
+
+import { ContactType } from '../../../type/sections';
+
+import { Alert, Button, styled as MuiStyled, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
 const contact: ContactType = {
@@ -10,6 +12,10 @@ const contact: ContactType = {
   내용: 'text',
 };
 
+/**
+ *
+ * @returns 연락처 판
+ */
 export default function Board() {
   const [alertMsg, setAlertMsg] = useState({
     value: false,

@@ -1,7 +1,11 @@
-import { styled as MuiStyled } from '@mui/material';
-import React from 'react';
 import useMoveScroll from '../../../hooks/useMoveScroll';
 
+import { styled as MuiStyled } from '@mui/material';
+
+/**
+ *
+ * @returns 프로젝트 링크 개별 카드
+ */
 export default function LinkProjectCard() {
   const { scrollToPage } = useMoveScroll();
 

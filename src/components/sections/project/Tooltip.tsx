@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React from 'react';
 
 type Props = {
   show: string;
@@ -10,6 +9,11 @@ type Props = {
   vertical: string;
 };
 
+/**
+ *
+ * @param props 프로젝트 각 데이터 및 초기 위치 설정
+ * @returns framer motion을 이용한 애니메이션
+ */
 export default function Tooltip(props: Props) {
   const { show, name, displayName, color, horizon, vertical } = props;
 

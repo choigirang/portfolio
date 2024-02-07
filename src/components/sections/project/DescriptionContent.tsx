@@ -1,6 +1,11 @@
-import React from 'react';
 import { styled as MuiStyled } from '@mui/material';
 
+/**
+ *
+ * @param flipCard 카드 클릭 상태
+ * @param description 매핑으로 뿌려질 각 프로젝트 설명 데이터
+ * @returns 클릭 시 카드 뒤집기로 설명문
+ */
 export default function DescriptionContent(props: { flipCard: boolean; description: Array<string> }) {
   const { flipCard, description } = props;
 

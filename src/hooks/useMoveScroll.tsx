@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ *
+ * @returns 헤더에서 페이지 이동
+ */
 export default function useMoveScroll() {
   const scrollToTop = () => {
     return window.scroll({

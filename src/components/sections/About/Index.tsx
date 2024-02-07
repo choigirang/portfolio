@@ -1,9 +1,14 @@
-import React from 'react';
-import { styled as MuiStyled } from '@mui/material';
 import TextContainer from './TextContainer';
-import { profileInfo } from '../../../constant/info';
 import ProfileCard from './ProfileCard';
 
+import { profileInfo } from '../../../constant/info';
+
+import { styled as MuiStyled } from '@mui/material';
+
+/**
+ *
+ * @returns about 메인
+ */
 export default function About() {
   const firstRowEntries = Object.entries(profileInfo).slice(0, 3);
   const secondRowEntries = Object.entries(profileInfo).slice(3);
@@ -15,13 +20,13 @@ export default function About() {
         <h3>소개</h3>
       </Title>
       <TextContainer />
-      {/* First Row */}
+      {/* 카드 첫째 줄 */}
       <ProfileContainer>
         {firstRowEntries.map(([key, value]) => (
           <ProfileCard key={key} name={key} value={value} />
         ))}
       </ProfileContainer>
-      {/* Second Row */}
+      {/* 카드 두번째 줄 */}
       <ProfileContainer>
         {secondRowEntries.map(([key, value]) => (
           <ProfileCard key={key} name={key} value={value} />

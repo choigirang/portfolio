@@ -1,7 +1,13 @@
-import { Button, styled as MuiStyled } from '@mui/material';
-import React from 'react';
-import { IconBoxProps, SelectStackType, StackListProps } from '../../../type/sections';
+import { IconBoxProps, SelectStackType } from '../../../type/sections';
 
+import { Button, styled as MuiStyled } from '@mui/material';
+
+/**
+ * 스킬 메인페이지에서 데이터 넘겨받음
+ * @param categoryData 메인 페이지에서 선택한 카테고리 (프론트엔드, 백엔드, 툴 등)
+ * @param stack 선택한 스택 (프론트엔드 - 리액트, 쿼리 등)
+ * @returns 스택에 관한 아이콘 매핑
+ */
 export default function IconBox({ categoryData, stack, setStack }: IconBoxProps) {
   const iconImg = (key: string, value: SelectStackType) => {
     const url = 'https://cdn.simpleicons.org/';

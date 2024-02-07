@@ -1,7 +1,13 @@
-import { Switch, styled as MuiStyled } from '@mui/material';
 import { useColorMode } from '../../../hooks/useColorMode';
 import { MenuOpenType } from '../../../type/sections';
 
+import { Switch, styled as MuiStyled } from '@mui/material';
+
+/**
+ *
+ * @param $openMenu footer index부터 전달받은 menu on/off
+ * @returns 다크모드 스위치
+ */
 export default function DarkModeSwitch({ $openMenu }: MenuOpenType) {
   const { toggleColorMode } = useColorMode();
 
@@ -32,10 +38,6 @@ const ModeSwitch = MuiStyled(Switch)<MenuOpenType>(({ $openMenu, theme }) => ({
       '& + .MuiSwitch-track': {
         display: 'none',
       },
-      // '& + .MuiSwitch-track': {
-      //   opacity: 1,
-      //   backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#dce2e7',
-      // },
     },
   },
   '& .MuiSwitch-thumb': {

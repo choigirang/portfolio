@@ -1,14 +1,19 @@
+import { useState } from 'react';
+import useMoveScroll from '../../../hooks/useMoveScroll';
+
+import { MenuOpenType } from '../../../type/sections';
+
 import { styled as MuiStyled, IconButton } from '@mui/material';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ListIcon from '@mui/icons-material/List';
-import React, { useState } from 'react';
-import DarkModeSwitch from './DarkModeSwitch';
 import { FaInstagram } from 'react-icons/fa';
-import { MenuOpenType } from '../../../type/sections';
 import { FaGithub } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
-import useMoveScroll from '../../../hooks/useMoveScroll';
 
+/**
+ *
+ * @returns 하단 고정 푸터
+ */
 export default function Footer() {
   const [openMenu, setOpenMenu] = useState(false);
 

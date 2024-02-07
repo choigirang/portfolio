@@ -1,8 +1,13 @@
-import { styled as MuiStyled } from '@mui/material';
-import React from 'react';
-import { SkillCardProps } from '../../../type/sections';
 import useMoveScroll from '../../../hooks/useMoveScroll';
+import { SkillCardProps } from '../../../type/sections';
 
+import { styled as MuiStyled } from '@mui/material';
+
+/**
+ *
+ * @param props 메인 페이지에서 넘겨받을 항목에 따른 데이터
+ * @returns 이미지 및 링크 연결
+ */
 export default function Card(props: SkillCardProps) {
   const { src, txt, bedge, color } = props;
   const { scrollToPage } = useMoveScroll();

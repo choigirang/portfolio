@@ -1,11 +1,17 @@
-import React, { MouseEvent, MouseEventHandler, useEffect, useRef, useState } from 'react';
-import { Button, styled as MuiStyled } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
 import useGetImg from '../../../hooks/useGetImg';
+
+import { Button, styled as MuiStyled } from '@mui/material';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
 
+/**
+ *
+ * @param name 메인 페이지에서 매핑으로 넘겨받을 프로젝트 개별 이름
+ * @returns 프로젝트 이미지
+ */
 export default function AboutImg({ name }: { name: string }) {
   const [showImg, setShowImg] = useState(0);
   const [saveImgUrl, setSaveImgUrl] = useState<string[]>([]);
@@ -55,16 +61,21 @@ export default function AboutImg({ name }: { name: string }) {
   return (
     <ShowImg>
       <ImgBox onMouseEnter={() => setHoverBtn(true)} onMouseLeave={() => setHoverBtn(false)}>
+        {/* 좌측 버튼 */}
         <MoveImgLeftBtn hoverBtn={hoverBtn} startIcon={<ArrowLeftIcon />} onClick={e => imgNumController(e, 'prev')} />
+        {/* 이미지 */}
         <Img hoverBtn={hoverBtn} src={saveImgUrl[showImg]} alt={`${name + showImg} img`} />
+        {/* 우측 버튼 */}
         <MoveImgRightBtn
           hoverBtn={hoverBtn}
           startIcon={<ArrowRightIcon />}
           onClick={e => imgNumController(e, 'next')}
         />
+        {/* 이미지 갯수 */}
         <CheckImgLength>
           {showImg + 1}/{saveImgUrl.length}
         </CheckImgLength>
+        {/* 시작 / 멈춤 */}
         <StartPauseBtn
           hoverBtn={hoverBtn}
           onClick={e => imgNumController(e, 'start')}

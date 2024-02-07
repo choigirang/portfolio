@@ -1,9 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ProjectDetailType, StackInfoType } from '../../../type/sections';
 import { styled as MuiStyled } from '@mui/material';
-import { Variants, motion } from 'framer-motion';
 import ProjectStackList from './ProjectStackList';
 
+/**
+ *
+ * @param props 메인 페이지에서 넘겨받을, 개별 프로젝트에 대한 데이터
+ * @returns 데이터에 따른 설명
+ */
 export default function AboutContent(props: ProjectDetailType) {
   const { projectName, github, stack, link } = props;
   const [isHover, setIsHover] = useState('');

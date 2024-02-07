@@ -1,8 +1,14 @@
-import { styled as MuiStyled } from '@mui/material';
-import Card from './Card';
-import { skillCardInfo } from '../../../constant/info';
 import LinkProjectCard from './LinkProject';
+import Card from './Card';
 
+import { skillCardInfo } from '../../../constant/info';
+
+import { styled as MuiStyled } from '@mui/material';
+
+/**
+ *
+ * @returns 메인 페이지
+ */
 export default function Main() {
   return (
     <Containter id="home">

@@ -1,13 +1,18 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import useGetImg from '../../../hooks/useGetImg';
-import { Button, styled as MuiStyled } from '@mui/material';
+import { useEffect, useState } from 'react';
 import AboutImg from './AboutImg';
-import { projects } from '../../../constant/info';
-import { ProjectDetailType } from '../../../type/sections';
 import AboutContent from './AboutContent';
-import { SetStatOption } from 'aws-sdk/clients/transfer';
 import DescriptionContent from './DescriptionContent';
 
+import { projects } from '../../../constant/info';
+import { ProjectDetailType } from '../../../type/sections';
+
+import { styled as MuiStyled } from '@mui/material';
+
+/**
+ *
+ * @param name 메인 페이지에서 매핑으로 뿌려질 프로젝트명
+ * @returns 컴포넌트 앞면과 뒷면 카드
+ */
 export default function ProjectCard({ name }: { name: string }) {
   const [flipCard, setFlipCard] = useState(false);
   const [projectData, setProjectData] = useState<ProjectDetailType>();
@@ -25,10 +30,12 @@ export default function ProjectCard({ name }: { name: string }) {
     <Container flipCard={flipCard} onClick={handleFlipCard}>
       {projectData && (
         <Card>
+          {/* 앞면 */}
           <FrontContent flipCard={flipCard}>
             <AboutImg name={projectData.name} />
             <AboutContent {...projectData} />
           </FrontContent>
+          {/* 뒷면 */}
           <DescriptionContent flipCard={flipCard} description={projectData?.description} />
         </Card>
       )}

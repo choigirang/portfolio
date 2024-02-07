@@ -1,7 +1,10 @@
-import { Alert, Button, styled as MuiStyled, TextField } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
+import { styled as MuiStyled } from '@mui/material';
 import Board from './Board';
 
+/**
+ *
+ * @returns 연락처 메인 페이지
+ */
 export default function Contact() {
   return (
     <Container id="contact">

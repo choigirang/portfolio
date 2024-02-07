@@ -1,7 +1,13 @@
 import React from 'react';
 import { ProfileObjectInfo } from '../../../type/sections';
+
 import { styled as MuiStyled } from '@mui/material';
 
+/**
+ *
+ * @param value 프로필 데이터, 이름,학력 등
+ * @returns 링크가 필요한 조건부
+ */
 export default function ProfileCard({ name, value }: { name: string; value: ProfileObjectInfo }) {
   const { title, info, icon } = value;
 

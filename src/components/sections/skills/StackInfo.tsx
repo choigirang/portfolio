@@ -1,7 +1,13 @@
-import React from 'react';
-import { Button, styled as MuiStyled } from '@mui/material';
 import { SelectStackType } from '../../../type/sections';
 
+import { styled as MuiStyled } from '@mui/material';
+
+/**
+ *
+ * @param stackInfo 선택한 스택 데이터
+ * @param detailStack 스택데이터의 상세 설명
+ * @returns 스택 별 설명 매핑
+ */
 export default function StackInfo(props: {
   stackInfo: SelectStackType | undefined;
   detailStack: SelectStackType | undefined;
@@ -11,6 +17,7 @@ export default function StackInfo(props: {
   const mappingDescription = (des: string[], link: string | string[]) => {
     if (!Array.isArray(link)) return;
 
+    // 설명에 맞는 링크 매핑
     return des.map((each, idx) =>
       link[idx] !== '' ? (
         <Description href={link[idx]} target="_blank" key={each}>

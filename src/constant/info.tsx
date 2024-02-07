@@ -1,10 +1,12 @@
+import { ReactNode } from 'react';
+
+import { AllStackType, ProfileObjectInfo, ProjectInfoType, SkillCardProps } from '../type/sections';
+
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import ArticleIcon from '@mui/icons-material/Article';
 import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
-import { AllStackType, ProfileObjectInfo, ProjectInfoType, SkillCardProps } from '../type/sections';
-import { ReactNode } from 'react';
 
 // HEADER
 export const headerLabel: { [key: string]: string } = {

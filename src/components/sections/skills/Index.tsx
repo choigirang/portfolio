@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Button, List, styled as MuiStyled, Palette } from '@mui/material';
-import styled from 'styled-components';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { useEffect, useState } from 'react';
 import StackList from './StackList';
-import { allStack, skillsList } from '../../../constant/info';
-import { motion } from 'framer-motion';
-import { AllStackType, SelectStackType } from '../../../type/sections';
 
+import { allStack } from '../../../constant/info';
+import { SelectStackType } from '../../../type/sections';
+
+import { styled as MuiStyled } from '@mui/material';
+import { motion } from 'framer-motion';
+
+/**
+ *
+ * @returns 스킬 메인 페이지
+ */
 export default function Skills() {
   const [category, setCategory] = useState('언어');
   const [stack, setStack] = useState('');
@@ -36,6 +39,7 @@ export default function Skills() {
         <h4>클릭 시 관련 게시글을 자세히 볼 수 있습니다.</h4>
       </Title>
       <SubTitleContatiner>
+        {/* 스택 카테고리 선택 */}
         {categoryList.map(key => (
           <SubTitle key={key} $select={category === key} onClick={() => setCategory(key)}>
             {key}

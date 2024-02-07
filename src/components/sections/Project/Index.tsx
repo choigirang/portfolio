@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
 import ProjectCard from './ProjectCard';
-import { styled as MuiStyled } from '@mui/material';
+
 import { projects } from '../../../constant/info';
 
+import { styled as MuiStyled } from '@mui/material';
+
+/**
+ *
+ * @returns 프로젝트 메인 페이지
+ */
 export default function Project() {
   return (
     <Container id="project">

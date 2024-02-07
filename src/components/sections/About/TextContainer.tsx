@@ -1,6 +1,9 @@
 import { styled as MuiStyled } from '@mui/material';
-import React from 'react';
 
+/**
+ *
+ * @returns about 메인의 텍스트
+ */
 export default function TextContainer() {
   return (
     <Container>

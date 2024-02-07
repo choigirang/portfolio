@@ -45,6 +45,16 @@ const Container = MuiStyled('div')<{ $color: string }>(({ $color, theme }) => ({
   gridTemplateRows: '1fr',
   gridTemplateColumns: 'minmax(100px, 200px) auto',
   gap: 50,
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    gridTemplateColumns: '150px auto',
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    gridTemplateColumns: '100px auto',
+  },
 }));
 
 const StackName = MuiStyled('div')<{ $color: string }>(({ $color, theme }) => ({
@@ -62,6 +72,24 @@ const StackName = MuiStyled('div')<{ $color: string }>(({ $color, theme }) => ({
     padding: '5px 20px',
     borderRadius: 10,
   },
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    h3: {
+      fontWeight: 400,
+      padding: '5px 10px',
+      fontSize: 18,
+    },
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    h3: {
+      fontWeight: 400,
+      padding: '5px 10px',
+      fontSize: 14,
+    },
+  },
 }));
 
 const StackDetail = MuiStyled('section')(({ theme }) => ({
@@ -74,5 +102,15 @@ const StackDetail = MuiStyled('section')(({ theme }) => ({
 const Description = MuiStyled('a')(({ theme }) => ({
   '&:hover': {
     color: theme.palette.primary.main,
+  },
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    fontSize: 18,
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    fontSize: 14,
   },
 }));

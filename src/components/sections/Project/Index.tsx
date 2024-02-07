@@ -45,6 +45,24 @@ const Title = MuiStyled('div')(({ theme }) => ({
     fontSize: 20,
     color: '#6a6a6a',
   },
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    p: {
+      fontWeight: 500,
+    },
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    p: {
+      fontWeight: 300,
+    },
+
+    h3: {
+      fontSize: 24,
+    },
+  },
 }));
 
 const ProjectContainer = MuiStyled('div')(({ theme }) => ({
@@ -52,4 +70,12 @@ const ProjectContainer = MuiStyled('div')(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
   gap: 30,
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {},
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    gridTemplateColumns: '1fr',
+  },
 }));

@@ -75,6 +75,14 @@ const Container = MuiStyled('li')(({ theme }) => ({
       color: theme.palette.primary.main,
     },
   },
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {},
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    padding: '3%',
+  },
 }));
 
 const Link = MuiStyled('a')(({ href, theme }) => ({
@@ -89,10 +97,20 @@ const Link = MuiStyled('a')(({ href, theme }) => ({
 }));
 
 const Title = MuiStyled('span')(({ theme }) => ({
-  fontSize: 32,
+  fontSize: 24,
 
   '& :hover': {
     color: theme.palette.primary.main,
+  },
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    fontSize: 16,
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    fontSize: 16,
   },
 }));
 
@@ -112,5 +130,23 @@ const InfoWithIcon = MuiStyled('div')(({ theme }) => ({
 
   '.icon': {
     fontSize: 40,
+  },
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    fontSize: 24,
+
+    '.icon': {
+      fontSize: 24,
+    },
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    fontSize: 20,
+
+    '.icon': {
+      fontSize: 20,
+    },
   },
 }));

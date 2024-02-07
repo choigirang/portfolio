@@ -222,7 +222,7 @@ export const allStack: AllStackType = {
     },
     styledcomponents: {
       name: 'styledcomponents',
-      displayName: '스타일 컴포넌트',
+      displayName: 'styled-components',
       description: [
         '컴포넌트와 props를 활용할 수 있습니다.',
         '컴포넌트 중첩 및 확장을 활용하여 스타일링 할 수 있습니다.',

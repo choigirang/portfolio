@@ -33,7 +33,7 @@ export default function Skills() {
       <Title>
         <p>🗂️</p>
         <h3>기술 목록</h3>
-        <h4>클릭 시 해당 게시글을 자세히 볼 수 있습니다.</h4>
+        <h4>클릭 시 관련 게시글을 자세히 볼 수 있습니다.</h4>
       </Title>
       <SubTitleContatiner>
         {categoryList.map(key => (
@@ -77,6 +77,12 @@ const Title = MuiStyled('div')(({ theme }) => ({
     fontSize: 20,
     color: '#6a6a6a',
   },
+
+  '@media (max-width: 768px)': {
+    h3: {
+      fontSize: 24,
+    },
+  },
 }));
 
 const SubTitleContatiner = MuiStyled(motion.div)(({ theme }) => ({
@@ -86,6 +92,18 @@ const SubTitleContatiner = MuiStyled(motion.div)(({ theme }) => ({
   gap: 20,
   fontSize: 32,
   gridTemplateColumns: 'repeat(4, 1fr)',
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    fontSize: 24,
+    marginBottom: 30,
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    fontSize: 20,
+    marginBottom: 0,
+  },
 }));
 
 const SubTitle = MuiStyled('p')<{ $select: boolean }>(({ $select, theme }) => ({

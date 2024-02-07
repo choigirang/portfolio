@@ -7,7 +7,7 @@ export default function Contact() {
     <Container id="contact">
       <Title>
         <p>📩</p>
-        <p>연락처</p>
+        <h3>연락처</h3>
       </Title>
       <Board />
     </Container>
@@ -40,9 +40,10 @@ const Title = MuiStyled('div')(({ theme }) => ({
   color: theme.palette.primary.main,
   fontSize: 32,
 
-  p: {
-    display: 'flex',
-    justifyContent: 'center',
-    fontWeight: 700,
+  /* 타블렛 */
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    fontSize: 24,
   },
 }));

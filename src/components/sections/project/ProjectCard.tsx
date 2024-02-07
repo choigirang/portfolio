@@ -23,17 +23,15 @@ export default function ProjectCard({ name }: { name: string }) {
 
   return (
     <Container flipCard={flipCard} onClick={handleFlipCard}>
-      <Card>
-        {projectData && (
-          <React.Fragment>
-            <FrontContent flipCard={flipCard}>
-              <AboutImg name={projectData.name} />
-              <AboutContent {...projectData} />
-            </FrontContent>
-            <DescriptionContent flipCard={flipCard} description={projectData?.description} />
-          </React.Fragment>
-        )}
-      </Card>
+      {projectData && (
+        <Card>
+          <FrontContent flipCard={flipCard}>
+            <AboutImg name={projectData.name} />
+            <AboutContent {...projectData} />
+          </FrontContent>
+          <DescriptionContent flipCard={flipCard} description={projectData?.description} />
+        </Card>
+      )}
     </Container>
   );
 }
@@ -69,4 +67,14 @@ const FrontContent = MuiStyled('div')<{ flipCard: boolean }>(({ flipCard, theme 
     visibility: 'hidden',
     transition: 'all .3s',
   }),
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    gap: 50,
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    gap: 20,
+  },
 }));

@@ -28,7 +28,7 @@ export default function Footer() {
       <UpIconBtn onClick={scrollToTop}>
         <UpIconStyling fontSize="large" />
       </UpIconBtn>
-      <Menu>
+      {/* <Menu>
         <ListIconBtn $openMenu={openMenu} onClick={openMenuHandler}>
           <ListIconStyle $openMenu={openMenu} fontSize="large" />
         </ListIconBtn>
@@ -38,7 +38,7 @@ export default function Footer() {
         <MailIconBox $openMenu={openMenu} onClick={() => scrollToPage('Contact')}>
           <MailIconBtn size={30} $openMenu={openMenu}></MailIconBtn>
         </MailIconBox>
-      </Menu>
+      </Menu> */}
     </Container>
   );
 }
@@ -49,10 +49,20 @@ const Container = MuiStyled('footer')({
   bottom: 0,
   justifyContent: 'end',
   alignItems: 'center',
-  width: '100vw',
+  width: 'calc(100% - 240px)',
   height: '10%',
-  padding: '0 calc((100vw - 1280px) / 2);',
+  paddingRight: '5%',
   transition: 'all .5s ease !important',
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    width: '100%',
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    width: '100%',
+  },
 });
 
 const UpIconBtn = MuiStyled(IconButton)(({ theme }) => ({
@@ -63,7 +73,7 @@ const UpIconBtn = MuiStyled(IconButton)(({ theme }) => ({
 }));
 
 const UpIconStyling = MuiStyled(ArrowCircleUpIcon)(({ theme }) => ({
-  color: '#828282f !important',
+  color: 'white',
 }));
 
 const Menu = MuiStyled('div')({
@@ -72,6 +82,9 @@ const Menu = MuiStyled('div')({
   flexDirection: 'column-reverse',
   justifyContent: 'center',
   transition: 'all 2s',
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {},
 });
 
 const ListIconBtn = MuiStyled(IconButton)<MenuOpenType>(({ $openMenu, theme }) => ({

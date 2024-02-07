@@ -12,7 +12,7 @@ export default function About() {
     <Container id="about">
       <Title>
         <p>🧑🏻‍💻</p>
-        <p>소개</p>
+        <h3>소개</h3>
       </Title>
       <TextContainer />
       {/* First Row */}
@@ -55,14 +55,36 @@ const Title = MuiStyled('div')(({ theme }) => ({
     justifyContent: 'center',
     fontWeight: 700,
   },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    h3: { fontSize: 24 },
+  },
 }));
 
 const ProfileContainer = MuiStyled('ul')(({ theme }) => ({
   width: '100%',
   display: 'grid',
   marginTop: 50,
-  columnGap: 100,
+  columnGap: 30,
   rowGap: 50,
   gridTemplateRows: 'repeat(1, 200px)',
   gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    rowGap: 10,
+    columnGap: 20,
+    marginTop: 0,
+    gridTemplateRows: 'repeat(1, 100px)',
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    rowGap: 10,
+    columnGap: 20,
+    marginTop: 0,
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: 'repeat(1, 70px)',
+  },
 }));

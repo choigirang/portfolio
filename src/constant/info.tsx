@@ -342,35 +342,32 @@ export const allStack: AllStackType = {
 
 // PROJECT
 export const projects: ProjectInfoType = {
-  // portfolio: {
-  //   name: 'portfolio',
-  //   projectName: 'Portfolio 포트폴리오',
-  //   description: [
-  //     '소개를 위한 포트폴리오를 제작한 프로젝트입니다.',
-  //     'Typescript로 *데이터 형태의 다양한 타입들을 커스텀*하여 사용하였습니다.',
-  //     '웹과 모바일 등 접근성을 높이기 위해 *반응형웹*으로 제작하였습니다.',
-  //     'MUI를 사용하여 *테마 적용, TextFild, Tabs, Switch 등의 컴포넌트를 커스텀*하여 적용하였습니다.',
-  //     'FramerMotion을 사용하여 *Tooltip 등에 대한 애니메이션을 적용*하였습니다.',
-  //     'lazyloading, WebP, source, picture 등을 이용하여 *최적화를 진행*하였습니다.',
-  //     'ReactQuery를 사용하여 *이미지 요청을 최소화* 하였습니다.',
-  //     '*EC2를 이용하여 배포*하였습니다.',
-  //   ],
-  //   github: 'https://github.com/choigirang/portfolio',
-  //   link: '',
-  //   stack: {
-  //     frontend: [
-  //       { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
-  //       { name: 'react', displayName: 'React', color: '#1CCEFF' },
-  //       { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
-  //       { name: 'mui', displayName: 'MaterialUi', color: '#027FFE' },
-  //       { name: 'framer', displayName: 'Framer-motion', color: '#027FFE' },
-  //     ],
-  //     backend: [
-  //       { name: 'amazonec2', displayName: 'EC2', color: '#F0921E' },
-  //       { name: 'amazons3', displayName: 'S3', color: '#53B145' },
-  //     ],
-  //   },
-  // },
+  portfolio: {
+    name: 'portfolio',
+    projectName: 'Portfolio 포트폴리오',
+    description: [
+      '소개를 위한 포트폴리오를 제작한 프로젝트입니다.',
+      'Typescript로 *데이터 형태의 다양한 타입들을 커스텀*하여 사용하였습니다.',
+      '웹과 모바일 등 접근성을 높이기 위해 *반응형웹*으로 제작하였습니다.',
+      'MUI를 사용하여 *테마 적용, TextFild, Tabs, Switch 등의 컴포넌트를 커스텀*하여 적용하였습니다.',
+      'FramerMotion을 사용하여 *Tooltip 등에 대한 애니메이션을 적용*하였습니다.',
+      'lazyloading, WebP, source, picture 등을 이용하여 *최적화를 진행*하였습니다.',
+      'ReactQuery를 사용하여 *이미지 요청을 최소화* 하였습니다.',
+      '*EC2를 이용하여 배포*하였습니다.',
+    ],
+    github: 'https://github.com/choigirang/portfolio',
+    link: '',
+    stack: {
+      frontend: [
+        { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
+        { name: 'react', displayName: 'React', color: '#1CCEFF' },
+        { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
+        { name: 'mui', displayName: 'MaterialUi', color: '#027FFE' },
+        { name: 'framer', displayName: 'Framer-motion', color: '#027FFE' },
+      ],
+      backend: [],
+    },
+  },
   pokemon: {
     name: 'pokemon',
     projectName: 'Pokemon Choi 포켓몬최',

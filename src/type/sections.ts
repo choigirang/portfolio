@@ -13,8 +13,9 @@ export type ListChangeSpanColorProps = {
   activeUrl: boolean;
 };
 
-export type HeaderScrollState = {
+export type HeaderProps = {
   $scroll: boolean;
+  $mobileNav: boolean;
 };
 
 export type TabPropsType = {

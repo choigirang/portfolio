@@ -79,6 +79,16 @@ const ShowImg = MuiStyled('div')(({ theme }) => ({
   width: '100%',
   height: 300,
   position: 'relative',
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    height: 200,
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    height: 150,
+  },
 }));
 
 const ImgBox = MuiStyled('div')(({ theme }) => ({
@@ -86,6 +96,7 @@ const ImgBox = MuiStyled('div')(({ theme }) => ({
   height: '100%',
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
 }));
 
 const MoveImgLeftBtn = MuiStyled(Button)<{ hoverBtn: boolean }>(({ hoverBtn, theme }) => ({
@@ -176,7 +187,8 @@ const StartPauseBtn = MuiStyled(Button)<{ hoverBtn: boolean }>(({ hoverBtn, them
 }));
 
 const Img = MuiStyled('img')<{ hoverBtn: boolean }>(({ hoverBtn, theme }) => ({
-  width: '100%',
+  maxWidth: '100%',
+  height: '100%',
   maxHeight: 300,
   objectFit: 'contain',
   display: 'flex',

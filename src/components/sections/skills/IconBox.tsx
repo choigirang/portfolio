@@ -28,6 +28,16 @@ const Container = MuiStyled('section')(({ theme }) => ({
   justifyContent: 'center',
   gap: 10,
   gridTemplateColumns: 'repeat(auto-fit, minmax(50px, 100px))',
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    gridTemplateColumns: 'repeat(50px)',
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    gridTemplateColumns: 'repeat(auto-fit,70px)',
+  },
 }));
 
 const IconBtn = MuiStyled(Button)<{ $matchStack?: boolean; $stackColor: string }>(

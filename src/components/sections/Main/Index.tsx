@@ -20,22 +20,17 @@ const Containter = MuiStyled('main')({
   gap: 20,
   paddingTop: 100,
   boxSizing: 'border-box',
+  gridTemplateColumns: '2fr 1fr 1fr',
 
-  '@media (min-width: 1200px)': {
-    gridTemplateColumns: 'minmax(400px, 900px) minmax(300px, 1fr) minmax(300px, 1fr)',
+  /* 타블렛 */
+  '@media (min-width: 768px) and (max-width: 1023px)': {
+    gridTemplateRows: 'repeat(1, 300px)',
+    gridTemplateColumns: 'repeat(3, 1fr)',
   },
 
-  '@media (max-width: 1200px)': {
-    gridTemplateRows: 'repeat(2, 300px)',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-
-    '& > div:nth-of-type(1)': {
-      gridColumn: 'span 2',
-    },
-  },
-
+  /* 모바일 */
   '@media (max-width: 768px)': {
-    gridTemplateRows: 'repeat(2, 300px)',
+    gridTemplateRows: 'repeat(3, 100px)',
     gridTemplateColumns: 'repeat(1, 1fr)',
   },
 });

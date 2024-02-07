@@ -1,10 +1,11 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { HeaderScrollState, ListChangeSpanColorProps, TabPropsType } from '../../type/sections';
+import { HeaderProps, ListChangeSpanColorProps, TabPropsType } from '../../type/sections';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Tabs, Tab, styled as MuiStyled, Typography, useTheme } from '@mui/material';
+import { Tabs, Tab, styled as MuiStyled, Typography, useTheme, Button } from '@mui/material';
 import useMoveScroll from '../../hooks/useMoveScroll';
 import { headerLists, headerListsIcon, headerLabel } from '../../constant/info';
-
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 /**
  *
  * @returns router에 따른 헤더
@@ -12,6 +13,7 @@ import { headerLists, headerListsIcon, headerLabel } from '../../constant/info';
 export default function Index() {
   const [scroll, setScroll] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('Home');
+  const [mobileNav, setMobileNav] = useState(false);
 
   const currentPath = useLocation();
   const navigate = useNavigate();
@@ -27,9 +29,9 @@ export default function Index() {
       cancelAnimationFrame(animationFrameId);
 
       animationFrameId = requestAnimationFrame(() => {
-        if (window.scrollY > 100 && !scroll) {
+        if (window.scrollY > 50 && !scroll) {
           setScroll(true);
-        } else if (window.scrollY <= 100 && scroll) {
+        } else if (window.scrollY <= 50 && scroll) {
           setScroll(false);
         }
       });
@@ -69,11 +71,11 @@ export default function Index() {
   }, [activeSection]);
 
   return (
-    <Header $scroll={scroll}>
+    <Header $scroll={scroll} $mobileNav={mobileNav}>
       <Logo variant="h1" onClick={scrollToTop}>
         Girang's
       </Logo>
-      <Tabs
+      <TabsContainer
         value={currentPath.pathname !== '/' ? currentPath.pathname : '/home'}
         sx={{ '& .MuiTabs-indicator': { backgroundColor: 'transparent' } }}>
         {headerLists.map(list => (
@@ -91,12 +93,16 @@ export default function Index() {
             onClick={() => scrollToPage(list)}
           />
         ))}
-      </Tabs>
+      </TabsContainer>
+      <MenuIconBtn
+        $mobileNav={mobileNav}
+        startIcon={mobileNav ? <ArrowForwardIosIcon /> : <ArrowBackIosNewIcon />}
+        onClick={() => setMobileNav(prev => !prev)}></MenuIconBtn>
     </Header>
   );
 }
 
-const Header = MuiStyled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
+const Header = MuiStyled('div')<HeaderProps>(({ theme, $scroll, $mobileNav }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: 100,
@@ -112,17 +118,6 @@ const Header = MuiStyled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
   left: 0,
   top: 0,
 
-  '& .MuiTab-wrapper': {
-    alignItems: 'self-start',
-    justifyContent: 'flex-start',
-  },
-
-  '& .MuiTabs-flexContainer': {
-    display: 'flex',
-    flexDirection: 'column !important',
-    gap: 20,
-  },
-
   '.visited': {
     fontWeight: '500',
     color: theme.palette.common.white,
@@ -135,6 +130,71 @@ const Header = MuiStyled('div')<HeaderScrollState>(({ theme, $scroll }) => ({
       color: theme.palette.common.white,
     },
   }),
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    width: '100%',
+    height: 100,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 0,
+    padding: 0,
+    backgroundColor: $scroll ? 'rgba(0, 0, 0, 0.7)' : 'none',
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    width: '50%',
+    height: '100%',
+    flexDirection: 'column',
+    gap: 0,
+    backgroundColor: 'black',
+    padding: '100px 0 0 30px',
+    alignItems: 'start',
+    transform: $mobileNav ? 'translateX(-100%)' : '0',
+  },
+}));
+
+const TabsContainer = MuiStyled(Tabs)(({ theme }) => ({
+  '& .MuiTab-wrapper': {
+    alignItems: 'self-start',
+    justifyContent: 'flex-start',
+  },
+
+  '& .MuiTabs-flexContainer': {
+    display: 'flex',
+    flexDirection: 'column !important',
+    gap: 20,
+  },
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    '& .MuiTabs-flexContainer': {
+      display: 'flex',
+      flexDirection: 'row !important',
+      gap: 20,
+      height: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    width: '100%',
+    height: '100%',
+    paddingTop: 100,
+
+    '& .MuiTabs-flexContainer': {
+      display: 'flex',
+      flexDirection: 'column !important',
+      gap: 20,
+      height: '100%',
+      alignItems: 'start',
+      justifyContent: 'start',
+    },
+  },
 }));
 
 const TabListWithIcons = MuiStyled('div')<ListChangeSpanColorProps>(({ activeUrl, theme }) => ({
@@ -161,6 +221,17 @@ const TabListWithIcons = MuiStyled('div')<ListChangeSpanColorProps>(({ activeUrl
       color: 'white',
     },
   },
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    justifyContent: 'center',
+    svg: {
+      display: 'none',
+    },
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {},
 }));
 
 const TabList = MuiStyled(Tab)<TabPropsType>(({ theme }) => ({
@@ -183,6 +254,12 @@ const TabList = MuiStyled(Tab)<TabPropsType>(({ theme }) => ({
       color: `${theme.palette.common.white} !important`,
     },
   }),
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {},
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {},
 }));
 
 const Logo = MuiStyled(Typography)(({ theme }) => ({
@@ -200,4 +277,46 @@ const Logo = MuiStyled(Typography)(({ theme }) => ({
   ...(theme.palette.mode === 'dark' && {
     color: 'white',
   }),
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    display: 'none',
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    display: 'block',
+  },
+}));
+
+const MenuIconBtn = MuiStyled(Button)<{ $mobileNav: boolean }>(({ theme, $mobileNav }) => ({
+  display: 'none',
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    display: 'none',
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    display: 'block',
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    right: '-70px',
+
+    svg: {
+      backgroundColor: 'white',
+      padding: 10,
+      width: 20,
+      height: 20,
+      opacity: 0.5,
+      borderRadius: '50%',
+    },
+
+    span: {
+      width: 20,
+      height: 20,
+    },
+  },
 }));

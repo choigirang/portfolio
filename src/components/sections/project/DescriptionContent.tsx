@@ -30,7 +30,6 @@ export default function DescriptionContent(props: { flipCard: boolean; descripti
 }
 
 const BackContent = MuiStyled('div')<{ flipCard: boolean }>(({ flipCard, theme }) => ({
-  width: '100%',
   height: '100%',
   position: 'absolute',
   top: 0,

@@ -21,11 +21,15 @@ export default function AboutContent(props: ProjectDetailType) {
   };
 
   const returnTag = (title: string, value: string) => {
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.stopPropagation();
+    };
+
     if (title === '프로젝트명') {
       return <p>{value}</p>;
     } else
       return (
-        <LinkValue href={value} target="_blank" className="link">
+        <LinkValue href={value} target="_blank" className="link" onClick={handleClick}>
           {value}
         </LinkValue>
       );
@@ -56,7 +60,6 @@ export default function AboutContent(props: ProjectDetailType) {
 
 const Container = MuiStyled('div')(({ theme }) => ({
   width: '100%',
-  padding: '0 10%',
   display: 'flex',
   flexDirection: 'column',
   gap: 20,
@@ -73,10 +76,17 @@ const Floor = MuiStyled('div')(({ theme }) => ({
 
 const Title = MuiStyled('p')(({ theme }) => ({
   display: 'flex',
-  justifyContent: 'end',
   color: theme.palette.primary.main,
   fontWeight: 500,
   fontSize: 18,
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {},
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    fontSize: 14,
+  },
 }));
 
 const Text = MuiStyled('div')<{ checkStack: boolean; checkDes: boolean }>(({ checkStack, checkDes, theme }) => ({
@@ -101,6 +111,14 @@ const Text = MuiStyled('div')<{ checkStack: boolean; checkDes: boolean }>(({ che
     display: 'flex',
     flexDirection: 'column',
   }),
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {},
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    fontSize: 14,
+  },
 }));
 
 const LinkValue = MuiStyled('a')(({ theme }) => ({

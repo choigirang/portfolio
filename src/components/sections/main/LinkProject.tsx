@@ -64,13 +64,31 @@ const Text = MuiStyled('div')(({ theme }) => ({
     padding: '5px 10px',
     backgroundColor: 'red',
     borderRadius: 10,
-    fontWeight: 900,
+    fontWeight: 700,
   },
 
   '.main-txt': {
     fontFamily: 'SCoreDream',
-    fontSize: 50,
+    fontSize: 32,
     color: 'white',
     transition: 'all .5s',
+  },
+
+  '@media (min-width: 768px) and (max-width: 1023px)': {
+    '.bedge': {
+      fontSize: 16,
+      fontWeight: 500,
+    },
+
+    '.main-txt': {
+      fontSize: 32,
+      color: 'white',
+      transition: 'all .5s',
+    },
+  },
+
+  '@media (max-width: 768px)': {
+    gridTemplateRows: 'repeat(3, 100px)',
+    gridTemplateColumns: 'repeat(1, 1fr)',
   },
 }));

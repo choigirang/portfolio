@@ -41,6 +41,7 @@ const Title = MuiStyled('div')(({ theme }) => ({
   fontSize: 32,
 
   /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {},
 
   /* 모바일 */
   '@media screen and (max-width:767px)': {

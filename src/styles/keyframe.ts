@@ -55,7 +55,7 @@ export const reverseAni = keyframes`
     transform: scaleX(1);
   }
   50%{
-    transform: scaleX(-1);
+    transform: scaleX(-1);  
   }
 `;
 
@@ -80,4 +80,75 @@ export const turtleBackFoot = keyframes`
   }80%{
     transform: translate(20px, 0);
   }
+`;
+
+export const sleep = keyframes`
+  50% {transform: scale(0.7)  rotate(135deg);}      
+`;
+
+export const textWave = keyframes`
+  0%,
+  100% {
+    clip-path: polygon(
+      0 44%,
+      21% 43%,
+      39% 49%,
+      53% 55%,
+      68% 61%,
+      85% 59%,
+      100% 49%,
+      100% 100%,
+      0% 100%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0 60%,
+      19% 68%,
+      36% 72%,
+      53% 66%,
+      68% 52%,
+      82% 39%,
+      100% 42%,
+      100% 100%,
+      0% 100%
+    );
+  }
+  `;
+
+export const textWaveSecond = keyframes`
+0%,
+100% {
+  clip-path: polygon(
+    21 44%,
+    37% 43%,
+    59% 49%,
+    53% 55%,
+    68% 61%,
+    85% 59%,
+    89% 49%,
+    100% 100%,
+    0% 100%
+  );
+}
+50% {
+  clip-path: polygon(
+    0 80%,
+    32% 68%,
+    36% 72%,
+    63% 66%,
+    79% 21%,
+    82% 67%,
+    100% 42%,
+    100% 100%,
+    0% 100%
+  );
+}
+`;
+
+export const weather = keyframes`
+  50%{
+    scale: 1.2;
+  }
+
 `;

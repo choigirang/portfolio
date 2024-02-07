@@ -1,6 +1,6 @@
 import { Switch, styled as MuiStyled } from '@mui/material';
 import { useColorMode } from '../../../hooks/useColorMode';
-import { MenuOpenType } from '../../../type/footerType';
+import { MenuOpenType } from '../../../type/sections';
 
 export default function DarkModeSwitch({ $openMenu }: MenuOpenType) {
   const { toggleColorMode } = useColorMode();

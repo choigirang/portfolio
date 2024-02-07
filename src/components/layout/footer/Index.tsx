@@ -4,7 +4,7 @@ import ListIcon from '@mui/icons-material/List';
 import React, { useState } from 'react';
 import DarkModeSwitch from './DarkModeSwitch';
 import { FaInstagram } from 'react-icons/fa';
-import { MenuOpenType } from '../../../type/footerType';
+import { MenuOpenType } from '../../../type/sections';
 import { FaGithub } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
 import useMoveScroll from '../../../hooks/useMoveScroll';
@@ -28,7 +28,7 @@ export default function Footer() {
       <UpIconBtn onClick={scrollToTop}>
         <UpIconStyling fontSize="large" />
       </UpIconBtn>
-      <Menu>
+      {/* <Menu>
         <ListIconBtn $openMenu={openMenu} onClick={openMenuHandler}>
           <ListIconStyle $openMenu={openMenu} fontSize="large" />
         </ListIconBtn>
@@ -38,7 +38,7 @@ export default function Footer() {
         <MailIconBox $openMenu={openMenu} onClick={() => scrollToPage('Contact')}>
           <MailIconBtn size={30} $openMenu={openMenu}></MailIconBtn>
         </MailIconBox>
-      </Menu>
+      </Menu> */}
     </Container>
   );
 }
@@ -49,10 +49,20 @@ const Container = MuiStyled('footer')({
   bottom: 0,
   justifyContent: 'end',
   alignItems: 'center',
-  width: '100vw',
+  width: 'calc(100% - 240px)',
   height: '10%',
-  padding: '0 calc((100vw - 1280px) / 2);',
+  paddingRight: '5%',
   transition: 'all .5s ease !important',
+
+  /* 타블렛 */
+  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+    width: '100%',
+  },
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {
+    width: '100%',
+  },
 });
 
 const UpIconBtn = MuiStyled(IconButton)(({ theme }) => ({
@@ -63,7 +73,7 @@ const UpIconBtn = MuiStyled(IconButton)(({ theme }) => ({
 }));
 
 const UpIconStyling = MuiStyled(ArrowCircleUpIcon)(({ theme }) => ({
-  color: '#828282f !important',
+  color: 'white',
 }));
 
 const Menu = MuiStyled('div')({
@@ -72,12 +82,19 @@ const Menu = MuiStyled('div')({
   flexDirection: 'column-reverse',
   justifyContent: 'center',
   transition: 'all 2s',
+
+  /* 모바일 */
+  '@media screen and (max-width:767px)': {},
 });
 
 const ListIconBtn = MuiStyled(IconButton)<MenuOpenType>(({ $openMenu, theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.common.white,
   borderRadius: '50%',
   zIndex: 999,
+
+  svg: {
+    color: theme.palette.primary.main,
+  },
 
   '&:hover': {
     backgroundColor: theme.palette.secondary.main,
@@ -100,7 +117,7 @@ const ListIconStyle = MuiStyled(ListIcon)<MenuOpenType>(({ $openMenu, theme }) =
   color: 'white',
 
   ...($openMenu && {
-    color: theme.palette.primary.main,
+    color: theme.palette.common.white,
   }),
 
   ...(theme.palette.mode === 'dark' &&
@@ -120,7 +137,7 @@ const InstaIconBtn = MuiStyled(FaInstagram)<MenuOpenType>(({ $openMenu, theme })
   transform: 'translateX(-50%)',
   transition: 'all .5s ease',
   zIndex: 100,
-  color: theme.palette.primary.main,
+  color: theme.palette.common.white,
 
   '&:hover': {
     cursor: 'pointer',
@@ -143,7 +160,7 @@ const GitIconBtn = MuiStyled(FaGithub)<MenuOpenType>(({ $openMenu, theme }) => (
   transform: 'translateX(-50%)',
   transition: 'all .5s ease',
   zIndex: 100,
-  color: theme.palette.primary.main,
+  color: theme.palette.common.white,
 
   '&:hover': {
     cursor: 'pointer',
@@ -179,7 +196,7 @@ const MailIconBox = MuiStyled('div')<MenuOpenType>(({ $openMenu, theme }) => ({
 }));
 
 const MailIconBtn = MuiStyled(IoMail)<MenuOpenType>(({ $openMenu, theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.common.white,
   transition: 'all .5s ease',
 
   ...(!$openMenu && {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useMoveScroll from '../../../hooks/useMoveScroll';
+import DarkModeSwitch from './DarkModeSwitch';
 
 import { MenuOpenType } from '../../../type/sections';
 
@@ -33,7 +34,7 @@ export default function Footer() {
       <UpIconBtn onClick={scrollToTop}>
         <UpIconStyling fontSize="large" />
       </UpIconBtn>
-      {/* <Menu>
+      <Menu>
         <ListIconBtn $openMenu={openMenu} onClick={openMenuHandler}>
           <ListIconStyle $openMenu={openMenu} fontSize="large" />
         </ListIconBtn>
@@ -43,7 +44,7 @@ export default function Footer() {
         <MailIconBox $openMenu={openMenu} onClick={() => scrollToPage('Contact')}>
           <MailIconBtn size={30} $openMenu={openMenu}></MailIconBtn>
         </MailIconBox>
-      </Menu> */}
+      </Menu>
     </Container>
   );
 }

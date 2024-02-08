@@ -15,7 +15,7 @@ import StopCircleIcon from '@mui/icons-material/StopCircle';
 export default function AboutImg({ name }: { name: string }) {
   const [showImg, setShowImg] = useState(0);
   const [saveImgUrl, setSaveImgUrl] = useState<string[]>([]);
-  const { data: imgUrl, isLoading, error } = useGetImg(name);
+  const { data: imgUrl } = useGetImg(name);
   const [hoverBtn, setHoverBtn] = useState(false);
   const [startIcon, setStartIcon] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);

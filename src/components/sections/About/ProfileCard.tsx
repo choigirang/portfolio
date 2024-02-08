@@ -15,22 +15,16 @@ export default function ProfileCard({ name, value }: { name: string; value: Prof
     switch (title) {
       case '이름':
         return 'none';
-        break;
       case '연락처':
         return `tel:${info}`;
-        break;
       case '이메일':
         return `mailto:${info}`;
-        break;
       case '학력':
         return 'none';
-        break;
       case '깃허브':
         return `${info}`;
-        break;
       case '블로그':
         return `${info}`;
-        break;
       default:
         return;
     }

@@ -36,7 +36,7 @@ function App() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [windowSize]);
 
   return (
     <ThemeProvider theme={theme}>

@@ -5,7 +5,7 @@ import { HeaderProps, ListChangeSpanColorProps, TabPropsType } from '../../type/
 
 import { headerLists, headerListsIcon, headerLabel } from '../../constant/info';
 
-import { Tabs, Tab, styled as MuiStyled, Typography, useTheme, Button } from '@mui/material';
+import { Tabs, Tab, styled as MuiStyled, Typography, Button } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 /**
@@ -19,7 +19,6 @@ export default function Index() {
 
   const currentPath = useLocation();
   const navigate = useNavigate();
-  const theme = useTheme().palette.mode === 'light';
 
   const { scrollToTop, scrollToPage } = useMoveScroll();
 
@@ -70,7 +69,7 @@ export default function Index() {
     return () => {
       window.removeEventListener('scroll', scrollChangeRouter);
     };
-  }, [activeSection]);
+  }, [activeSection, navigate]);
 
   return (
     <Header $scroll={scroll} $mobileNav={mobileNav}>

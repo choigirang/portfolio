@@ -356,7 +356,7 @@ export const projects: ProjectInfoType = {
       '*EC2를 이용하여 배포*하였습니다.',
     ],
     github: 'https://github.com/choigirang/portfolio',
-    link: '',
+    link: 'http://choigirang-portfolio.site:3000/',
     stack: {
       frontend: [
         { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
@@ -364,6 +364,7 @@ export const projects: ProjectInfoType = {
         { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
         { name: 'mui', displayName: 'MaterialUi', color: '#027FFE' },
         { name: 'framer', displayName: 'Framer-motion', color: '#027FFE' },
+        { name: 'amazonec2', displayName: 'EC2', color: '#F0921E' },
       ],
       backend: [],
     },
@@ -373,13 +374,12 @@ export const projects: ProjectInfoType = {
     projectName: 'Pokemon Choi 포켓몬최',
     description: [
       '고전게임 포켓몬스터를 웹페이지에서 사용해보기 위해 제작한 프로젝트입니다.',
-      '*애니메이션 및 페이지 전환에 대한 빠른 대응을 위해 Next.js*로 제작하였습니다.',
       '드래그 및 캐릭터 좌표 이동에 대한 *렌더링 과다를 해결하기 위해 useMemo, useCallback*에 대해 학습하였습니다.',
       'Typescript로 *키보드, 마우스 등의 이벤트에 대한 타입을 학습하며 커스텀*하여 사용하였습니다.',
       '*동일한 이벤트*가 반복적으로 사용되어 다양한 *커스텀 훅*을 만들어 사용하였습니다.',
     ],
     github: 'https://github.com/choigirang/pokemon-choi',
-    link: 'https://pocketmon-choi-yeda.vercel.app/',
+    link: 'https://pocketmon-choi.vercel.app/',
     stack: {
       frontend: [
         { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
@@ -400,10 +400,10 @@ export const projects: ProjectInfoType = {
       'ReactQuery를 사용해 서버 요청을 하였으며, *invalidateQueries를 사용하여 사용자가 작성한 데이터의 즉각적인 피드백*이 가능하도록 하였습니다.',
       'Express, MongoDB를 이용해 서버를 구현하여 데이터를 구성하였습니다.',
       'Editior와 Viewer에서 다수의 컴포넌트가 사용되어, 각 항목별로 컴포넌트를 분리하는 데에 고민하였습니다.',
-      '*EC2를 이용하여 배포*하였습니다.',
+      '도메인을 구입하고 *AWS-Route53, ACM을 통해 SSL 인증하고 EC2로 배포*하였습니다.',
     ],
     github: 'https://github.com/choigirang/code-container',
-    link: '',
+    link: 'https://code-container.vercel.app/',
     stack: {
       frontend: [
         { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },

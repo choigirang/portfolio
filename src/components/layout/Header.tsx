@@ -156,7 +156,7 @@ const Header = MuiStyled('div')<HeaderProps>(({ theme, $scroll, $mobileNav }) =>
     backgroundColor: 'black',
     padding: '100px 0 0 30px',
     alignItems: 'start',
-    transform: $mobileNav ? 'translateX(-100%)' : '0',
+    transform: !$mobileNav ? 'translateX(-100%)' : '0',
   },
 }));
 

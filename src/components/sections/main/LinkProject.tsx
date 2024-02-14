@@ -11,11 +11,7 @@ export default function LinkProjectCard() {
 
   return (
     <Container onClick={() => scrollToPage('project')}>
-      <Img
-        src="project-large.webp"
-        srcSet="project-small.webp 400w, project-medium.webp 600w, project-large.webp 900w"
-        alt="project-img"
-      />
+      <Img src="project-large.webp" alt="project-img" />
       <Text>
         <span className="bedge">project</span>
         <span className="main-txt">프로젝트 둘러보기</span>

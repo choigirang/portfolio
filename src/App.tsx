@@ -31,7 +31,6 @@ function App() {
     };
 
     window.addEventListener('resize', handleResize);
-    console.log(windowSize);
 
     return () => {
       window.removeEventListener('resize', handleResize);

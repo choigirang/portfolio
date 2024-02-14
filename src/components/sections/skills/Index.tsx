@@ -80,6 +80,8 @@ const Title = MuiStyled('div')(({ theme }) => ({
   h4: {
     fontSize: 20,
     color: '#6a6a6a',
+    wordWrap: 'break-wrod',
+    textAlign: 'center',
   },
 
   '@media (max-width: 768px)': {

@@ -154,7 +154,7 @@ const Header = MuiStyled('div')<HeaderProps>(({ theme, $scroll, $mobileNav }) =>
     flexDirection: 'column',
     gap: 0,
     backgroundColor: 'black',
-    paddingTop: '100px',
+    paddingTop: '50px',
     alignItems: 'start',
     transform: !$mobileNav ? 'translateX(-100%)' : '0',
   },
@@ -188,7 +188,7 @@ const TabsContainer = MuiStyled(Tabs)(({ theme }) => ({
   '@media screen and (max-width:767px)': {
     width: '100%',
     height: '100%',
-    paddingTop: 100,
+    paddingTop: 50,
 
     '& .MuiTabs-flexContainer': {
       display: 'flex',

@@ -154,7 +154,7 @@ const Header = MuiStyled('div')<HeaderProps>(({ theme, $scroll, $mobileNav }) =>
     flexDirection: 'column',
     gap: 0,
     backgroundColor: 'black',
-    padding: '100px 0 0 30px',
+    paddingTop: '100px',
     alignItems: 'start',
     transform: !$mobileNav ? 'translateX(-100%)' : '0',
   },
@@ -263,7 +263,10 @@ const TabList = MuiStyled(Tab)<TabPropsType>(({ theme }) => ({
   '@media screen and (min-width: 768px) and (max-width: 1023px)': {},
 
   /* 모바일 */
-  '@media screen and (max-width:767px)': {},
+  '@media screen and (max-width:767px)': {
+    padding: 0,
+    fontSize: 12,
+  },
 }));
 
 const Logo = MuiStyled(Typography)(({ theme }) => ({

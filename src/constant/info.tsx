@@ -6,7 +6,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import ArticleIcon from '@mui/icons-material/Article';
 import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
-import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 
 // HEADER
 export const headerLabel: { [key: string]: string } = {
@@ -14,7 +13,6 @@ export const headerLabel: { [key: string]: string } = {
   about: '소개',
   skills: '기술',
   project: '프로젝트',
-  contact: '연락처',
 };
 
 export const headerListsIcon: { [key: string]: ReactNode } = {
@@ -22,7 +20,6 @@ export const headerListsIcon: { [key: string]: ReactNode } = {
   소개: <PersonIcon />,
   기술: <ArticleIcon />,
   프로젝트: <AutoAwesomeMosaicIcon />,
-  연락처: <ConnectWithoutContactIcon />,
 };
 
 // 주소 목록
@@ -63,18 +60,18 @@ export const profileInfo: { [key: string]: ProfileObjectInfo } = {
 };
 
 // SKILLS
-export const skillCardInfo: { [key: string]: SkillCardProps } = {
-  first: {
+export const CardInfo: { [key: string]: SkillCardProps } = {
+  projects: {
+    src: 'projects',
+    txt: '프로젝트',
+    bedge: 'projects',
+    color: 'red',
+  },
+  skill: {
     src: 'skills',
     txt: '기술 스택',
     bedge: 'skills',
     color: 'purple',
-  },
-  second: {
-    src: 'contact',
-    txt: '연락처',
-    bedge: 'contact',
-    color: 'green',
   },
 };
 

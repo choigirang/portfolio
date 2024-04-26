@@ -1,95 +1,33 @@
-import TextContainer from './TextContainer';
-import ProfileCard from './ProfileCard';
-
 import { profileInfo } from '../../../constant/info';
-
-import { styled as MuiStyled } from '@mui/material';
+import Card from './Card';
 
 /**
  *
  * @returns about 메인
  */
-export default function About() {
-  const firstRowEntries = Object.entries(profileInfo).slice(0, 3);
-  const secondRowEntries = Object.entries(profileInfo).slice(3);
 
+export default function About() {
   return (
-    <Container id="about">
-      <Title>
-        <p>🧑🏻‍💻</p>
-        <h3>소개</h3>
-      </Title>
-      <TextContainer />
-      {/* 카드 첫째 줄 */}
-      <ProfileContainer>
-        {firstRowEntries.map(([key, value]) => (
-          <ProfileCard key={key} name={key} value={value} />
+    <section id="about" className="flex flex-col gap-5">
+      <title className="flex flex-col justify-center items-center w-full text-2xl text-yellow-400">
+        <span>🧑🏻‍💻</span>
+        <h2>소개</h2>
+      </title>
+      <div className="flex flex-col justify-center items-center gap-2 w-full text-center text-white text-2xl">
+        <p>
+          <span className="text-yellow-400">사용자 경험</span>을 중시하는 프론트엔드 개발자입니다.
+        </p>
+        <p>
+          <span className="text-yellow-400">개발의 역량</span>과 <span className="text-yellow-400">디자인</span>을
+          결합하여, 사용자 경험을
+        </p>
+        높일 수 있는 개발자를 목표로 하고 있습니다.
+      </div>
+      <ul className="w-full grid gap-7 grid-rows-info grid-cols-info">
+        {profileInfo.map(info => (
+          <Card key={info.title} {...info} />
         ))}
-      </ProfileContainer>
-      {/* 카드 두번째 줄 */}
-      <ProfileContainer>
-        {secondRowEntries.map(([key, value]) => (
-          <ProfileCard key={key} name={key} value={value} />
-        ))}
-      </ProfileContainer>
-    </Container>
+      </ul>
+    </section>
   );
 }
-
-const Container = MuiStyled('section')({
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginTop: 50,
-  gap: 20,
-});
-
-const Title = MuiStyled('div')(({ theme }) => ({
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  color: theme.palette.primary.main,
-  fontSize: 32,
-
-  p: {
-    display: 'flex',
-    justifyContent: 'center',
-    fontWeight: 700,
-  },
-
-  /* 모바일 */
-  '@media screen and (max-width:767px)': {
-    h3: { fontSize: 24 },
-  },
-}));
-
-const ProfileContainer = MuiStyled('ul')(({ theme }) => ({
-  width: '100%',
-  display: 'grid',
-  marginTop: 50,
-  columnGap: 30,
-  rowGap: 50,
-  gridTemplateRows: 'repeat(1, 200px)',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
-
-  /* 타블렛 */
-  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
-    rowGap: 10,
-    columnGap: 20,
-    marginTop: 0,
-    gridTemplateRows: 'repeat(1, 100px)',
-  },
-
-  /* 모바일 */
-  '@media screen and (max-width:767px)': {
-    rowGap: 10,
-    columnGap: 20,
-    marginTop: 0,
-    gridTemplateColumns: '1fr',
-    gridTemplateRows: 'repeat(1, 70px)',
-  },
-}));

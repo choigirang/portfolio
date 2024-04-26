@@ -26,40 +26,44 @@ export const headerListsIcon: { [key: string]: ReactNode } = {
 export const headerLists = ['home', 'about', 'skills', 'project', 'contact'];
 
 // ABOUT
-export const profileInfo: { [key: string]: ProfileObjectInfo } = {
-  nameInfo: {
+export const profileInfo: ProfileObjectInfo[] = [
+  {
     title: '이름',
     info: '최기랑',
     icon: '🧑🏻‍💻',
   },
-  numberInfo: {
+  {
     title: '연락처',
     info: '010-7255-7942',
     icon: '🤙🏻',
+    link: 'tel:010-7255-7942',
   },
-  mailIfon: {
+  {
     title: '이메일',
     info: 'choigirang@kakao.com',
     icon: '📧',
+    link: 'choigirang@kakao.com',
   },
-  educationInfo: {
+  {
     title: '학력',
     info: `한양사이버대학교 미디어,시각디자인`,
     icon: '🧑🏻‍🎓',
   },
-  githubInfo: {
+  {
     title: '깃허브',
     info: 'https://github.com/choigirang',
     icon: '🖥️',
+    link: 'https://github.com/choigirang',
   },
-  blogInfo: {
+  {
     title: '블로그',
     info: 'https://choigirang.github.io',
     icon: '📚',
+    link: 'https://choigirang.github.io',
   },
-};
+];
 
-// SKILLS
+// SUMMARY
 export const CardInfo: { [key: string]: SkillCardProps } = {
   projects: {
     src: 'projects',

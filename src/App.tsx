@@ -3,24 +3,22 @@ import Footer from './components/layout/footer/Index';
 import React from 'react';
 import Summary from './components/sections/Summary/Index';
 
-const About = React.lazy(() => import('./components/sections/about/Index'));
-const Skills = React.lazy(() => import('./components/sections/skills/Index'));
+const About = React.lazy(() => import('./components/sections/About/Index'));
+const Skills = React.lazy(() => import('./components/sections/Skills/Index'));
 const Project = React.lazy(() => import('./components/sections/project/Index'));
-const Contact = React.lazy(() => import('./components/sections/contact/Index'));
 
 function App() {
   return (
-    <div className="flex bg-[#0F1015]">
+    <>
       <Header />
-      <div className="relative flex flex-col p-10 gap-10 width-layout">
+      <div className="flex flex-col p-10 pl-[240px] gap-10 width-layout">
         <Summary />
-        {/* <About />
+        <About />
         <Skills />
-        <Project />
-        <Contact /> */}
+        {/* <Project />*/}
       </div>
       {/* <Footer /> */}
-    </div>
+    </>
   );
 }
 

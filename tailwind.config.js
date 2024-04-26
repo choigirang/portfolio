@@ -13,17 +13,20 @@ module.exports = {
         layout: 'calc(100% - 240px)',
       },
       transitionProperty: {
-        custom: 'all', // 사용자 정의 transition 속성을 설정합니다.
+        custom: 'all',
       },
       transitionTimingFunction: {
-        custom: 'ease-in-out', // 사용자 정의 transition 타이밍 함수를 설정합니다.
+        custom: 'ease-in-out',
       },
       transitionDelay: {
-        custom: '1s', // 사용자 정의 transition 딜레이를 설정합니다.
+        custom: '1s',
       },
-      gridTemplateRows: {},
+      gridTemplateRows: {
+        info: 'repeat(2, 100px)',
+      },
       gridTemplateColumns: {
         summray: '2fr 1fr 1fr',
+        info: 'repeat(3, minmax(100px, 1fr))',
       },
     },
   },

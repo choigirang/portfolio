@@ -1,7 +1,4 @@
-import React from 'react';
 import { ProfileObjectInfo } from '../../../type/sections';
-
-import { styled as MuiStyled } from '@mui/material';
 
 /**
  *

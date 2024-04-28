@@ -1,14 +1,5 @@
 import { LinkProps } from 'react-router-dom';
-import { SvgIconComponent } from '@mui/icons-material';
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
-
-// HEADER
-export type ListType = {
-  [category: string]: {
-    [key: string]: string | SvgIconComponent;
-  };
-};
-
 export type ListChangeSpanColorProps = {
   activeUrl: boolean;
 };

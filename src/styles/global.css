@@ -79,3 +79,7 @@
   /* color */
   --color-trans-white: rgba(255, 255, 255, 0.5);
 }
+
+.backface-invisible {
+  backface-visibility: hidden;
+}

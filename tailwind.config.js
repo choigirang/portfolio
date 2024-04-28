@@ -27,6 +27,8 @@ module.exports = {
       gridTemplateColumns: {
         summray: '2fr 1fr 1fr',
         info: 'repeat(3, minmax(100px, 1fr))',
+        stackDetail: '30% 70%',
+        projectDetail: 'minmax(100px, auto) 1fr',
       },
     },
   },

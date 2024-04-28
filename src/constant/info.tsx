@@ -1,29 +1,28 @@
 import { ReactNode } from 'react';
 
 import { AllStackType, ProfileObjectInfo, ProjectInfoType, SkillCardProps } from '../type/sections';
-
-import HomeIcon from '@mui/icons-material/Home';
-import PersonIcon from '@mui/icons-material/Person';
-import ArticleIcon from '@mui/icons-material/Article';
-import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
+import { MdHomeFilled } from 'react-icons/md';
+import { CgProfile } from 'react-icons/cg';
+import { IoIosBook } from 'react-icons/io';
+import { BsBookmarkHeartFill } from 'react-icons/bs';
 
 // HEADER
 export const headerLabel: { [key: string]: string } = {
   home: '홈',
   about: '소개',
   skills: '기술',
-  project: '프로젝트',
+  projects: '프로젝트',
 };
 
 export const headerListsIcon: { [key: string]: ReactNode } = {
-  홈: <HomeIcon />,
-  소개: <PersonIcon />,
-  기술: <ArticleIcon />,
-  프로젝트: <AutoAwesomeMosaicIcon />,
+  홈: <MdHomeFilled />,
+  소개: <CgProfile />,
+  기술: <IoIosBook />,
+  프로젝트: <BsBookmarkHeartFill />,
 };
 
 // 주소 목록
-export const headerLists = ['home', 'about', 'skills', 'project', 'contact'];
+export const headerLists = ['home', 'about', 'skills', 'projects'];
 
 // ABOUT
 export const profileInfo: ProfileObjectInfo[] = [
@@ -343,6 +342,54 @@ export const allStack: AllStackType = {
 
 // PROJECT
 export const projects: ProjectInfoType = {
+  portfolioV2: {
+    name: 'portfolioV2',
+    projectName: 'Portfolio v2 포트폴리오',
+    description: [
+      '소개를 위해 제작한 포트폴리오 version 2 입니다.',
+      '*Next 14버전*을 사용하였습니다.',
+      '웹과 모바일 등 접근성을 높이기 위해 *반응형웹*으로 제작하였습니다.',
+      '',
+    ],
+    github: 'https://github.com/choigirang/portfolio-v2',
+    link: 'http://choigirang-portfolio-version2.vercel.app',
+    stack: {
+      frontend: [
+        { name: 'typescript', displayName: 'TypeScript', color: '#387BC8' },
+        { name: 'nextdotjs', displayName: 'Next.js', color: '#000000' },
+        {
+          name: 'tailwindcss',
+          color: '#06B6D4',
+          displayName: 'TailwindCss',
+        },
+      ],
+      backend: [],
+    },
+  },
+  myMovie: {
+    name: 'movie',
+    projectName: 'TMDB API를 이용한 영화 캘린더',
+    description: [
+      'TMDB API를 활용해 제작한 프로젝트입니다.',
+      '*Next 14버전*을 사용하였습니다.',
+      'next-auth를 사용하여 소셜 로그인을 적용했습니다.',
+      '*RTK, next-redux-wrapper를 사용하여 SSR 환경에서 상태 관리를 하였습니다.*',
+      'redux-persist를 사용하여 *페이지 전환 시에도 데이터를 유지*합니다.',
+      'useQuery를 사용하여 *API요청을 최소화 하며 무한 스크롤을 적용*하였습니다.',
+    ],
+    github: 'https://github.com/choigirang/my-movie',
+    link: 'https://my-movie-tawny.vercel.app/',
+    stack: {
+      frontend: [
+        { name: 'typescript', displayName: 'TypeScript', color: '#387BC8' },
+        { name: 'nextdotjs', displayName: 'Next.js', color: '#000000' },
+        { name: 'reactquery', displayName: 'ReactQuery', color: '#FF4154' },
+        { name: 'redux', displayName: 'RTK', color: '#764ABC' },
+        { name: 'mui', displayName: 'MUI', color: '#027FFE' },
+      ],
+      backend: [],
+    },
+  },
   portfolio: {
     name: 'portfolio',
     projectName: 'Portfolio 포트폴리오',
@@ -360,11 +407,10 @@ export const projects: ProjectInfoType = {
     link: 'http://choigirang-portfolio.site:3000/',
     stack: {
       frontend: [
-        { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
+        { name: 'typescript', displayName: 'TypeScript', color: '#387BC8' },
         { name: 'react', displayName: 'React', color: '#1CCEFF' },
-        { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
-        { name: 'mui', displayName: 'MaterialUi', color: '#027FFE' },
-        { name: 'framer', displayName: 'Framer-motion', color: '#027FFE' },
+        { name: 'reactquery', displayName: 'ReactQuery', color: '#FF475A' },
+        { name: 'tailwindcss', displayName: 'Tailwind', color: '#41BEF8' },
         { name: 'amazonec2', displayName: 'EC2', color: '#F0921E' },
       ],
       backend: [],
@@ -383,10 +429,10 @@ export const projects: ProjectInfoType = {
     link: 'https://pocketmon-choi.vercel.app/',
     stack: {
       frontend: [
-        { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
+        { name: 'typescript', displayName: 'TypeScript', color: '#387BC8' },
         { name: 'nextdotjs', displayName: 'Next.js', color: 'white' },
         { name: 'recoil', displayName: 'Recoil', color: '#137EF5' },
-        { name: 'styledcomponents', displayName: 'Styled-components', color: '#FF475A' },
+        { name: 'styledcomponents', displayName: 'StyledComponents', color: '#FF475A' },
       ],
       backend: [],
     },
@@ -407,11 +453,11 @@ export const projects: ProjectInfoType = {
     link: 'https://code-container.vercel.app/',
     stack: {
       frontend: [
-        { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
+        { name: 'typescript', displayName: 'TypeScript', color: '#387BC8' },
         { name: 'react', displayName: 'React', color: '#1CCEFF' },
         { name: 'redux', displayName: 'Redux', color: '#8348C4' },
-        { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
-        { name: 'styledcomponents', displayName: 'Styled-components', color: '#FF475A' },
+        { name: 'reactquery', displayName: 'ReactQuery', color: '#FF475A' },
+        { name: 'styledcomponents', displayName: 'StyledComponents', color: '#FF475A' },
       ],
       backend: [
         { name: 'express', displayName: 'Express', color: 'white' },
@@ -436,11 +482,11 @@ export const projects: ProjectInfoType = {
     link: 'https://www.why-chat-fe.shop/',
     stack: {
       frontend: [
-        { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
+        { name: 'typescript', displayName: 'TypeScript', color: '#387BC8' },
         { name: 'nextdotjs', displayName: 'Next.js', color: 'white' },
         { name: 'redux', displayName: 'Redux', color: '#8348C4' },
-        { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
-        { name: 'styledcomponents', displayName: 'Styled-components', color: '#FF475A' },
+        { name: 'reactquery', displayName: 'ReactQuery', color: '#FF475A' },
+        { name: 'styledcomponents', displayName: 'StyledComponents', color: '#FF475A' },
       ],
       backend: [
         { name: 'express', displayName: 'Express', color: 'white' },
@@ -465,12 +511,11 @@ export const projects: ProjectInfoType = {
     link: 'https://www.sidequest.co.kr/',
     stack: {
       frontend: [
-        { name: 'typescript', displayName: 'Type-script', color: '#387BC8' },
+        { name: 'typescript', displayName: 'TypeScript', color: '#387BC8' },
         { name: 'nextdotjs', displayName: 'Next.js', color: 'white' },
-        { name: 'reactquery', displayName: 'React-query', color: '#FF475A' },
+        { name: 'reactquery', displayName: 'ReactQuery', color: '#FF475A' },
         { name: 'recoil', displayName: 'Recoil', color: '#137EF5' },
-        { name: 'axios', displayName: 'Axios', color: '#804C95' },
-        { name: 'styledcomponents', displayName: 'Styled-components', color: '#FF475A' },
+        { name: 'styledcomponents', displayName: 'StyledComponents', color: '#FF475A' },
         { name: 'amazonec2', displayName: 'EC2', color: '#F0921E' },
       ],
       backend: [],

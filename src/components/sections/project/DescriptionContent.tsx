@@ -1,5 +1,3 @@
-import { styled as MuiStyled } from '@mui/material';
-
 /**
  *
  * @param flipCard 카드 클릭 상태
@@ -15,59 +13,30 @@ export default function DescriptionContent(props: { flipCard: boolean; descripti
     return parts
       .map((part, index) => {
         if (part === '') return null;
-        return index % 2 === 0 ? <span key={index}>{part}</span> : <strong key={index}>{part}</strong>;
+        return index % 2 === 0 ? (
+          <span key={index}>{part}</span>
+        ) : (
+          <strong className="text-yellow-400 font-bold" key={index}>
+            {part}
+          </strong>
+        );
       })
       .filter(Boolean);
   };
 
   return (
-    <BackContent flipCard={flipCard}>
-      <FlipTxt flipCard={flipCard}>
+    <div
+      className="absolute top-0 h-full p-[5%] backf backface-invisible transition-custom text-white overflow-scroll"
+      style={{ visibility: flipCard ? 'visible' : 'hidden' }}>
+      <ul
+        className="flex flex-col gap-5"
+        style={{ visibility: flipCard ? 'visible' : 'hidden', transform: flipCard ? 'rotateY(180deg)' : 'rotateY(0)' }}>
         {description.map(item => (
-          <div key={item}>
-            <span>✅</span>
-            <span>{parseDescription(item)}</span>
-          </div>
+          <li className="flex gap-5" key={item}>
+            <span>✅ {parseDescription(item)}</span>
+          </li>
         ))}
-      </FlipTxt>
-    </BackContent>
+      </ul>
+    </div>
   );
 }
-
-const BackContent = MuiStyled('div')<{ flipCard: boolean }>(({ flipCard, theme }) => ({
-  height: '100%',
-  position: 'absolute',
-  top: 0,
-  padding: '5%',
-  backfaceVisibility: 'hidden',
-  visibility: flipCard ? 'visible' : 'hidden',
-  transition: 'all 1s',
-  color: 'white',
-  overflow: 'scroll',
-
-  ...(!flipCard && {
-    visibility: 'hidden',
-  }),
-}));
-
-const FlipTxt = MuiStyled('div')<{ flipCard: boolean }>(({ flipCard, theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  visibility: flipCard ? 'visible' : 'hidden',
-  transform: flipCard ? 'rotateY(180deg)' : 'rotateY(0)',
-  gap: 30,
-
-  div: {
-    display: 'flex',
-    gap: 20,
-  },
-
-  span: {
-    lineHeight: '20px',
-  },
-
-  strong: {
-    color: theme.palette.primary.main,
-    fontWeight: 500,
-  },
-}));

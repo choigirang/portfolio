@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { allStack } from '../../../constant/info';
 import StackDetail from './StackDetail';
 import { SelectStackType } from '../../../type/sections';
@@ -13,17 +13,16 @@ import { SelectStackType } from '../../../type/sections';
  */
 export const url = 'https://cdn.simpleicons.org/';
 
-export default function StackList({ select }: { select: string }) {
-  const [stack, setStack] = useState('');
-  const [detail, setDetail] = useState<SelectStackType | undefined>();
-
+export default function StackList({
+  select,
+  stack,
+  setStack,
+}: {
+  select: string;
+  stack: string;
+  setStack: Dispatch<SetStateAction<string>>;
+}) {
   const data = allStack[select];
-
-  useEffect(() => {
-    setStack(Object.keys(allStack[select])[0]);
-    setDetail(allStack[select][stack]);
-    console.log(detail);
-  }, [select, stack]);
 
   return (
     <div className="flex flex-col gap-5 justify-center items-center w-full">
@@ -38,11 +37,6 @@ export default function StackList({ select }: { select: string }) {
             <img src={url + list} alt="stack-img" />
           </li>
         ))}
-      </ul>
-      <ul className="flex flex-col gap-3 w-full h-[200px] overflow-hidden text-white bg-[#1A1B24] pt-[5%] px-[5%]">
-        {/* {detail.description.map(each => (
-          <li>{each}</li>
-        ))} */}
       </ul>
     </div>
   );

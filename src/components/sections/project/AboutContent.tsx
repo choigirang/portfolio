@@ -1,7 +1,4 @@
-import React, { useRef, useState } from 'react';
-import { ProjectDetailType, StackInfoType } from '../../../type/sections';
-import { styled as MuiStyled } from '@mui/material';
-import ProjectStackList from './ProjectStackList';
+import { ProjectDetailType } from '../../../type/sections';
 
 /**
  *
@@ -10,8 +7,6 @@ import ProjectStackList from './ProjectStackList';
  */
 export default function AboutContent(props: ProjectDetailType) {
   const { projectName, github, stack, link } = props;
-  const [isHover, setIsHover] = useState('');
-  const txtBoxEl = useRef<HTMLDivElement | null>(null);
 
   const floorItems = [
     { title: '프로젝트명', value: projectName },
@@ -20,124 +15,30 @@ export default function AboutContent(props: ProjectDetailType) {
     { title: '깃허브', value: github },
   ];
 
-  const isStackInfoArray = (value: any): value is StackInfoType[] => {
-    return Array.isArray(value) && value.every(item => typeof item === 'object' && 'name' in item);
-  };
-
-  const returnTag = (title: string, value: string) => {
-    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-      event.stopPropagation();
-    };
-
-    if (title === '프로젝트명') {
-      return <p>{value}</p>;
-    } else
-      return (
-        <LinkValue href={value} target="_blank" className="link" onClick={handleClick}>
-          {value}
-        </LinkValue>
-      );
-  };
-
   return (
-    <Container>
+    <li className="flex flex-col w-full gap-5">
       {floorItems.map((items, index) => (
-        <Floor key={index}>
-          <Title>{items.title} :</Title>
-          <Text
-            id="txt Ref"
-            ref={items.title === '스택' ? txtBoxEl : undefined}
-            checkStack={items.title === '스택'}
-            checkDes={items.title === '설명'}>
-            {/* 스택 데이터 시 */}
-            {isStackInfoArray(items.value) && (
-              <ProjectStackList isHover={isHover} value={items.value} setIsHover={setIsHover} />
+        <ul className="grid grid-cols-projectDetail items-center relative w-full" key={index}>
+          <li className="flex text-yellow-400 text-sm">{items.title} :</li>
+          <li id="txt Ref" className="relative flex flex-wrap gap-1 w-full text-xs justify-start text-white">
+            {typeof items.value === 'object' ? (
+              items.value.map(each => (
+                <span
+                  className="text-xs py-[2px] px-1 rounded-md"
+                  style={{ backgroundColor: each.color, color: each.color === 'white' ? 'black' : 'white' }}>
+                  {each.displayName}
+                </span>
+              ))
+            ) : items.title === '프로젝트명' ? (
+              <span>{items.value}</span>
+            ) : (
+              <a href={items.value} target="_blank" className="w-full text-wrap break-all hover:underline">
+                {items.value}
+              </a>
             )}
-            {/* 이외 데이터 */}
-            {!Array.isArray(items.value) && returnTag(items.title, items.value)}
-          </Text>
-        </Floor>
+          </li>
+        </ul>
       ))}
-    </Container>
+    </li>
   );
 }
-
-const Container = MuiStyled('div')(({ theme }) => ({
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 20,
-}));
-
-const Floor = MuiStyled('div')(({ theme }) => ({
-  width: '100%',
-  position: 'relative',
-  display: 'grid',
-  alignItems: 'center',
-  gridTemplateColumns: 'minmax(100px, auto) 1fr',
-  gap: 20,
-}));
-
-const Title = MuiStyled('p')(({ theme }) => ({
-  display: 'flex',
-  color: theme.palette.primary.main,
-  fontWeight: 500,
-  fontSize: 18,
-
-  /* 타블렛 */
-  '@media screen and (min-width: 768px) and (max-width: 1023px)': {},
-
-  /* 모바일 */
-  '@media screen and (max-width:767px)': {
-    fontSize: 14,
-  },
-}));
-
-const Text = MuiStyled('div')<{ checkStack: boolean; checkDes: boolean }>(({ checkStack, checkDes, theme }) => ({
-  position: 'relative',
-  width: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  color: 'white',
-
-  '.title': {
-    fontWeight: 700,
-  },
-
-  ...(checkStack && {
-    fontWeight: 800,
-    display: 'flex',
-    gap: 10,
-  }),
-
-  ...(checkDes && {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  }),
-
-  /* 타블렛 */
-  '@media screen and (min-width: 768px) and (max-width: 1023px)': {},
-
-  /* 모바일 */
-  '@media screen and (max-width:767px)': {
-    fontSize: 14,
-  },
-}));
-
-const LinkValue = MuiStyled('a')(({ theme }) => ({
-  width: '100%',
-  textAlign: 'center',
-  overflow: 'hidden',
-  whiteSpace: 'wrap',
-  wordBreak: 'break-all',
-
-  '&:hover': {
-    color: theme.palette.primary.main,
-  },
-
-  '&:visited': {
-    whiteSpace: 'normal',
-    wordBreak: 'break-all',
-  },
-}));

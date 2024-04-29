@@ -23,10 +23,12 @@ module.exports = {
       },
       gridTemplateRows: {
         info: 'repeat(2, 100px)',
+        smInfo: 'repeat(3, 100px)',
       },
       gridTemplateColumns: {
         summray: '2fr 1fr 1fr',
         info: 'repeat(3, minmax(100px, 1fr))',
+        smInfo: 'repeat(2, minmax(100px, 1fr))',
         stackDetail: '30% 70%',
         projectDetail: 'minmax(100px, auto) 1fr',
       },

@@ -29,7 +29,7 @@ export default function DescriptionContent(props: { flipCard: boolean; descripti
       className="absolute top-0 h-full p-[5%] backf backface-invisible transition-custom text-white overflow-scroll"
       style={{ visibility: flipCard ? 'visible' : 'hidden' }}>
       <ul
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-5 sm:text-sm"
         style={{ visibility: flipCard ? 'visible' : 'hidden', transform: flipCard ? 'rotateY(180deg)' : 'rotateY(0)' }}>
         {description.map(item => (
           <li className="flex gap-5" key={item}>

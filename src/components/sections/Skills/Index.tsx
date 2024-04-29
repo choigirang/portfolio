@@ -43,7 +43,7 @@ export default function Skills() {
         <span>🗂️</span>
         <h2>기술 목록</h2>
       </title>
-      <ul className="grid grid-cols-4 w-full text-2xl gap-5">
+      <ul className="grid grid-cols-4 sm:grid-cols-2 w-full text-2xl gap-5">
         {/* 스택 카테고리 선택 */}
         {categoryList.map(key => (
           <li

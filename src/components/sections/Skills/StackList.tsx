@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { allStack } from '../../../constant/info';
 
 /**
@@ -23,19 +23,17 @@ export default function StackList({
   const data = useMemo(() => allStack[select], [select]);
 
   return (
-    <div className="flex flex-col gap-5 justify-center items-center w-full">
-      <ul className="flex gap-5">
-        {Object.keys(data).map(list => (
-          <li
-            key={list}
-            className={`text-white w-[50px] h-[50px] cursor-pointer p-2 bg-${
-              list === stack ? 'stone-800' : '[#1A1B24]'
-            } rounded-lg transition-custom hover:bg-stone-800 hover:scale-105`}
-            onClick={() => setStack(list)}>
-            <img src={url + list} alt="stack-img" />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="flex gap-5 justify-center items-center w-full flex-wrap">
+      {Object.keys(data).map(list => (
+        <li
+          key={list}
+          className={`text-white w-[50px] h-[50px] cursor-pointer p-2 bg-${
+            list === stack ? 'stone-800' : '[#1A1B24]'
+          } rounded-lg transition-custom hover:bg-stone-800 hover:scale-105`}
+          onClick={() => setStack(list)}>
+          <img src={url + list} alt="stack-img" />
+        </li>
+      ))}
+    </ul>
   );
 }

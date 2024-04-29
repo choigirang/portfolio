@@ -1,25 +1,23 @@
 import { ReactNode } from 'react';
 
-import { AllStackType, ProfileObjectInfo, ProjectInfoType, SkillCardProps } from '../type/sections';
+import { AllStackType, ProfileObjectInfo, ProjectInfoType } from '../type/sections';
 import { BookOpenIcon, BookmarkIcon, HomeIcon, UserIcon } from '@heroicons/react/16/solid';
 
 // HEADER
 export const headerLabel: { [key: string]: string } = {
-  home: '홈',
   about: '소개',
   skills: '기술',
   projects: '프로젝트',
 };
 
 export const headerListsIcon: { [key: string]: ReactNode } = {
-  홈: <HomeIcon width={16} height={16} />,
   소개: <UserIcon width={16} height={16} />,
   기술: <BookOpenIcon width={16} height={16} />,
   프로젝트: <BookmarkIcon width={16} height={16} />,
 };
 
 // 주소 목록
-export const headerLists = ['home', 'about', 'skills', 'projects'];
+export const headerLists = ['about', 'skills', 'projects'];
 
 // ABOUT
 export const profileInfo: ProfileObjectInfo[] = [

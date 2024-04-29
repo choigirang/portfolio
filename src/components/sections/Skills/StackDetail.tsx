@@ -10,14 +10,12 @@ export default function StackDetail({ data }: { data: SelectStackType | undefine
           <li className="flex justify-center items-center w-full h-full">
             <img src={url + data.name} alt="stack-img" className="w-[100px] h-[100px] p-3 bg-[#30313d] rounded-lg" />
           </li>
-          <li>
-            <ul className="flex flex-col gap-2 w-full h-full overflow-scroll text-white">
-              {data.description.map(each => (
-                <li key={each} className="max-w-[500px]">
-                  • {each}
-                </li>
-              ))}
-            </ul>
+          <li className="flex flex-col gap-2 w-full h-full overflow-scroll text-white sm:text-[14px]">
+            {data.description.map(each => (
+              <span key={each} className="max-w-[500px]">
+                • {each}
+              </span>
+            ))}
           </li>
         </React.Fragment>
       ) : (

@@ -37,7 +37,11 @@ export default function AboutContent(props: ProjectDetailType) {
             ) : items.title === '프로젝트명' ? (
               <span>{items.value}</span>
             ) : (
-              <a href={items.value} target="_blank" className="w-full text-wrap break-all hover:underline">
+              <a
+                href={items.value}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-wrap break-all hover:underline">
                 {items.value}
               </a>
             )}

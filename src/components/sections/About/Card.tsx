@@ -11,7 +11,11 @@ export default function Card(value: ProfileObjectInfo) {
   return (
     <li className="relative flex flex-col justify-between w-full h-full text-white p-[5%] bg-[#1A1B24] hover:scale-105 hover:bg-[#30313d] hover:text-yellow-400 transition-custom rounded-lg truncate">
       {link && (
-        <a href={link} target="_blank" className="flex flex-col justify-between w-full h-full">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col justify-between w-full h-full">
           <span className="text-lg">
             {title} {icon}
           </span>

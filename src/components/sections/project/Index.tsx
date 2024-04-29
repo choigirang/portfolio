@@ -13,7 +13,7 @@ export default function Project() {
         <h2>소개</h2>
         <h3 className="text-sm text-white">프로젝트를 클릭하여 상세 설명을 볼 수 있습니다.</h3>
       </title>
-      <ul className="w-full grid grid-cols-3 gap-5">
+      <ul className="w-full grid grid-cols-3 sm:grid-cols-2 md:grid-cols-1 gap-5">
         {Object.keys(projects).map(project => (
           <ProjectCard name={project} key={project} />
         ))}

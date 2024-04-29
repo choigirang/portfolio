@@ -38,8 +38,7 @@ export default function AboutImg({ name }: { name: string }) {
       <img
         src={saveImgUrl[showImg]}
         alt={`${name + showImg} img`}
-        width={'auto'}
-        height={120}
+        className="w-auto h-full"
         style={{ opacity: hoverBtn ? 0.7 : 1 }}
       />
       {/* 이미지 갯수 */}

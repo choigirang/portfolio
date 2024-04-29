@@ -1,10 +1,7 @@
 import { ReactNode } from 'react';
 
 import { AllStackType, ProfileObjectInfo, ProjectInfoType, SkillCardProps } from '../type/sections';
-import { MdHomeFilled } from 'react-icons/md';
-import { CgProfile } from 'react-icons/cg';
-import { IoIosBook } from 'react-icons/io';
-import { BsBookmarkHeartFill } from 'react-icons/bs';
+import { BookOpenIcon, BookmarkIcon, HomeIcon, UserIcon } from '@heroicons/react/16/solid';
 
 // HEADER
 export const headerLabel: { [key: string]: string } = {
@@ -15,10 +12,10 @@ export const headerLabel: { [key: string]: string } = {
 };
 
 export const headerListsIcon: { [key: string]: ReactNode } = {
-  홈: <MdHomeFilled />,
-  소개: <CgProfile />,
-  기술: <IoIosBook />,
-  프로젝트: <BsBookmarkHeartFill />,
+  홈: <HomeIcon width={16} height={16} />,
+  소개: <UserIcon width={16} height={16} />,
+  기술: <BookOpenIcon width={16} height={16} />,
+  프로젝트: <BookmarkIcon width={16} height={16} />,
 };
 
 // 주소 목록

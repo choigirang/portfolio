@@ -7,7 +7,7 @@ export default function Category({ list }: { list: string }) {
 
   return (
     <li
-      className="flex items-center gap-5 transition-custom text-stone-600 hover:text-yellow-400 cursor-pointer"
+      className="flex items-center gap-5 transition-custom text-white hover:text-yellow-400 cursor-pointer"
       onClick={() => scrollToPage(list)}>
       <span className="bg-stone-800 p-1 rounded-lg">{headerListsIcon[headerLabel[list]]}</span>
       <span>{headerLabel[list]}</span>

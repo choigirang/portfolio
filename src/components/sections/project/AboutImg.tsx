@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useGetImg from '../../../hooks/useGetImg';
-import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from 'react-icons/io';
+import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/16/solid';
 
 /**
  *
@@ -18,15 +18,17 @@ export default function AboutImg({ name }: { name: string }) {
     setSaveImgUrl(imgUrl);
   }, [imgUrl]);
 
-  const imgNumController = (e: React.MouseEvent<HTMLButtonElement>, dir: string) => {
-    e.stopPropagation();
-    if (dir === 'next') {
-      setShowImg(prev => (prev === saveImgUrl.length - 1 ? 0 : prev + 1));
-    }
-    if (dir === 'prev') {
-      setShowImg(prev => (prev === 0 ? saveImgUrl.length - 1 : prev - 1));
-    }
-  };
+  const imgNumController = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>, dir: string) => {
+      e.stopPropagation();
+      if (dir === 'next') {
+        setShowImg(prev => (prev === saveImgUrl.length - 1 ? 0 : prev + 1));
+      } else if (dir === 'prev') {
+        setShowImg(prev => (prev === 0 ? saveImgUrl.length - 1 : prev - 1));
+      }
+    },
+    [saveImgUrl.length],
+  );
 
   return (
     <li
@@ -36,19 +38,21 @@ export default function AboutImg({ name }: { name: string }) {
       <img
         src={saveImgUrl[showImg]}
         alt={`${name + showImg} img`}
-        style={{ width: 'auto', height: 120, opacity: hoverBtn ? 0.7 : 1 }}
+        width={'auto'}
+        height={120}
+        style={{ opacity: hoverBtn ? 0.7 : 1 }}
       />
       {/* 이미지 갯수 */}
       {/* 좌측 버튼 */}
-      <div id="button-box" className="absolute flex justify-between w-full left-0 top-1/2 -translate-y-1/2 text-white ">
-        <button onClick={e => imgNumController(e, 'prev')}>
-          <IoMdArrowDropleftCircle className="shadow-2xl hover:text-yellow-400" />
+      <div id="button-box" className="absolute flex justify-between w-full left-0 bottom-0 text-white ">
+        <button type="button" onClick={e => imgNumController(e, 'prev')} aria-label="img prev btn">
+          <ArrowLeftCircleIcon width={16} height={16} className="shadow-2xl hover:text-yellow-400" />
         </button>
-        <span className="absolute top-0 left-1/2 -translate-x-1/2 text-xs text-white py-1 px-2 bg-yellow-400 rounded-lg">
+        <span className="absolute top-0 left-1/2 -translate-x-1/2 text-xs text-white py-1 px-2 bg-[#30313d] rounded-lg">
           {showImg + 1}/{saveImgUrl.length}
         </span>
-        <button onClick={e => imgNumController(e, 'next')}>
-          <IoMdArrowDroprightCircle className="shadow-2xl hover:text-yellow-400" />
+        <button type="button" onClick={e => imgNumController(e, 'next')} aria-label="img next btn">
+          <ArrowRightCircleIcon width={16} height={16} className="shadow-2xl hover:text-yellow-400" />
         </button>
       </div>
     </li>

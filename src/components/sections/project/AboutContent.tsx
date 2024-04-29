@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { ProjectDetailType } from '../../../type/sections';
 
 /**
@@ -8,12 +9,15 @@ import { ProjectDetailType } from '../../../type/sections';
 export default function AboutContent(props: ProjectDetailType) {
   const { projectName, github, stack, link } = props;
 
-  const floorItems = [
-    { title: '프로젝트명', value: projectName },
-    { title: '스택', value: [...stack.frontend, ...stack.backend] },
-    { title: '링크', value: link },
-    { title: '깃허브', value: github },
-  ];
+  const floorItems = useMemo(
+    () => [
+      { title: '프로젝트명', value: projectName },
+      { title: '스택', value: [...stack.frontend, ...stack.backend] },
+      { title: '링크', value: link },
+      { title: '깃허브', value: github },
+    ],
+    [projectName, stack, link, github],
+  );
 
   return (
     <li className="flex flex-col w-full gap-5">
@@ -25,7 +29,8 @@ export default function AboutContent(props: ProjectDetailType) {
               items.value.map(each => (
                 <span
                   className="text-xs py-[2px] px-1 rounded-md"
-                  style={{ backgroundColor: each.color, color: each.color === 'white' ? 'black' : 'white' }}>
+                  style={{ backgroundColor: each.color, color: each.color === 'white' ? 'black' : 'white' }}
+                  key={each.name}>
                   {each.displayName}
                 </span>
               ))

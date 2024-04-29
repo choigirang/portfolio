@@ -1,7 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import { allStack } from '../../../constant/info';
-import StackDetail from './StackDetail';
-import { SelectStackType } from '../../../type/sections';
 
 /**
  *

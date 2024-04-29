@@ -7,16 +7,9 @@
 :root {
   width: 100%;
   display: flex;
-  transition: all 0.5s ease-in-out;
   font-family: 'SCoreDream';
   box-sizing: border-box;
   background-color: #0f1015;
-
-  /* padding */
-  --default-padding: 0px calc((100% - 1200px) / 2);
-
-  /* color */
-  --color-trans-white: rgba(255, 255, 255, 0.5);
 }
 
 .backface-invisible {

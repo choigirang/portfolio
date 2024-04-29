@@ -1,5 +1,5 @@
 import { LinkProps } from 'react-router-dom';
-import React, { Dispatch, ReactNode, SetStateAction } from 'react';
+import React, { Dispatch } from 'react';
 export type ListChangeSpanColorProps = {
   activeUrl: boolean;
 };

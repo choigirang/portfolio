@@ -1,4 +1,3 @@
-import React from 'react';
 import useMoveScroll from '../../../hooks/useMoveScroll';
 import { headerLabel, headerListsIcon } from '../../../constant/info';
 

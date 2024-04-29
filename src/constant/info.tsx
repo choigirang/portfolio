@@ -59,28 +59,6 @@ export const profileInfo: ProfileObjectInfo[] = [
   },
 ];
 
-// SUMMARY
-export const CardInfo: { [key: string]: SkillCardProps } = {
-  projects: {
-    src: 'projects',
-    txt: '프로젝트',
-    bedge: 'projects',
-    color: 'red',
-  },
-  skill: {
-    src: 'skills',
-    txt: '기술 스택',
-    bedge: 'skills',
-    color: 'purple',
-  },
-};
-
-export const skillsList: { [key: string]: string } = {
-  first: 'frontend',
-  second: 'backend',
-  third: 'tools',
-};
-
 export const allStack: AllStackType = {
   언어: {
     typescript: {

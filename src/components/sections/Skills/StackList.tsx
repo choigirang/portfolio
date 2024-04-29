@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import { allStack } from '../../../constant/info';
 import StackDetail from './StackDetail';
 import { SelectStackType } from '../../../type/sections';
@@ -20,9 +20,9 @@ export default function StackList({
 }: {
   select: string;
   stack: string;
-  setStack: Dispatch<SetStateAction<string>>;
+  setStack: (str: string) => void;
 }) {
-  const data = allStack[select];
+  const data = useMemo(() => allStack[select], [select]);
 
   return (
     <div className="flex flex-col gap-5 justify-center items-center w-full">

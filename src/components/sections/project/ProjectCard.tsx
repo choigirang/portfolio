@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
-import AboutImg from './AboutImg';
-import AboutContent from './AboutContent';
-import DescriptionContent from './DescriptionContent';
 
 import { projects } from '../../../constant/info';
 import { ProjectDetailType } from '../../../type/sections';
-
-import { styled as MuiStyled } from '@mui/material';
+import AboutImg from './AboutImg';
+import AboutContent from './AboutContent';
+import DescriptionContent from './DescriptionContent';
 
 /**
  *
@@ -27,61 +25,26 @@ export default function ProjectCard({ name }: { name: string }) {
   };
 
   return (
-    <Container flipCard={flipCard} onClick={handleFlipCard}>
+    <li
+      style={{ transform: flipCard ? 'rotateY(180deg)' : undefined }}
+      className="rounded-lg p-5 bg-[#1A1B24] transition-custom"
+      onClick={handleFlipCard}>
       {projectData && (
-        <Card>
+        <div className="w-full">
           {/* 앞면 */}
-          <FrontContent flipCard={flipCard}>
+          <ul
+            className="flex flex-col gap-3 w-full h-full backface-invisible"
+            style={{
+              transform: flipCard ? 'rotateY(180deg)' : 'rotateY(0)',
+              visibility: flipCard ? 'hidden' : undefined,
+            }}>
             <AboutImg name={projectData.name} />
             <AboutContent {...projectData} />
-          </FrontContent>
+          </ul>
           {/* 뒷면 */}
           <DescriptionContent flipCard={flipCard} description={projectData?.description} />
-        </Card>
+        </div>
       )}
-    </Container>
+    </li>
   );
 }
-
-const Container = MuiStyled('section')<{ flipCard: boolean }>(({ flipCard, theme }) => ({
-  width: '100%',
-  backgroundColor: '#1A1B24',
-  borderRadius: 10,
-  transition: 'all 1s',
-
-  ...(flipCard && {
-    transition: 'all 1s',
-    transform: 'rotateY(180deg)',
-  }),
-}));
-
-const Card = MuiStyled('div')(({ theme }) => ({
-  width: '100%',
-}));
-
-const FrontContent = MuiStyled('div')<{ flipCard: boolean }>(({ flipCard, theme }) => ({
-  width: '100%',
-  height: '100%',
-  padding: '5%',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 70,
-  backfaceVisibility: 'hidden',
-  transition: 'all .3s',
-  transform: flipCard ? 'rotateY(180deg)' : 'rotateY(0)',
-
-  ...(flipCard && {
-    visibility: 'hidden',
-    transition: 'all .3s',
-  }),
-
-  /* 타블렛 */
-  '@media screen and (min-width: 768px) and (max-width: 1023px)': {
-    gap: 50,
-  },
-
-  /* 모바일 */
-  '@media screen and (max-width:767px)': {
-    gap: 20,
-  },
-}));

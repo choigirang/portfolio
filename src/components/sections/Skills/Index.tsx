@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import StackList from './StackList';
 import { allStack } from '../../../constant/info';
 import StackDetail from './StackDetail';
@@ -14,6 +14,20 @@ export default function Skills() {
   const [category, setCategory] = useState('언어');
   const [stack, setStack] = useState('');
   const [data, setData] = useState<SelectStackType | undefined>();
+
+  const handleCategoryClick = useCallback(
+    (key: string) => {
+      setCategory(key);
+    },
+    [category],
+  );
+
+  const handleStackClick = useCallback(
+    (stackName: string) => {
+      setStack(stackName);
+    },
+    [stack],
+  );
 
   useEffect(() => {
     setStack(Object.keys(allStack[category])[0]);
@@ -34,13 +48,13 @@ export default function Skills() {
         {categoryList.map(key => (
           <li
             key={key}
-            onClick={() => setCategory(key)}
+            onClick={() => handleCategoryClick(key)}
             className={`cursor-pointer text-center text-${category === key ? 'yellow-400' : 'white'}`}>
             {key}
           </li>
         ))}
       </ul>
-      <StackList select={category} stack={stack} setStack={setStack} />
+      <StackList select={category} stack={stack} setStack={handleStackClick} />
       <StackDetail data={data} />
     </section>
   );

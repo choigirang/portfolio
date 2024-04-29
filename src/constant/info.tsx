@@ -377,7 +377,7 @@ export const projects: ProjectInfoType = {
       '*EC2를 이용하여 배포*하였습니다.',
     ],
     github: 'https://github.com/choigirang/portfolio',
-    link: 'http://choigirang-portfolio.site:3000/',
+    link: 'https://v1.choigirang-portfolio.site',
     stack: {
       frontend: [
         { name: 'typescript', displayName: 'TypeScript', color: '#387BC8' },

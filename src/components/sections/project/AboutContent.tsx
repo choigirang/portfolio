@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { ProjectDetailType } from '../../../type/sections';
+import useSize from '../../../hooks/useSize';
 
 /**
  *
@@ -8,6 +9,8 @@ import { ProjectDetailType } from '../../../type/sections';
  */
 export default function AboutContent(props: ProjectDetailType) {
   const { projectName, github, stack, link } = props;
+
+  const { isMobile } = useSize();
 
   const floorItems = useMemo(
     () => [
@@ -22,9 +25,17 @@ export default function AboutContent(props: ProjectDetailType) {
   return (
     <li className="flex flex-col w-full gap-5">
       {floorItems.map((items, index) => (
-        <ul className="grid grid-cols-projectDetail items-center relative w-full" key={index}>
-          <li className="flex text-yellow-400 text-sm">{items.title} :</li>
-          <li id="txt Ref" className="relative flex flex-wrap gap-1 w-full text-xs justify-start text-white">
+        <ul
+          className={`${
+            isMobile ? 'flex flex-col justify-center' : 'grid grid-cols-projectDetail'
+          } items-center relative w-full`}
+          key={index}>
+          {!isMobile && <li className="flex text-yellow-400 text-sm">{items.title} :</li>}
+          <li
+            id="txt Ref"
+            className={`relative flex flex-wrap gap-1 w-full text-xs ${
+              isMobile ? 'justify-center' : 'justify-start'
+            } text-white`}>
             {typeof items.value === 'object' ? (
               items.value.map(each => (
                 <span
@@ -41,7 +52,9 @@ export default function AboutContent(props: ProjectDetailType) {
                 href={items.value}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-wrap break-all hover:underline">
+                className={`w-full text-wrap break-all hover:underline ${
+                  isMobile ? 'text-center text-yellow-400' : ''
+                }`}>
                 {items.value}
               </a>
             )}

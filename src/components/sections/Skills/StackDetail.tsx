@@ -1,15 +1,24 @@
 import React from 'react';
 import { url } from './StackList';
 import { SelectStackType } from '../../../type/sections';
+import useSize from '../../../hooks/useSize';
 
 export default function StackDetail({ data }: { data: SelectStackType | undefined }) {
+  const { isMobile, isTablet } = useSize();
+  const checkSize = !isMobile && !isTablet;
+
   return (
-    <ul className="w-full h-[200px] grid grid-cols-stackDetail bg-[#1A1B24] p-5 rounded-lg">
+    <ul
+      className={`w-full h-[200px] ${
+        checkSize ? 'grid grid-cols-stackDetail' : 'flex flex-col'
+      } bg-[#1A1B24] p-5 rounded-lg`}>
       {data ? (
         <React.Fragment>
-          <li className="flex justify-center items-center w-full h-full">
-            <img src={url + data.name} alt="stack-img" className="w-[100px] h-[100px] p-3 bg-[#30313d] rounded-lg" />
-          </li>
+          {checkSize && (
+            <li className="flex justify-center items-center w-full h-full">
+              <img src={url + data.name} alt="stack-img" className="w-[100px] h-[100px] p-3 bg-[#30313d] rounded-lg" />
+            </li>
+          )}
           <li className="flex flex-col gap-2 w-full h-full overflow-scroll text-white sm:text-[14px]">
             {data.description.map(each => (
               <span key={each} className="max-w-[500px]">

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import useGetImg from '../../../hooks/useGetImg';
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/16/solid';
+import useSize from '../../../hooks/useSize';
 
 /**
  *
@@ -12,6 +13,7 @@ export default function AboutImg({ name }: { name: string }) {
   const [saveImgUrl, setSaveImgUrl] = useState<string[]>([]);
   const { data: imgUrl } = useGetImg(name);
   const [hoverBtn, setHoverBtn] = useState(false);
+  const { isMobile } = useSize();
 
   useEffect(() => {
     if (!imgUrl) return;
@@ -43,17 +45,19 @@ export default function AboutImg({ name }: { name: string }) {
       />
       {/* 이미지 갯수 */}
       {/* 좌측 버튼 */}
-      <div id="button-box" className="absolute flex justify-between w-full left-0 bottom-0 text-white ">
-        <button type="button" onClick={e => imgNumController(e, 'prev')} aria-label="img prev btn">
-          <ArrowLeftCircleIcon width={16} height={16} className="shadow-2xl hover:text-yellow-400" />
-        </button>
-        <span className="absolute top-0 left-1/2 -translate-x-1/2 text-xs text-white py-1 px-2 bg-[#30313d] rounded-lg">
-          {showImg + 1}/{saveImgUrl.length}
-        </span>
-        <button type="button" onClick={e => imgNumController(e, 'next')} aria-label="img next btn">
-          <ArrowRightCircleIcon width={16} height={16} className="shadow-2xl hover:text-yellow-400" />
-        </button>
-      </div>
+      {!isMobile && (
+        <div id="button-box" className="absolute flex justify-between w-full left-0 bottom-0 text-white ">
+          <button type="button" onClick={e => imgNumController(e, 'prev')} aria-label="img prev btn">
+            <ArrowLeftCircleIcon width={16} height={16} className="shadow-2xl hover:text-yellow-400" />
+          </button>
+          <span className="absolute top-0 left-1/2 -translate-x-1/2 text-xs text-white py-1 px-2 bg-[#30313d] rounded-lg">
+            {showImg + 1}/{saveImgUrl.length}
+          </span>
+          <button type="button" onClick={e => imgNumController(e, 'next')} aria-label="img next btn">
+            <ArrowRightCircleIcon width={16} height={16} className="shadow-2xl hover:text-yellow-400" />
+          </button>
+        </div>
+      )}
     </li>
   );
 }

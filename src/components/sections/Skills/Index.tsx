@@ -49,7 +49,9 @@ export default function Skills() {
           <li
             key={key}
             onClick={() => handleCategoryClick(key)}
-            className={`cursor-pointer text-center text-${category === key ? 'yellow-400' : 'white'}`}>
+            className={`cursor-pointer text-center sm:text-sm md:text-base text-${
+              category === key ? 'yellow-400' : 'white'
+            }`}>
             {key}
           </li>
         ))}

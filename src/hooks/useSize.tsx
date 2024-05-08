@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 /** 2024/04/14 - 화면에 따른 mobile 훅 */
 export default function useSize() {
@@ -15,11 +15,11 @@ export default function useSize() {
       setTablet(isTablet);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     handleResize();
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 

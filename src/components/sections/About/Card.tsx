@@ -16,18 +16,18 @@ export default function Card(value: ProfileObjectInfo) {
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col justify-between w-full h-full">
-          <span className="text-lg">
+          <span className="text-lg sm:text-xs md:text-base">
             {title} {icon}
           </span>
-          <span>{info}</span>
+          <span className="sm:text-sm md:text-base">{info}</span>
         </a>
       )}
       {!link && (
         <p className="flex flex-col justify-between w-full h-full">
-          <span className="text-lg">
+          <span className="text-lg sm:text-xs md:text-base">
             {title} {icon}
           </span>
-          <span>{info}</span>
+          <span className="sm:text-sm md:text-base">{info}</span>
         </p>
       )}
     </li>

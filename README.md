@@ -13,6 +13,13 @@
 - 웹과 모바일 등 접근성을 높이기 위해 **반응형웹**으로 제작하였습니다.
 - https 적용
 
+### 최적화
+
+|                                                                                      before                                                                                      |                                                                                      after                                                                                       |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <img width="500px" height="auto" alt="최기랑 포트폴리오v1 before" src="https://github.com/choigirang/portfolio/assets/118104644/f14b49f5-3eb0-4e51-972f-792ec23ab85a"> | <img width="500px" height="auto" alt="최기랑 포트폴리오 v1 after" src="https://github.com/choigirang/portfolio/assets/118104644/d286e53d-1097-4936-a229-37e0af92f849"> |
+
+
 <br>
 
 <details>
@@ -25,12 +32,6 @@
 |                                                                                    TypeScript                                                                                     |                                                                                 React                                                                                 |                                                                                React-Query                                                                                 |                                                                                  tailwind                                                                                   |                                                                                    EC2                                                                                    |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | <div style="display: flex; align-items: flex-start; justify-content: center;"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start; justify-content: center;"><img src="https://cdn.simpleicons.org/react" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start; justify-content: center;"><img src="https://cdn.simpleicons.org/reactquery" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start; justify-content: center;"><img src="https://cdn.simpleicons.org/tailwindcss" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start; justify-content: center;"><img src="https://cdn.simpleicons.org/amazonec2" alt="icon" width="75" height="75" /></div> |
-
-### 최적화
-
-|                                                                                      before                                                                                      |                                                                                      after                                                                                       |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <img width="auto" height="200px" alt="최기랑 포트폴리오v1 before" src="https://github.com/choigirang/portfolio/assets/118104644/f14b49f5-3eb0-4e51-972f-792ec23ab85a"> | <img width="auto" height="200px" alt="최기랑 포트폴리오 v1 after" src="https://github.com/choigirang/portfolio/assets/118104644/d286e53d-1097-4936-a229-37e0af92f849"> |
 
 </details>
 

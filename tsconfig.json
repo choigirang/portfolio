@@ -3,7 +3,12 @@
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "checkJs": true,
     "skipLibCheck": true,
+    "rootDir": "src", // root 디렉토리
+    "outDir": "dist", // 컴파일 후 생성되는 자바스크립트 파일이 저장될 디렉토리명
+    "sourceMap": true, //빌드시에 map 파일을 생성할지
+    "declaration": true /* '.d.ts' 파일 생성 여부. */,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,

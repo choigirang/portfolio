@@ -7,6 +7,12 @@
 export default function DescriptionContent(props: { flipCard: boolean; description: Array<string> }) {
   const { flipCard, description } = props;
 
+  const checkTitleDetails = (text: string) => {
+    const title = text.startsWith('!');
+
+    return title;
+  };
+
   const parseDescription = (text: string) => {
     const parts = text.split('*');
 
@@ -33,7 +39,10 @@ export default function DescriptionContent(props: { flipCard: boolean; descripti
         style={{ visibility: flipCard ? 'visible' : 'hidden', transform: flipCard ? 'rotateY(180deg)' : 'rotateY(0)' }}>
         {description.map(item => (
           <li className="flex gap-5" key={item}>
-            <span>✅ {parseDescription(item)}</span>
+            {!checkTitleDetails(item) && <span>✅</span>}
+            <span className={`${checkTitleDetails(item) && 'font-bold text-black bg-yellow-400 p-1 rounded'}`}>
+              {checkTitleDetails(item) ? item.slice(1) : parseDescription(item)}
+            </span>
           </li>
         ))}
       </ul>

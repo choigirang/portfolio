@@ -66,6 +66,7 @@ export interface ProjectDetailType {
   github: string;
   link: string;
   stack: {
+    refactor?: Array<StackInfoType>;
     frontend: Array<StackInfoType>;
     backend: Array<StackInfoType>;
   };
